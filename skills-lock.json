@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/taste-skill/SKILL.md",
       "computedHash": "ac769e17340097d1d1e4fe8c8baf543324c81ce94d600283d70b6546ccd4d51d"
+    },
+    "web-trust-and-compliance": {
+      "source": ".agents/skills/web-trust-and-compliance",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/web-trust-and-compliance/SKILL.md",
+      "computedHash": "b649ce6e480dc1c010ecd5ec6331aceb00abd9c6fc3fd705216bab0204eee7ca"
     }
   }
 }

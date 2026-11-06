@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/site-config";
@@ -22,7 +23,7 @@ export default function TermsPage() {
 
         <div className="prose prose-slate max-w-none text-sm text-[#475569] space-y-6 leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#14243A]">1. Acceptance of Terms</h2>
+            <h2 className="text-lg font-bold text-[#0D2040]">1. Acceptance of Terms</h2>
             <p>
               By accessing the website ({siteConfig.url}) or requesting services from MIN MURASU, you agree
               to be bound by these Terms and Conditions. Formal agency engagements are governed by individual
@@ -31,7 +32,7 @@ export default function TermsPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#14243A]">2. Scope &amp; Commercial Transparency</h2>
+            <h2 className="text-lg font-bold text-[#0D2040]">2. Scope &amp; Commercial Transparency</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li>
                 <strong>Direct Ad Spend:</strong> Advertising media spend (paid to Google, Meta, etc.) is the direct
@@ -51,7 +52,7 @@ export default function TermsPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#14243A]">3. Intellectual Property &amp; Asset Ownership</h2>
+            <h2 className="text-lg font-bold text-[#0D2040]">3. Intellectual Property &amp; Asset Ownership</h2>
             <p>
               Upon receipt of full payment for agreed deliverables, clients own all custom code, graphic assets, and campaign
               structures created explicitly for their engagement. Clients always maintain 100% administrative ownership of their
@@ -60,7 +61,28 @@ export default function TermsPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#14243A]">4. Governing Law</h2>
+            <h2 className="text-lg font-bold text-[#0D2040]">4. Limitation of Liability &amp; Warranty Disclaimer</h2>
+            <p>
+              {siteConfig.name} shall not be liable for indirect, incidental, or consequential damages, or for service interruptions
+              caused by third-party platforms (including Google, Meta, WhatsApp/Meta Cloud API, or cloud hosting providers). In any
+              event, our total aggregate liability under any Statement of Work shall not exceed the agency fees paid by the client
+              to {siteConfig.name} during the preceding one (1) month of service.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-[#0D2040]">5. Cancellations &amp; Refunds</h2>
+            <p>
+              Project cancellations, retainer notice periods, and refund eligibility are governed by our{" "}
+              <Link href="/refund-policy" className="text-[#0082CA] underline font-medium">
+                Cancellation &amp; Refund Policy
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-[#0D2040]">6. Governing Law &amp; Jurisdiction</h2>
             <p>
               These terms are governed by and construed in accordance with the laws of India. Any disputes arising from these terms
               or agency engagements are subject to the exclusive jurisdiction of the competent courts in Coimbatore, Tamil Nadu, India.

@@ -3,7 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Script from "next/script";
+import CookieConsent from "@/components/layout/CookieConsent";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -48,54 +48,10 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="h-full">
-      <head>
-        {/* Google Analytics 4 */}
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
-
-        {/* Google Tag Manager */}
-        {gtmId && (
-          <Script id="google-tag-manager" strategy="afterInteractive">
-            {`
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${gtmId}');
-            `}
-          </Script>
-        )}
-      </head>
       <body className="min-h-full flex flex-col bg-white text-[#475569]">
-        {gtmId && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        )}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#0E7490] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#0D2040] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg"
         >
           Skip to main content
         </a>
@@ -103,6 +59,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <CookieConsent gaId={gaId} gtmId={gtmId} />
       </body>
     </html>
   );

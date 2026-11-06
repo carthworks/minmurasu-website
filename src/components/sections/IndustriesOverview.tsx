@@ -81,42 +81,50 @@ export default function IndustriesOverview() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industryData.map((ind) => {
+          {industryData.map((ind, idx) => {
             const Icon = ind.icon;
             return (
               <div
                 key={ind.slug}
-                className="rounded-2xl border border-slate-200/90 p-7 bg-slate-50/40 hover:bg-slate-50 hover:border-slate-300 transition-all flex flex-col justify-between"
+                className="rounded-2xl border border-slate-200/90 p-7 bg-white hover:bg-[#F0F8FF]/30 hover:border-[#0082CA]/40 hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#0E7490] mb-5 shadow-xs">
-                    <Icon className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-[#0D2040] text-white flex items-center justify-center shadow-xs group-hover:bg-[#F58220] transition-colors">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-slate-400">
+                      SECTOR 0{idx + 1}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-[#14243A] mb-2">
+                  <h3 className="text-lg font-extrabold text-[#0D2040] mb-3">
                     {ind.title}
                   </h3>
-                  <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200/50 p-2.5 rounded-lg mb-4">
-                    <strong>Challenge:</strong> {ind.painPoint}
+                  <p className="text-xs text-orange-950 bg-orange-50/90 border border-orange-200/70 p-3 rounded-xl mb-5 leading-relaxed">
+                    <strong className="text-[#F58220] uppercase tracking-wider text-[10px] block mb-0.5">
+                      Operational Bottleneck:
+                    </strong>
+                    {ind.painPoint}
                   </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                      How we help:
+                  <div className="space-y-2.5 mb-6">
+                    <div className="text-[11px] font-extrabold text-[#0D2040] uppercase tracking-wider">
+                      MIN MURASU Solution:
                     </div>
                     {ind.solutions.map((sol) => (
                       <div key={sol} className="flex items-start gap-2 text-xs text-[#475569]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0E7490] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
                         <span>{sol}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/60">
+                <div className="pt-4 border-t border-slate-100">
                   <Link
                     href={`/industries/${ind.slug}`}
-                    className="text-xs font-bold text-[#0E7490] hover:text-[#14243A] inline-flex items-center gap-1 group"
+                    className="text-xs font-bold text-[#0082CA] group-hover:text-[#F58220] inline-flex items-center gap-1.5 transition-colors"
                   >
-                    <span>View {ind.title.split(" ")[0]} Solutions</span>
+                    <span>View {ind.title.split(" ")[0]} Playbook</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

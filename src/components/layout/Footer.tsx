@@ -156,16 +156,26 @@ export default function Footer() {
           <div>
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </div>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <Link href="/about" className="hover:text-white transition-colors">
+              About Us
+            </Link>
             <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms &amp; Conditions
             </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
-              Consultation &amp; Audits
+            <Link href="/refund-policy" className="hover:text-white transition-colors">
+              Cancellation &amp; Refund Policy
             </Link>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("open-cookie-preferences"))}
+              className="hover:text-white transition-colors cursor-pointer underline decoration-slate-600 underline-offset-2"
+            >
+              Cookie Preferences
+            </button>
           </div>
         </div>
       </Container>
