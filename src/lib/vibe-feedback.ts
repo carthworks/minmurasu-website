@@ -53,3 +53,4 @@ class VibeFeedback {
 }
 
 export const feedback = new VibeFeedback();
+

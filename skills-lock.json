@@ -18,6 +18,12 @@
       "sourceType": "local",
       "skillPath": ".agents/skills/vibe-ui-delight/SKILL.md",
       "computedHash": "89849a512e4eef6a157f598318a7c51d9451da7261469a2287684ca3bec157a9"
+    },
+    "production-web-app-launch": {
+      "source": ".agents/skills/production-web-app-launch",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/production-web-app-launch/SKILL.md",
+      "computedHash": "a6fbc351c341632ea9eec7eba6f5db08f4c71bf12321ef1cc103f60893e0470e"
     }
   }
 }

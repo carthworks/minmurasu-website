@@ -1,9 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Logo from "@/components/ui/Logo";
 import {
   MapPin,
   CheckCircle2,
@@ -48,24 +48,83 @@ export default function AboutPage() {
   return (
     <div className="py-16 sm:py-24">
       <Container>
-        {/* Hero Section */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
-          <div className="mb-6">
-            <Logo variant="full" />
+        {/* Hero Section with Prominent Official Brand Logo Emblem */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16 sm:mb-20">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F8FF] border border-[#BAE6FD] text-xs font-extrabold uppercase tracking-wider text-[#0D2040] mb-5">
+              <span className="w-2 h-2 rounded-full bg-[#F58220]" />
+              <span>About MIN MURASU</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-4 leading-tight">
+              The Digital Voice That Makes Your Brand Heard.
+            </h1>
+            <div className="w-24 h-1.5 bg-[#F58220] rounded-full mb-6" />
+            <p className="text-lg text-[#0082CA] font-extrabold mb-4 tracking-wide">
+              DIGITAL GROWTH. REAL BUSINESS OUTCOMES.
+            </p>
+            <p className="text-base text-[#475569] leading-relaxed mb-6">
+              Headquartered in Coimbatore, Tamil Nadu, and founded by <strong>Karthikeyan T</strong>,
+              MIN MURASU takes its name from the historic Tamil announcement drum (&ldquo;Murasu&rdquo; / முரசு)
+              fused with modern digital intelligence (&ldquo;Min&rdquo; / மின்). We cut through market noise with
+              disciplined digital marketing, modern Next.js web systems, and practical AI automation.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href="/contact" variant="orange" size="md">
+                Consult With Our Founder
+              </Button>
+              <Button href="/services" variant="outline" size="md">
+                Explore Our Capabilities
+              </Button>
+            </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-4 leading-tight">
-            The Digital Voice That Makes Your Brand Heard.
-          </h1>
-          <div className="w-20 h-1.5 bg-[#F58220] rounded-full mb-6" />
-          <p className="text-lg text-[#0082CA] font-bold mb-4">
-            DIGITAL GROWTH. REAL BUSINESS OUTCOMES.
-          </p>
-          <p className="text-base text-[#475569] leading-relaxed">
-            Headquartered in Coimbatore, Tamil Nadu, and founded by <strong>Karthikeyan T</strong>,
-            MIN MURASU takes its name from the historic Tamil announcement drum (&ldquo;Murasu&rdquo; / முரசு)
-            fused with modern digital intelligence (&ldquo;Min&rdquo; / மின்). We cut through market noise with
-            disciplined digital marketing, modern Next.js web systems, and practical AI automation.
-          </p>
+
+          {/* Right Column: Official MIN MURASU Brand Identity Card (Matching Business Card Front) */}
+          <div className="lg:col-span-5">
+            <div className="relative bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xl text-center overflow-hidden">
+              {/* Top-left Orange & Bottom-right Navy diagonal accents */}
+              <div
+                className="absolute top-0 left-0 w-18 h-12 bg-[#F58220] pointer-events-none"
+                style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
+                aria-hidden="true"
+              />
+              <div
+                className="absolute bottom-0 right-0 w-24 h-9 bg-[#0D2040] pointer-events-none"
+                style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
+                aria-hidden="true"
+              />
+
+              <div className="relative mx-auto w-56 h-36 sm:w-64 sm:h-40 mb-4 flex items-center justify-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="MIN MURASU Official Drum Emblem Logo"
+                  width={380}
+                  height={238}
+                  className="w-full h-full object-contain drop-shadow-xs"
+                  priority
+                />
+              </div>
+
+              <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0D2040] uppercase">
+                MIN MURASU
+              </div>
+              <p className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
+                Turn Digital Attention Into Business Growth
+              </p>
+              <div className="w-36 h-1 bg-[#F58220] mx-auto mt-3.5 mb-6 rounded-full" />
+
+              <div className="pt-5 border-t border-slate-100 text-xs text-slate-600 flex flex-col items-center gap-1">
+                <span className="font-extrabold text-sm text-[#0D2040]">
+                  Karthikeyan T
+                </span>
+                <span className="text-slate-500 font-medium">
+                  Founder | Digital Growth &amp; AI Automation
+                </span>
+                <span className="text-[11px] text-[#0082CA] font-semibold mt-0.5">
+                  Coimbatore, Tamil Nadu &bull; www.minmurasu.com
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Narrative Grid */}

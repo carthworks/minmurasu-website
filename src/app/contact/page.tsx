@@ -64,7 +64,7 @@ export default function ContactPage() {
         message: successMsg,
       });
       setToast({
-        id: String(Date.now()),
+        id: "contact-success",
         type: "success",
         message: "Enquiry received! Our team will reach out within 24 hours.",
       });
@@ -83,7 +83,7 @@ export default function ContactPage() {
         message: errorMessage,
       });
       setToast({
-        id: String(Date.now()),
+        id: "contact-error",
         type: "error",
         message: errorMessage,
       });
