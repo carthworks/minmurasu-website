@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { ProtectedEmail, ProtectedPhone } from "@/components/ui/ProtectedContact";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -115,9 +116,9 @@ export default function PrivacyPolicyPage() {
             <div className="p-5 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD] text-slate-700 space-y-1">
               <p className="font-bold text-[#0D2040]">Data Protection &amp; Grievance Officer: Karthikeyan T (Founder)</p>
               <p><strong>Organization:</strong> {siteConfig.name}</p>
-              <p><strong>Primary Email:</strong> <a href={`mailto:${siteConfig.emails.primary}`} className="text-[#0082CA] underline">{siteConfig.emails.primary}</a></p>
-              <p><strong>Secondary Email:</strong> <a href={`mailto:${siteConfig.emails.secondary}`} className="text-[#0082CA] underline">{siteConfig.emails.secondary}</a></p>
-              <p><strong>Phone / WhatsApp:</strong> {siteConfig.phones.primary}</p>
+              <p><strong>Primary Email:</strong> <ProtectedEmail variant="primary" className="text-[#0082CA] underline" /></p>
+              <p><strong>Secondary Email:</strong> <ProtectedEmail variant="secondary" className="text-[#0082CA] underline" /></p>
+              <p><strong>Phone / WhatsApp:</strong> <ProtectedPhone variant="primary" /></p>
               <p><strong>Location:</strong> Coimbatore, Tamil Nadu, India</p>
             </div>
           </section>

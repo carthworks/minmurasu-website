@@ -7,7 +7,11 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import {
+  ProtectedEmail,
+  ProtectedPhone,
+  ProtectedWhatsApp,
+} from "@/components/ui/ProtectedContact";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackLeadSubmission } from "@/lib/analytics";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
@@ -26,10 +30,12 @@ export default function ContactPage() {
     message: string | null;
   }>({ type: null, message: null });
   const [toast, setToast] = useState<Toast | null>(null);
+  const [hasFocused, setHasFocused] = useState(false);
 
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
@@ -37,8 +43,16 @@ export default function ContactPage() {
     defaultValues: {
       preferredContact: "whatsapp",
       service: "digital-strategy",
+      formLoadedAt: 0,
     },
   });
+
+  const handleFormFocus = () => {
+    if (!hasFocused) {
+      setHasFocused(true);
+      setValue("formLoadedAt", Date.now());
+    }
+  };
 
   const onSubmit = async (data: ContactFormData) => {
     setServerStatus({ type: null, message: null });
@@ -134,7 +148,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Signature P / M / W Badges from Business Card Front */}
+              {/* Signature P / M / W Badges from Business Card Front (Scraper-Protected) */}
               <div className="space-y-4 text-xs sm:text-sm">
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-[#0D2040] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
@@ -144,14 +158,10 @@ export default function ContactPage() {
                     <span className="text-slate-400 block text-[11px] uppercase font-semibold tracking-wider">
                       Phone &amp; WhatsApp
                     </span>
-                    <div className="font-bold text-[#0D2040] space-x-1.5">
-                      <a href={`tel:${siteConfig.phones.primaryRaw}`} className="hover:text-[#0082CA]">
-                        {siteConfig.phones.primary}
-                      </a>
+                    <div className="font-bold text-[#0D2040] flex flex-wrap items-center gap-1.5">
+                      <ProtectedPhone variant="primary" className="hover:text-[#0082CA]" />
                       <span className="text-slate-300">|</span>
-                      <a href={`tel:${siteConfig.phones.secondaryRaw}`} className="hover:text-[#0082CA]">
-                        {siteConfig.phones.secondary}
-                      </a>
+                      <ProtectedPhone variant="secondary" className="hover:text-[#0082CA]" />
                     </div>
                   </div>
                 </div>
@@ -164,18 +174,18 @@ export default function ContactPage() {
                     <span className="text-slate-400 block text-[11px] uppercase font-semibold tracking-wider">
                       Official Email
                     </span>
-                    <a
-                      href={`mailto:${siteConfig.emails.primary}`}
-                      className="font-bold text-[#0D2040] hover:text-[#0082CA] block"
-                    >
-                      {siteConfig.emails.primary}
-                    </a>
-                    <a
-                      href={`mailto:${siteConfig.emails.secondary}`}
-                      className="text-slate-500 text-xs hover:text-[#0082CA]"
-                    >
-                      {siteConfig.emails.secondary}
-                    </a>
+                    <div>
+                      <ProtectedEmail
+                        variant="primary"
+                        className="font-bold text-[#0D2040] hover:text-[#0082CA] block"
+                      />
+                    </div>
+                    <div>
+                      <ProtectedEmail
+                        variant="secondary"
+                        className="text-slate-500 text-xs hover:text-[#0082CA]"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -198,11 +208,9 @@ export default function ContactPage() {
               </div>
 
               {/* Instant WhatsApp banner */}
-              <a
-                href={getWhatsAppUrl("Hello MIN MURASU, I would like to schedule a digital growth consultation.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 hover:bg-emerald-100 transition-colors"
+              <ProtectedWhatsApp
+                message="Hello MIN MURASU, I would like to schedule a digital growth consultation."
+                className="w-full flex items-center gap-3 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 hover:bg-emerald-100 transition-colors text-left"
               >
                 <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
                   <MessageSquare className="w-5 h-5" />
@@ -218,7 +226,7 @@ export default function ContactPage() {
                     Monday – Saturday: 9:30 AM – 6:30 PM IST
                   </div>
                 </div>
-              </a>
+              </ProtectedWhatsApp>
             </div>
 
             <div className="p-5 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD] text-xs text-slate-600 space-y-2">
@@ -262,16 +270,40 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-                {/* Honeypot field (hidden from view) */}
-                <input
-                  type="text"
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                onFocus={handleFormFocus}
+                className="space-y-5"
+                noValidate
+              >
+                {/* Dual Honeypot fields (hidden from human view, trap automated spam bots) */}
+                <div
                   aria-hidden="true"
-                  {...register("companyFax")}
-                  style={{ display: "none" }}
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="company-fax-trap">Company Fax</label>
+                  <input
+                    id="company-fax-trap"
+                    type="text"
+                    {...register("companyFax")}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <label htmlFor="secondary-role-trap">Secondary Role</label>
+                  <input
+                    id="secondary-role-trap"
+                    type="text"
+                    {...register("secondaryRole")}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}

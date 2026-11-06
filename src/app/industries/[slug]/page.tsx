@@ -5,7 +5,8 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { industriesData } from "@/content/industries";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
 import {
   CheckCircle2,
   AlertTriangle,
@@ -80,15 +81,13 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
               <Button href="/contact" variant="teal" size="md">
                 Schedule a Sector Strategy Call
               </Button>
-              <a
-                href={getWhatsAppUrl(`Hi MIN MURASU, I'm interested in digital growth strategies for ${ind.title}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <ProtectedWhatsApp
+                message={`Hi MIN MURASU, I'm interested in digital growth strategies for ${ind.title}.`}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>WhatsApp Query</span>
-              </a>
+              </ProtectedWhatsApp>
             </div>
           </div>
         </Container>

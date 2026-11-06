@@ -45,13 +45,13 @@ export default function Header() {
             </span>
           </div>
           <div className="flex items-center gap-6">
-            <ProtectedPhone
-              variant="primary"
-              className="flex items-center gap-1 hover:text-white transition-colors"
-            >
+            <span className="flex items-center gap-1">
               <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />
-              <span>{siteConfig.phones.primary}</span>
-            </ProtectedPhone>
+              <ProtectedPhone
+                variant="primary"
+                className="hover:text-white transition-colors"
+              />
+            </span>
             <ProtectedWhatsApp
               className="flex items-center gap-1 hover:text-emerald-400 transition-colors"
             >

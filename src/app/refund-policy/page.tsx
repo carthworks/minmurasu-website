@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { ProtectedEmail, ProtectedPhone } from "@/components/ui/ProtectedContact";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -67,12 +68,10 @@ export default function RefundPolicyPage() {
               <li>
                 <strong>Simple Written Notice (Click-to-Cancel Equivalent):</strong> Monthly retainers
                 may be cancelled at any time by sending a direct email to{" "}
-                <a
-                  href={`mailto:${siteConfig.emails.primary}`}
+                <ProtectedEmail
+                  variant="primary"
                   className="text-[#0082CA] underline font-medium"
-                >
-                  {siteConfig.emails.primary}
-                </a>{" "}
+                />{" "}
                 with at least <strong>15 calendar days&apos; notice</strong> prior to the next monthly
                 billing cycle. No complex cancellation calls or retention hurdles are required.
               </li>
@@ -124,16 +123,12 @@ export default function RefundPolicyPage() {
               </p>
               <p>
                 <strong>Email:</strong>{" "}
-                <a href={`mailto:${siteConfig.emails.primary}`} className="text-[#0082CA] underline">
-                  {siteConfig.emails.primary}
-                </a>{" "}
+                <ProtectedEmail variant="primary" className="text-[#0082CA] underline" />{" "}
                 /{" "}
-                <a href={`mailto:${siteConfig.emails.secondary}`} className="text-[#0082CA] underline">
-                  {siteConfig.emails.secondary}
-                </a>
+                <ProtectedEmail variant="secondary" className="text-[#0082CA] underline" />
               </p>
               <p>
-                <strong>Phone / WhatsApp:</strong> {siteConfig.phones.primary}
+                <strong>Phone / WhatsApp:</strong> <ProtectedPhone variant="primary" />
               </p>
               <p>
                 <strong>Response SLA:</strong> Within 24 business hours (Monday – Saturday, 9:30 AM – 6:30 PM IST).

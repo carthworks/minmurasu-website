@@ -5,7 +5,8 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { servicesData } from "@/content/services";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
 import { ServiceJsonLd } from "@/components/seo/JsonLd";
 import {
   CheckCircle2,
@@ -89,15 +90,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <Button href="/contact" variant="teal" size="md">
                 Book a Consultation for This Service
               </Button>
-              <a
-                href={getWhatsAppUrl(`Hi MIN MURASU, I'm interested in learning more about your ${service.title} service.`)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <ProtectedWhatsApp
+                message={`Hi MIN MURASU, I'm interested in learning more about your ${service.title} service.`}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>WhatsApp Query</span>
-              </a>
+              </ProtectedWhatsApp>
             </div>
           </div>
         </Container>
