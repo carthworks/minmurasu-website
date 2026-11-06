@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-navy: #0D2040;
+  --color-brand-navy-light: #16325C;
+  --color-brand-navy-dark: #071326;
+  --color-brand-orange: #F58220;
+  --color-brand-orange-hover: #E06F12;
+  --color-brand-cyan: #0082CA;
+  --color-brand-cyan-light: #0099E5;
+  --color-brand-iceblue: #F0F8FF;
+  --color-brand-slate: #475569;
+  --color-brand-border: #E2E8F0;
+  --color-brand-surface: #F8FAFC;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFFFFF;
+  --foreground: #0D2040;
+  --border: #E2E8F0;
+  --body-text: #475569;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--body-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom theme helpers matching business card visual identity */
+.text-navy {
+  color: #0D2040;
+}
+
+.bg-navy {
+  background-color: #0D2040;
+}
+
+.text-orange {
+  color: #F58220;
+}
+
+.bg-orange {
+  background-color: #F58220;
+}
+
+.text-cyan {
+  color: #0082CA;
+}
+
+.bg-cyan {
+  background-color: #0082CA;
+}
+
+.bg-iceblue {
+  background-color: #F0F8FF;
+}
+
+/* Angular geometric corner cut accents from brand card */
+.murasu-accent-tl {
+  position: relative;
+}
+.murasu-accent-tl::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 55px solid #F58220;
+  border-right: 55px solid transparent;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.murasu-accent-br {
+  position: relative;
+}
+.murasu-accent-br::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 55px solid #F58220;
+  border-left: 55px solid transparent;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #0082CA;
+  outline-offset: 2px;
+}
+
+/* Mild elegant floating & glow animations for hero 3D visual */
+@keyframes floatMild {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pulseMildGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-mild {
+  animation: floatMild 5.5s ease-in-out infinite;
+}
+
+.animate-glow-mild {
+  animation: pulseMildGlow 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-mild,
+  .animate-glow-mild {
+    animation: none !important;
+  }
 }
