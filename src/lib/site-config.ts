@@ -33,7 +33,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Industries", href: "/industries" },
-    { label: "Our Approach", href: "/#approach" },
+    { label: "Our Approach", href: "/approach" },
     { label: "Work", href: "/work" },
     { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },

@@ -55,7 +55,7 @@ export default function GrowthSystem() {
   return (
     <section
       id="approach"
-      className="py-20 lg:py-28 bg-[#0A1931] text-white relative overflow-hidden"
+      className="py-20 lg:py-28 bg-[#0A1931] text-white relative overflow-hidden scroll-mt-24"
     >
       {/* Top-left and bottom-right orange diagonal corner accents matching business card */}
       <div

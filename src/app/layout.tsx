@@ -71,7 +71,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full scroll-smooth">
       <body className="min-h-full flex flex-col bg-white text-[#475569]">
         <a
           href="#main-content"
