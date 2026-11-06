@@ -19,9 +19,9 @@ function useIsHydrated(): boolean {
  */
 const EMAIL_PARTS = {
   primary: {
-    // "hello" + "@" + "minmurasu.com"
-    u: [104, 101, 108, 108, 111],
-    d: [109, 105, 110, 109, 117, 114, 97, 115, 117, 46, 99, 111, 109],
+    // "minmurasu.digital" + "@" + "gmail.com"
+    u: [109, 105, 110, 109, 117, 114, 97, 115, 117, 46, 100, 105, 103, 105, 116, 97, 108],
+    d: [103, 109, 97, 105, 108, 46, 99, 111, 109],
   },
   secondary: {
     // "minmurasu.digital" + "@" + "gmail.com"

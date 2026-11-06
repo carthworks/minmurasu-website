@@ -193,7 +193,7 @@ export default function ContactPage() {
                       Web &amp; Headquarters
                     </span>
                     <span className="font-bold text-[#0D2040] block">
-                      www.minmurasu.com
+                      www.minmurasu.digital
                     </span>
                     <span className="text-xs text-slate-500">
                       {siteConfig.locations.coverageLine}

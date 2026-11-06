@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validation";
+import { siteConfig } from "@/lib/site-config";
 
 // Sliding window IP rate limiter: max 3 enquiries per 15 minutes per IP
 const rateLimitMap = new Map<string, { count: number; expiresAt: number }>();
@@ -112,8 +113,7 @@ export async function POST(request: Request) {
     const notificationPayload = {
       timestamp: new Date().toISOString(),
       to: [
-        process.env.CONTACT_TO_EMAIL || "hello@minmurasu.com",
-        "minmurasu.digital@gmail.com",
+        process.env.CONTACT_TO_EMAIL || siteConfig.emails.primary,
       ],
       lead: {
         name: data.name,

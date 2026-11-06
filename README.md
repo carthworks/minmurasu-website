@@ -2,7 +2,7 @@
 
 > **The Digital Voice That Makes Your Brand Heard**  
 > Digital growth &amp; AI automation agency headquartered in Coimbatore, Tamil Nadu, India. Serving clients across Coimbatore, Chennai, Bengaluru, and PAN-India.  
-> **Website:** [https://www.minmurasu.com](https://www.minmurasu.com)  
+> **Website:** [https://www.minmurasu.digital](https://www.minmurasu.digital)  
 > **Contact:** `hello@minmurasu.com` | `minmurasu.digital@gmail.com`  
 > **Phone / WhatsApp:** +91 9486772206, +91 94445277206  
 
@@ -63,7 +63,7 @@ cp .env.example .env.local
 
 | Variable | Description |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical site domain (`https://www.minmurasu.com`) |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site domain (`https://www.minmurasu.digital`) |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 Measurement ID (`G-XXXXXXXXXX`) |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager Container ID (`GTM-XXXXXX`) |
 | `CONTACT_TO_EMAIL` | Destination inbox for web leads (`hello@minmurasu.com`) |
@@ -92,7 +92,7 @@ cp .env.example .env.local
 ## 5. Pre-Launch Checklist
 
 Before deploying to public production:
-1. [ ] Connect custom domain `minmurasu.com` on Vercel or cloud provider.
+1. [ ] Connect custom domain `minmurasu.digital` on Vercel or cloud provider.
 2. [ ] Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` once GA4 property is created.
 3. [ ] Set `EMAIL_PROVIDER_API_KEY` (e.g. Resend) for real transactional email dispatch.
 4. [ ] Verify WhatsApp Business API account for automated messaging templates.

@@ -1,6 +1,6 @@
 # Vibe Coding Master Prompt — Digital Growth & AI Automation Agency Website
 
-> Brand: MIN MURASU | Site: https://www.minmurasu.com | Email: hello@minmurasu.com | Phone/WhatsApp: +91 9486772206, +91 94445277206 Paste the Master Build Prompt into Cursor, Antigravity, Lovable, Bolt,claude or another AI coding tool. Build in phases and test each phase. add email this too minmurasu.digital@gmail.com
+> Brand: MIN MURASU | Site: https://www.minmurasu.digital | Email: hello@minmurasu.com | Phone/WhatsApp: +91 9486772206, +91 94445277206 Paste the Master Build Prompt into Cursor, Antigravity, Lovable, Bolt,claude or another AI coding tool. Build in phases and test each phase. add email this too minmurasu.digital@gmail.com
 
 ---
 
@@ -366,7 +366,7 @@ Suggested fields:
 Create `.env.example`:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://www.minmurasu.com
+NEXT_PUBLIC_SITE_URL=https://www.minmurasu.digital
 NEXT_PUBLIC_GA_MEASUREMENT_ID=
 NEXT_PUBLIC_GTM_ID=
 CONTACT_TO_EMAIL=hello@minmurasu.com

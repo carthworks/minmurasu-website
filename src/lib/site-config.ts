@@ -56,7 +56,7 @@ export const siteConfig = {
   /** ~150 characters — for meta description and social previews. */
   shortDescription:
     "Digital marketing, websites and AI automation in one growth system — so more of your online attention turns into real enquiries and sales.",
-  url: "https://www.minmurasu.com", // Canonical. Vercel preview domain must 301-redirect here.
+  url: "https://www.minmurasu.digital", // Canonical. Vercel preview domain must 301-redirect here.
 
   brand: {
     colors: {
@@ -78,9 +78,10 @@ export const siteConfig = {
   },
 
   emails: {
-    primary: "hello@minmurasu.com",
+    // primary: "hello@minmurasu.com",
+    primary: "minmurasu.digital@gmail.com",
     // Internal/backup only — do not show a Gmail address publicly; it lowers trust.
-    secondary: "minmurasu.digital@gmail.com",
+    // secondary: "minmurasu.digital@gmail.com",
   },
   phones: {
     primary: "+91 9486772206", // kept for existing components
