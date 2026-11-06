@@ -13,57 +13,6 @@ export default function AnimatedDrumLogo({
       aria-label="Min Murasu drum logo, animated"
       className={`${className} overflow-visible`}
     >
-      <style>{`
-        .mm-stick{transform-origin:322px 6px;animation:mm-stick var(--dur,2.4s) infinite}
-        @keyframes mm-stick{
-          0%{transform:translate(16px,-26px) rotate(8deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
-          34%{transform:translate(24px,-38px) rotate(12deg);animation-timing-function:cubic-bezier(.7,0,.95,.6)}
-          46%{transform:translate(0,0) rotate(0deg);animation-timing-function:cubic-bezier(.2,.7,.4,1)}
-          55%{transform:translate(8px,-13px) rotate(4deg);animation-timing-function:cubic-bezier(.5,0,.6,1)}
-          62%{transform:translate(1px,-2px) rotate(.5deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
-          100%{transform:translate(16px,-26px) rotate(8deg)}
-        }
-        .mm-drum{transform-box:fill-box;transform-origin:50% 85%;animation:mm-drum var(--dur,2.4s) infinite}
-        @keyframes mm-drum{
-          0%,45%{transform:scale(1,1)}
-          49%{transform:scale(1.035,.955)}
-          55%{transform:scale(.985,1.02)}
-          62%{transform:scale(1.008,.995)}
-          70%,100%{transform:scale(1,1)}
-        }
-        .mm-ripple{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:mm-ripple var(--dur,2.4s) infinite}
-        .mm-ripple.r2{animation-delay:calc(var(--dur,2.4s) * .06)}
-        @keyframes mm-ripple{
-          0%,45%{transform:scale(.15);opacity:0}
-          47%{opacity:.85}
-          75%{transform:scale(1);opacity:0}
-          100%{transform:scale(1);opacity:0}
-        }
-        .mm-flash{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:mm-flash var(--dur,2.4s) infinite}
-        @keyframes mm-flash{0%,45%{opacity:0;transform:scale(.4)}48%{opacity:.9;transform:scale(1)}66%,100%{opacity:0;transform:scale(1.4)}}
-        .mm-wave{transform-box:fill-box;transform-origin:0% 50%;animation:mm-wave var(--dur,2.4s) infinite}
-        .mm-wave.w2{animation-delay:calc(var(--dur,2.4s) * .025)}
-        .mm-wave.w3{animation-delay:calc(var(--dur,2.4s) * .05)}
-        @keyframes mm-wave{
-          0%,45%{opacity:.6;transform:translate(0,0) scaleX(.75)}
-          50%{opacity:1;transform:translate(calc(var(--dx)*.4),calc(var(--dy)*.4)) scaleX(1.1)}
-          68%{opacity:.9;transform:translate(var(--dx),var(--dy)) scaleX(1)}
-          85%,100%{opacity:.6;transform:translate(0,0) scaleX(.75)}
-        }
-        .mm-px rect{animation:mm-px var(--dur,2.4s) infinite;transform-box:fill-box;transform-origin:50% 50%}
-        @keyframes mm-px{
-          0%,47%{opacity:1;transform:translateX(0) scale(1)}
-          60%{opacity:.25;transform:translateX(-12px) scale(.75)}
-          80%,100%{opacity:1;transform:translateX(0) scale(1)}
-        }
-        .mm-swoosh{transform-box:fill-box;transform-origin:60% 50%;animation:mm-swoosh var(--dur,2.4s) infinite}
-        @keyframes mm-swoosh{0%,46%{transform:rotate(0) scale(1)}54%{transform:rotate(-2.5deg) scale(1.025)}72%,100%{transform:rotate(0) scale(1)}}
-        .mm-shine{stroke-dasharray:60 520;animation:mm-shine var(--dur,2.4s) infinite linear}
-        @keyframes mm-shine{0%,46%{stroke-dashoffset:60;opacity:0}50%{opacity:.9}80%{stroke-dashoffset:-430;opacity:0}100%{stroke-dashoffset:-430;opacity:0}}
-        @keyframes mm-bar{0%,44%{transform:scaleX(.55)}50%{transform:scaleX(1.08)}70%,100%{transform:scaleX(.55)}}
-        .mm-bar-anim{transform-origin:center;animation:mm-bar var(--dur,2.4s) cubic-bezier(.45,0,.2,1) infinite}
-        @media (prefers-reduced-motion:reduce){.mm-stick,.mm-drum,.mm-ripple,.mm-flash,.mm-wave,.mm-px rect,.mm-swoosh,.mm-shine,.mm-bar-anim{animation:none}}
-      `}</style>
       <defs>
         <linearGradient id="mmBody" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#2A3A5C" />

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   if (!industry) return { title: "Industry Not Found" };
 
   return {
-    title: `${industry.title} Digital Growth | ${siteConfig.name}`,
+    title: `${industry.title} Digital Growth`,
     description: industry.summary,
     alternates: {
       canonical: `${siteConfig.url}/industries/${slug}`,
@@ -82,7 +82,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
                 Schedule a Sector Strategy Call
               </Button>
               <ProtectedWhatsApp
-                message={`Hi MIN MURASU, I'm interested in digital growth strategies for ${ind.title}.`}
+                message={siteConfig.whatsapp.messages.industry(ind.title)}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />

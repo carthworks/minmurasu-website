@@ -72,8 +72,11 @@ export default function RootLayout({
   const { gaId, gtmId } = siteConfig.analytics;
 
   return (
-    <html lang="en" className="h-full scroll-smooth">
-      <body className="min-h-full flex flex-col bg-white text-[#475569]">
+    <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
+      <body
+        className="min-h-full flex flex-col bg-white text-[#475569]"
+        suppressHydrationWarning
+      >
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#0D2040] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg"

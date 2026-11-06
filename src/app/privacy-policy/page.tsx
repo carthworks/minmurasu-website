@@ -6,7 +6,7 @@ import { ProtectedEmail, ProtectedPhone } from "@/components/ui/ProtectedContact
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | MIN MURASU",
+  title: "Privacy Policy",
   description: "Our policies regarding data privacy, enquiry handling, and compliance.",
 };
 

@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (!service) return { title: "Service Not Found" };
 
   return {
-    title: `${service.title} | ${siteConfig.name}`,
+    title: service.title,
     description: service.heroDescription,
     alternates: {
       canonical: `${siteConfig.url}/services/${slug}`,
@@ -91,7 +91,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 Book a Consultation for This Service
               </Button>
               <ProtectedWhatsApp
-                message={`Hi MIN MURASU, I'm interested in learning more about your ${service.title} service.`}
+                message={siteConfig.whatsapp.messages.service(service.title)}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />

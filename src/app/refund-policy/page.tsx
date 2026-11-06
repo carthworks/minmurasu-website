@@ -7,7 +7,7 @@ import { ProtectedEmail, ProtectedPhone } from "@/components/ui/ProtectedContact
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Cancellation & Refund Policy | MIN MURASU",
+  title: "Cancellation & Refund Policy",
   description:
     "Transparent service cancellation, retainer termination, and refund policy for MIN MURASU engagements.",
 };
