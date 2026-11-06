@@ -7,6 +7,7 @@ import {
   ArrowRight,
   MessageSquare,
   CheckCircle2,
+  Play,
 } from "lucide-react";
 
 export default function Hero() {
@@ -61,6 +62,16 @@ export default function Hero() {
                 className="w-full sm:w-auto bg-white border-slate-300 hover:border-slate-400 font-semibold text-[#0D2040] px-6 py-3.5 shadow-xs"
               >
                 Explore Our Services
+              </Button>
+
+              <Button
+                href="#brand-video"
+                variant="navy"
+                size="lg"
+                className="w-full sm:w-auto font-semibold px-5 py-3.5 shadow-xs"
+              >
+                <Play className="w-4 h-4 mr-2 fill-current text-[#F58220]" />
+                <span>Watch Intro</span>
               </Button>
 
               <ProtectedWhatsApp

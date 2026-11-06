@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import AnimatedDrumLogo from "@/components/ui/AnimatedDrumLogo";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
@@ -19,14 +19,7 @@ export function LogoMark({ className, dark = false }: { className?: string; dark
         className
       )}
     >
-      <Image
-        src="/images/logo.png"
-        alt="MIN MURASU Logo"
-        width={56}
-        height={56}
-        className="w-full h-full object-contain"
-        priority
-      />
+      <AnimatedDrumLogo className="w-full h-full" />
     </div>
   );
 }

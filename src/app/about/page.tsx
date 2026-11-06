@@ -1,9 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
+import AnimatedDrumLogo from "@/components/ui/AnimatedDrumLogo";
+import BrandVideoSection from "@/components/sections/BrandVideoSection";
 import {
   MapPin,
   CheckCircle2,
@@ -93,24 +94,20 @@ export default function AboutPage() {
                 aria-hidden="true"
               />
 
-              <div className="relative mx-auto w-56 h-36 sm:w-64 sm:h-40 mb-4 flex items-center justify-center">
-                <Image
-                  src="/images/logo.png"
-                  alt="MIN MURASU Official Drum Emblem Logo"
-                  width={380}
-                  height={238}
-                  className="w-full h-full object-contain drop-shadow-xs"
-                  priority
-                />
+              <div className="relative mx-auto w-60 sm:w-72 mb-2 flex items-center justify-center">
+                <AnimatedDrumLogo className="w-full h-auto drop-shadow-xs" />
               </div>
 
               <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0D2040] uppercase">
                 MIN MURASU
               </div>
-              <p className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
+              <div className="text-sm font-bold text-[#0082CA] tracking-wider mt-1">
+                மின் முரசு
+              </div>
+              <p className="text-xs sm:text-sm font-medium text-slate-600 mt-1.5">
                 Turn Digital Attention Into Business Growth
               </p>
-              <div className="w-36 h-1 bg-[#F58220] mx-auto mt-3.5 mb-6 rounded-full" />
+              <div className="w-36 h-1 bg-[#F58220] mx-auto mt-3.5 mb-6 rounded-full mm-bar-anim" />
 
               <div className="pt-5 border-t border-slate-100 text-xs text-slate-600 flex flex-col items-center gap-1">
                 <span className="font-extrabold text-sm text-[#0D2040]">
@@ -125,6 +122,11 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Official 4K Brand Intro Video Showcase */}
+        <div className="mb-16 sm:mb-20">
+          <BrandVideoSection compact />
         </div>
 
         {/* Narrative Grid */}

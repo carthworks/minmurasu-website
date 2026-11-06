@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import CapabilityStrip from "@/components/sections/CapabilityStrip";
+import BrandVideoSection from "@/components/sections/BrandVideoSection";
 import ProblemSection from "@/components/sections/ProblemSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import GrowthSystem from "@/components/sections/GrowthSystem";
@@ -17,6 +18,7 @@ export default function HomePage() {
     <>
       <Hero />
       <CapabilityStrip />
+      <BrandVideoSection />
       <ProblemSection />
       <ServicesOverview />
       <GrowthSystem />
