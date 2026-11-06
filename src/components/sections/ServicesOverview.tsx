@@ -61,8 +61,11 @@ export default function ServicesOverview() {
                   <h3 className="text-lg font-extrabold text-[#0D2040] mb-2.5 group-hover:text-[#0082CA] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-[#475569] leading-relaxed mb-6">
+                  <p className="text-sm text-[#475569] leading-relaxed mb-4">
                     {service.shortDescription}
+                  </p>
+                  <p className="text-xs font-semibold text-[#0D2040] bg-[#F0F8FF] border border-[#BAE6FD] rounded-xl px-3 py-2 mb-5">
+                    {service.outcome}
                   </p>
                 </div>
 

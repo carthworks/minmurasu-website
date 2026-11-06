@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import AnimatedDrumLogo from "@/components/ui/AnimatedDrumLogo";
 import BrandVideoSection from "@/components/sections/BrandVideoSection";
+import { siteConfig } from "@/lib/site-config";
 import {
   MapPin,
   CheckCircle2,
@@ -54,27 +55,27 @@ export default function AboutPage() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F8FF] border border-[#BAE6FD] text-xs font-extrabold uppercase tracking-wider text-[#0D2040] mb-5">
               <span className="w-2 h-2 rounded-full bg-[#F58220]" />
-              <span>About MIN MURASU</span>
+              <span>About {siteConfig.name}</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-4 leading-tight">
               The Digital Voice That Makes Your Brand Heard.
             </h1>
             <div className="w-24 h-1.5 bg-[#F58220] rounded-full mb-6" />
             <p className="text-lg text-[#0082CA] font-extrabold mb-4 tracking-wide">
-              DIGITAL GROWTH. REAL BUSINESS OUTCOMES.
+              {siteConfig.positioning}
             </p>
             <p className="text-base text-[#475569] leading-relaxed mb-6">
-              Headquartered in Coimbatore, Tamil Nadu, and founded by <strong>Karthikeyan T</strong>,
-              MIN MURASU takes its name from the historic Tamil announcement drum (&ldquo;Murasu&rdquo; / முரசு)
+              Headquartered in {siteConfig.locations.headquarters}, and founded by <strong>{siteConfig.founderDetails.name}</strong>,
+              {" "}{siteConfig.name} ({siteConfig.tamilName} &mdash; <em>&ldquo;{siteConfig.nameMeaning}&rdquo;</em>) takes its name from the historic Tamil announcement drum (&ldquo;Murasu&rdquo; / முரசு)
               fused with modern digital intelligence (&ldquo;Min&rdquo; / மின்). We cut through market noise with
               disciplined digital marketing, modern Next.js web systems, and practical AI automation.
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Button href="/contact" variant="orange" size="md">
-                Consult With Our Founder
+              <Button href={siteConfig.cta.primary.href} variant="orange" size="md">
+                {siteConfig.cta.primary.label}
               </Button>
               <Button href="/services" variant="outline" size="md">
-                Explore Our Capabilities
+                {siteConfig.cta.secondary.label}
               </Button>
             </div>
           </div>
@@ -99,25 +100,25 @@ export default function AboutPage() {
               </div>
 
               <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0D2040] uppercase">
-                MIN MURASU
+                {siteConfig.name}
               </div>
               <div className="text-sm font-bold text-[#0082CA] tracking-wider mt-1">
-                மின் முரசு
+                {siteConfig.tamilName}
               </div>
               <p className="text-xs sm:text-sm font-medium text-slate-600 mt-1.5">
-                Turn Digital Attention Into Business Growth
+                {siteConfig.tagline}
               </p>
               <div className="w-36 h-1 bg-[#F58220] mx-auto mt-3.5 mb-6 rounded-full mm-bar-anim" />
 
               <div className="pt-5 border-t border-slate-100 text-xs text-slate-600 flex flex-col items-center gap-1">
                 <span className="font-extrabold text-sm text-[#0D2040]">
-                  Karthikeyan T
+                  {siteConfig.founderDetails.name}
                 </span>
                 <span className="text-slate-500 font-medium">
-                  Founder | Digital Growth &amp; AI Automation
+                  {siteConfig.founderDetails.role}
                 </span>
                 <span className="text-[11px] text-[#0082CA] font-semibold mt-0.5">
-                  Coimbatore, Tamil Nadu &bull; www.minmurasu.com
+                  {siteConfig.locations.coverageLine}
                 </span>
               </div>
             </div>

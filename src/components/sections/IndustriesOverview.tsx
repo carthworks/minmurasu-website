@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { siteConfig, getPlaybookLabel } from "@/lib/site-config";
 import {
   ArrowRight,
   Building2,
@@ -11,11 +12,19 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const industryData = [
-  {
-    slug: "healthcare-clinics",
-    title: "Healthcare Providers & Clinics",
-    icon: Stethoscope,
+const iconMap = {
+  Stethoscope,
+  Building2,
+  Factory,
+  GraduationCap,
+  Store,
+};
+
+const industryDetails: Record<
+  string,
+  { painPoint: string; solutions: string[] }
+> = {
+  "healthcare-clinics": {
     painPoint: "High no-show rates and unorganised enquiry management across channels.",
     solutions: [
       "Local SEO for medical specialties in Coimbatore & Chennai",
@@ -23,10 +32,7 @@ const industryData = [
       "Clean, reassuring web experience with clear doctor credentials",
     ],
   },
-  {
-    slug: "real-estate",
-    title: "Real Estate & Property Developers",
-    icon: Building2,
+  "real-estate": {
     painPoint: "Junk leads from generic portals and slow initial outreach.",
     solutions: [
       "Dedicated, fast landing pages per residential/commercial project",
@@ -34,10 +40,7 @@ const industryData = [
       "Instant WhatsApp brochure dispatch and lead qualification",
     ],
   },
-  {
-    slug: "manufacturing-industrial",
-    title: "Manufacturing & Industrial SMEs",
-    icon: Factory,
+  "manufacturing-industrial": {
     painPoint: "Outdated product catalogues and lack of international or national B2B RFQ volume.",
     solutions: [
       "Modern specification catalogues with technical search visibility",
@@ -45,10 +48,7 @@ const industryData = [
       "Targeted search visibility for industrial component keywords",
     ],
   },
-  {
-    slug: "education-training",
-    title: "Education & Training Businesses",
-    icon: GraduationCap,
+  "education-training": {
     painPoint: "High cost-per-lead during intake seasons and dropped enquiry follow-ups.",
     solutions: [
       "Cohort & admission enrollment landing pages with clear curricula",
@@ -56,10 +56,7 @@ const industryData = [
       "Automated email & WhatsApp nurture sequence for prospective students",
     ],
   },
-  {
-    slug: "retail-services",
-    title: "Retail & Multi-Location Services",
-    icon: Store,
+  "retail-services": {
     painPoint: "Competitors outranking on Google Maps and unmanaged customer reviews.",
     solutions: [
       "Google Business Profile optimisation and review generation campaigns",
@@ -67,7 +64,7 @@ const industryData = [
       "Automated booking systems and direct WhatsApp customer enquiry lines",
     ],
   },
-];
+};
 
 export default function IndustriesOverview() {
   return (
@@ -80,8 +77,9 @@ export default function IndustriesOverview() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industryData.map((ind, idx) => {
-            const Icon = ind.icon;
+          {siteConfig.industries.map((ind, idx) => {
+            const Icon = iconMap[ind.icon as keyof typeof iconMap] || Store;
+            const detail = industryDetails[ind.slug];
             return (
               <div
                 key={ind.slug}
@@ -99,23 +97,27 @@ export default function IndustriesOverview() {
                   <h3 className="text-lg font-extrabold text-[#0D2040] mb-3">
                     {ind.title}
                   </h3>
-                  <p className="text-xs text-orange-950 bg-orange-50/90 border border-orange-200/70 p-3 rounded-xl mb-5 leading-relaxed">
-                    <strong className="text-[#F58220] uppercase tracking-wider text-[10px] block mb-0.5">
-                      Operational Bottleneck:
-                    </strong>
-                    {ind.painPoint}
-                  </p>
-                  <div className="space-y-2.5 mb-6">
-                    <div className="text-[11px] font-extrabold text-[#0D2040] uppercase tracking-wider">
-                      MIN MURASU Solution:
-                    </div>
-                    {ind.solutions.map((sol) => (
-                      <div key={sol} className="flex items-start gap-2 text-xs text-[#475569]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
-                        <span>{sol}</span>
+                  {detail && (
+                    <>
+                      <p className="text-xs text-orange-950 bg-orange-50/90 border border-orange-200/70 p-3 rounded-xl mb-5 leading-relaxed">
+                        <strong className="text-[#F58220] uppercase tracking-wider text-[10px] block mb-0.5">
+                          Operational Bottleneck:
+                        </strong>
+                        {detail.painPoint}
+                      </p>
+                      <div className="space-y-2.5 mb-6">
+                        <div className="text-[11px] font-extrabold text-[#0D2040] uppercase tracking-wider">
+                          MIN MURASU Solution:
+                        </div>
+                        {detail.solutions.map((sol) => (
+                          <div key={sol} className="flex items-start gap-2 text-xs text-[#475569]">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
+                            <span>{sol}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="pt-4 border-t border-slate-100">
@@ -123,7 +125,7 @@ export default function IndustriesOverview() {
                     href={`/industries/${ind.slug}`}
                     className="text-xs font-bold text-[#0082CA] group-hover:text-[#F58220] inline-flex items-center gap-1.5 transition-colors"
                   >
-                    <span>View {ind.title.split(" ")[0]} Playbook</span>
+                    <span>{getPlaybookLabel(ind)}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

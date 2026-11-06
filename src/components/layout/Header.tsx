@@ -41,7 +41,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-slate-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
-              Serving Coimbatore, Chennai, Bengaluru & Across India
+              {siteConfig.locations.coverageLine}
             </span>
           </div>
           <div className="flex items-center gap-6">
@@ -53,10 +53,11 @@ export default function Header() {
               />
             </span>
             <ProtectedWhatsApp
+              message={siteConfig.whatsapp.messages.consultation}
               className="flex items-center gap-1 hover:text-emerald-400 transition-colors"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>WhatsApp Us</span>
+              <span>{siteConfig.cta.whatsapp.label}</span>
             </ProtectedWhatsApp>
             <ProtectedEmail
               variant="primary"
@@ -93,12 +94,12 @@ export default function Header() {
           {/* Header Action Button */}
           <div className="hidden sm:flex items-center gap-3">
             <Button
-              href="/contact"
+              href={siteConfig.cta.primary.href}
               variant="orange"
               size="sm"
               className="shadow-xs font-bold"
             >
-              Book a Free Consultation
+              {siteConfig.cta.primary.label}
             </Button>
           </div>
 
@@ -135,18 +136,19 @@ export default function Header() {
             ))}
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
               <Button
-                href="/contact"
+                href={siteConfig.cta.primary.href}
                 variant="teal"
                 size="md"
                 className="w-full justify-center"
               >
-                Book a Free Consultation
+                {siteConfig.cta.primary.label}
               </Button>
               <ProtectedWhatsApp
+                message={siteConfig.whatsapp.messages.consultation}
                 className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors w-full"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Chat on WhatsApp</span>
+                <span>{siteConfig.cta.whatsapp.label}</span>
               </ProtectedWhatsApp>
               <div className="text-xs text-center text-slate-500 pt-1 flex items-center justify-center gap-2">
                 <ProtectedPhone variant="primary" />

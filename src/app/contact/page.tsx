@@ -13,6 +13,7 @@ import {
   ProtectedWhatsApp,
 } from "@/components/ui/ProtectedContact";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
+import { siteConfig } from "@/lib/site-config";
 import { trackLeadSubmission } from "@/lib/analytics";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
@@ -141,10 +142,10 @@ export default function ContactPage() {
                   Executive Contact
                 </div>
                 <h2 className="text-2xl font-black text-[#0D2040] tracking-tight">
-                  Karthikeyan T
+                  {siteConfig.founderDetails.name}
                 </h2>
                 <p className="text-xs sm:text-sm font-medium text-slate-500 mt-0.5">
-                  Founder | Digital Growth &amp; AI Automation
+                  {siteConfig.founderDetails.role}
                 </p>
               </div>
 
@@ -180,12 +181,6 @@ export default function ContactPage() {
                         className="font-bold text-[#0D2040] hover:text-[#0082CA] block"
                       />
                     </div>
-                    <div>
-                      <ProtectedEmail
-                        variant="secondary"
-                        className="text-slate-500 text-xs hover:text-[#0082CA]"
-                      />
-                    </div>
                   </div>
                 </div>
 
@@ -201,7 +196,7 @@ export default function ContactPage() {
                       www.minmurasu.com
                     </span>
                     <span className="text-xs text-slate-500">
-                      Coimbatore, Tamil Nadu &bull; Serving India
+                      {siteConfig.locations.coverageLine}
                     </span>
                   </div>
                 </div>
@@ -209,7 +204,7 @@ export default function ContactPage() {
 
               {/* Instant WhatsApp banner */}
               <ProtectedWhatsApp
-                message="Hello MIN MURASU, I would like to schedule a digital growth consultation."
+                message={siteConfig.whatsapp.messages.consultation}
                 className="w-full flex items-center gap-3 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 hover:bg-emerald-100 transition-colors text-left"
               >
                 <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
@@ -217,13 +212,13 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-emerald-800 uppercase tracking-wide">
-                    Fastest Response (Within 24h SLA)
+                    {siteConfig.businessHours.responseTime}
                   </div>
                   <div className="text-sm font-bold text-emerald-950">
-                    Chat on WhatsApp Directly
+                    {siteConfig.cta.whatsapp.label}
                   </div>
                   <div className="text-[11px] text-emerald-700">
-                    Monday – Saturday: 9:30 AM – 6:30 PM IST
+                    {siteConfig.businessHours.days}: {siteConfig.businessHours.hours}
                   </div>
                 </div>
               </ProtectedWhatsApp>

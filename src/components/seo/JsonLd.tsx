@@ -1,75 +1,8 @@
 import React from "react";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, getOrganizationSchema, absoluteUrl } from "@/lib/site-config";
 
 export function OrganizationJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: siteConfig.name,
-    alternateName: "MIN MURASU Digital Growth & AI Automation Agency",
-    description: siteConfig.description,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/icon.png`,
-    image: `${siteConfig.url}/images/MIN_MURASU_business_card_preview.png`,
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      url: `${siteConfig.url}/contact`,
-      areaServed: "IN",
-      availableLanguage: ["English", "Tamil"],
-    },
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Coimbatore",
-      addressRegion: "Tamil Nadu",
-      addressCountry: "IN",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "11.0168",
-      longitude: "76.9558",
-    },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Coimbatore",
-      },
-      {
-        "@type": "City",
-        name: "Chennai",
-      },
-      {
-        "@type": "City",
-        name: "Bengaluru",
-      },
-      {
-        "@type": "Country",
-        name: "India",
-      },
-    ],
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "09:30",
-        closes: "18:30",
-      },
-    ],
-    sameAs: [
-      siteConfig.socials.linkedin,
-      siteConfig.socials.instagram,
-      siteConfig.socials.youtube,
-      siteConfig.socials.facebook,
-    ],
-  };
+  const schema = getOrganizationSchema();
 
   return (
     <script
@@ -102,7 +35,7 @@ export function ServiceJsonLd({
       "@type": "Country",
       name: "India",
     },
-    url: `${siteConfig.url}/services/${slug}`,
+    url: absoluteUrl(`/services/${slug}`),
   };
 
   return (

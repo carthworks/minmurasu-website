@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { siteConfig } from "@/lib/site-config";
 import {
   ProtectedEmail,
   ProtectedPhone,
@@ -31,30 +32,30 @@ export default function FinalCTA() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <Button
-            href="/contact"
+            href={siteConfig.cta.primary.href}
             variant="orange"
             size="lg"
             className="w-full sm:w-auto font-bold shadow-lg shadow-orange-950/40"
           >
-            <span>Book a Free Consultation</span>
+            <span>{siteConfig.cta.primary.label}</span>
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
 
           <Button
-            href="/contact?type=audit"
+            href={siteConfig.cta.audit.href}
             variant="outline"
             size="lg"
             className="w-full sm:w-auto border-slate-600 text-white hover:bg-slate-800"
           >
-            Request a Digital Presence Audit
+            {siteConfig.cta.audit.label}
           </Button>
 
           <ProtectedWhatsApp
-            message="Hi MIN MURASU, I would like to request an initial digital audit for my company."
+            message={siteConfig.whatsapp.messages.audit}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-500 transition-colors shadow-sm"
           >
             <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
+            <span>{siteConfig.cta.whatsapp.label}</span>
           </ProtectedWhatsApp>
         </div>
 
@@ -69,7 +70,7 @@ export default function FinalCTA() {
             <ProtectedPhone variant="primary" className="hover:text-white" />
           </span>
           <span className="hidden sm:inline text-slate-600">&bull;</span>
-          <span>Coimbatore HQ &bull; Serving India</span>
+          <span>{siteConfig.locations.coverageLine}</span>
         </div>
       </Container>
     </section>

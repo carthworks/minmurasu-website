@@ -8,7 +8,7 @@ import CookieConsent from "@/components/layout/CookieConsent";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export const viewport: Viewport = {
-  themeColor: "#0D2040",
+  themeColor: siteConfig.brand.colors.navy,
   width: "device-width",
   initialScale: 1,
 };
@@ -16,22 +16,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.seo.defaultTitle,
+    template: siteConfig.seo.titleTemplate,
   },
-  description: siteConfig.description,
+  description: siteConfig.shortDescription,
   alternates: {
     canonical: "/",
   },
-  keywords: [
-    "digital marketing Coimbatore",
-    "AI automation agency India",
-    "B2B growth agency",
-    "SEO services Coimbatore",
-    "Generative Engine Optimisation",
-    "web development Coimbatore",
-    "lead generation Tamil Nadu",
-  ],
+  keywords: siteConfig.seo.keywords,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   icons: {
@@ -44,25 +36,27 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_IN",
+    locale: siteConfig.seo.locale,
     url: siteConfig.url,
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.shortDescription,
     siteName: siteConfig.name,
     images: [
       {
-        url: "/images/MIN_MURASU_business_card_preview.png",
+        url: siteConfig.brand.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+        alt: siteConfig.seo.defaultTitle,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-    images: ["/images/MIN_MURASU_business_card_preview.png"],
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.shortDescription,
+    images: [siteConfig.brand.ogImage],
   },
   robots: {
     index: true,
@@ -75,8 +69,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+  const { gaId, gtmId } = siteConfig.analytics;
 
   return (
     <html lang="en" className="h-full scroll-smooth">

@@ -38,15 +38,15 @@ export default function Footer() {
 
             <div className="pt-2 flex flex-col gap-2 text-xs text-slate-400">
               <div className="text-slate-300 font-medium">
-                <strong>Karthikeyan T</strong> &bull; Founder | Digital Growth &amp; AI Automation
+                <strong>{siteConfig.founderDetails.name}</strong> &bull; {siteConfig.founderDetails.role}
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#F58220] shrink-0 mt-0.5" />
                 <span>
-                  <strong>HQ:</strong> Coimbatore, Tamil Nadu, India.
+                  <strong>HQ:</strong> {siteConfig.locations.headquarters}.
                   <br />
                   <span className="text-slate-400">
-                    Serving Coimbatore, Chennai, Bengaluru &amp; PAN-India.
+                    {siteConfig.locations.coverageLine}
                   </span>
                 </span>
               </div>
@@ -178,13 +178,6 @@ export default function Footer() {
                   className="text-slate-300 hover:text-white transition-colors truncate"
                 />
               </li>
-              <li className="flex items-center gap-2 text-xs">
-                <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <ProtectedEmail
-                  variant="secondary"
-                  className="text-slate-400 hover:text-white transition-colors truncate"
-                />
-              </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#38BDF8] shrink-0" />
                 <ProtectedPhone
@@ -201,10 +194,11 @@ export default function Footer() {
               </li>
               <li className="pt-2">
                 <ProtectedWhatsApp
+                  message={siteConfig.whatsapp.messages.consultation}
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 transition-colors text-xs font-semibold"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Instant WhatsApp Enquiry</span>
+                  <span>{siteConfig.cta.whatsapp.label}</span>
                 </ProtectedWhatsApp>
               </li>
             </ul>
@@ -217,18 +211,15 @@ export default function Footer() {
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <Link href="/about" className="hover:text-white transition-colors">
-              About Us
-            </Link>
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms &amp; Conditions
-            </Link>
-            <Link href="/refund-policy" className="hover:text-white transition-colors">
-              Cancellation &amp; Refund Policy
-            </Link>
+            {siteConfig.footerLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-white transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("open-cookie-preferences"))}

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { siteConfig } from "@/lib/site-config";
 import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
 import {
   ArrowRight,
@@ -23,7 +24,7 @@ export default function Hero() {
             {/* Top Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 shadow-xs text-xs font-bold text-[#0D2040]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#F58220] animate-pulse" />
-              <span>DIGITAL GROWTH. REAL BUSINESS OUTCOMES.</span>
+              <span>{siteConfig.positioning}</span>
             </div>
 
             {/* Main Headline matching the mockup */}
@@ -37,31 +38,28 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-xl mx-auto lg:mx-0">
-              From high-intent digital marketing and conversion-engineered websites to
-              AI-powered enquiry automation, we help businesses in Coimbatore, Chennai,
-              Bengaluru, and across India attract better prospects, convert more enquiries, and
-              scale with clarity.
+              {siteConfig.description}
             </p>
 
             {/* CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
               <Button
-                href="/contact"
+                href={siteConfig.cta.primary.href}
                 variant="orange"
                 size="lg"
                 className="w-full sm:w-auto shadow-md shadow-orange-950/20 group font-bold px-6 py-3.5"
               >
-                <span>Book a Free Consultation</span>
+                <span>{siteConfig.cta.primary.label}</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
 
               <Button
-                href="#services"
+                href={siteConfig.cta.secondary.href}
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto bg-white border-slate-300 hover:border-slate-400 font-semibold text-[#0D2040] px-6 py-3.5 shadow-xs"
               >
-                Explore Our Services
+                {siteConfig.cta.secondary.label}
               </Button>
 
               <Button
@@ -75,10 +73,10 @@ export default function Hero() {
               </Button>
 
               <ProtectedWhatsApp
-                message="Hi MIN MURASU, I would like to discuss digital growth & automation for my business."
+                message={siteConfig.whatsapp.messages.consultation}
                 className="inline-flex items-center justify-center p-3.5 rounded-lg border border-emerald-300 bg-white text-emerald-600 hover:bg-emerald-50 transition-colors shadow-xs"
-                title="Chat with us on WhatsApp"
-                ariaLabel="Direct WhatsApp Enquiry"
+                title={siteConfig.cta.whatsapp.label}
+                ariaLabel={siteConfig.cta.whatsapp.label}
               >
                 <MessageSquare className="w-5 h-5 text-emerald-600" />
               </ProtectedWhatsApp>
