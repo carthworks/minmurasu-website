@@ -25,9 +25,11 @@ export const siteConfig = {
     servedMarkets: ["Coimbatore", "Chennai", "Bengaluru", "Across India"],
   },
   socials: {
-    linkedin: "https://linkedin.com/company/minmurasu",
-    instagram: "https://instagram.com/minmurasu",
-    facebook: "https://facebook.com/minmurasu",
+    handle: "@minmurasu",
+    linkedin: "https://www.linkedin.com/company/minmurasu",
+    instagram: "https://www.instagram.com/minmurasu",
+    youtube: "https://www.youtube.com/@minmurasu",
+    facebook: "https://www.facebook.com/minmurasu",
   },
   nav: [
     { label: "Home", href: "/" },

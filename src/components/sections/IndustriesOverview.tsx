@@ -1,16 +1,15 @@
-import React from "react";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import {
-  Stethoscope,
+  ArrowRight,
   Building2,
+  CheckCircle2,
   Factory,
   GraduationCap,
+  Stethoscope,
   Store,
-  ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 
 const industryData = [
   {

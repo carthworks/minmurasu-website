@@ -66,6 +66,7 @@ export function OrganizationJsonLd() {
     sameAs: [
       siteConfig.socials.linkedin,
       siteConfig.socials.instagram,
+      siteConfig.socials.youtube,
       siteConfig.socials.facebook,
     ],
   };
