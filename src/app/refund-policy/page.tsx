@@ -123,9 +123,7 @@ export default function RefundPolicyPage() {
               </p>
               <p>
                 <strong>Email:</strong>{" "}
-                <ProtectedEmail variant="primary" className="text-[#0082CA] underline" />{" "}
-                /{" "}
-                <ProtectedEmail variant="secondary" className="text-[#0082CA] underline" />
+                <ProtectedEmail variant="primary" className="text-[#0082CA] underline" />
               </p>
               <p>
                 <strong>Phone / WhatsApp:</strong> <ProtectedPhone variant="primary" />

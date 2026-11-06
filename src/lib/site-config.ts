@@ -363,6 +363,8 @@ export function getOrganizationSchema() {
     url: siteConfig.url,
     logo: absoluteUrl(siteConfig.brand.logo),
     image: absoluteUrl(siteConfig.brand.ogImage),
+    email: siteConfig.emails.primary,
+    telephone: siteConfig.phones.primaryE164,
     founder: {
       "@type": "Person",
       name: siteConfig.founderDetails.name,

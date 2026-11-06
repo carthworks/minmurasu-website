@@ -18,8 +18,8 @@ export default function BrandVideoSection({
   compact?: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
   const togglePlay = () => {
     const vid = videoRef.current;
@@ -100,11 +100,9 @@ export default function BrandVideoSection({
               ref={videoRef}
               src="/video/MinMurasu_Intro_4K.mp4"
               poster="/images/MIN_MURASU_business_card_preview.png"
-              autoPlay
-              muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               onClick={togglePlay}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
