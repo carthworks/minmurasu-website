@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validation";
+import nodemailer from "nodemailer";
 import { siteConfig } from "@/lib/site-config";
+import type { ContactFormData } from "@/lib/validation";
+// Note: route handlers run on the Node.js runtime by default, which nodemailer requires.
 
 // Sliding window IP rate limiter: max 3 enquiries per 15 minutes per IP
 const rateLimitMap = new Map<string, { count: number; expiresAt: number }>();
@@ -107,43 +110,26 @@ export async function POST(request: Request) {
         { status: 429 }
       );
     }
-    recentPayloads.set(fingerprint, Date.now());
-
-    // Server-side email notification logging / dispatch
-    const notificationPayload = {
-      timestamp: new Date().toISOString(),
-      to: [
-        process.env.CONTACT_TO_EMAIL || siteConfig.emails.primary,
-      ],
-      lead: {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        company: data.company || "Not provided",
-        website: data.website || "Not provided",
-        service: data.service,
-        budget: data.budget || "Not specified",
-        preferredContact: data.preferredContact,
-        message: data.message,
-      },
-    };
-
-    if (process.env.EMAIL_PROVIDER_API_KEY) {
-      console.log(
-        "[Lead Notification Dispatched via API]:",
-        notificationPayload.lead.email
-      );
-    } else {
-      console.log(
-        "[Lead Notification Logged]:",
-        JSON.stringify(notificationPayload, null, 2)
+    // 7. Deliver the lead by email. If delivery is not configured or fails, tell the
+    //    visitor so they can use WhatsApp/phone instead — never report false success.
+    const delivered = await sendLeadEmail(data, request);
+    if (!delivered.ok) {
+      console.error("[Contact API] Lead email not delivered:", delivered.reason);
+      return NextResponse.json(
+        {
+          error: `We couldn't send your enquiry right now. Please WhatsApp or call us on ${siteConfig.phones.primaryDisplay} — we'll respond quickly.`,
+        },
+        { status: 503 }
       );
     }
+
+    // Only remember the fingerprint after a successful send, so a failed attempt can be retried.
+    recentPayloads.set(fingerprint, Date.now());
 
     return NextResponse.json({
       success: true,
       message:
-        "Thank you! Your enquiry has been verified and received. Our team will contact you within 24 business hours.",
+        "Thank you! Your enquiry has been received. Our team will contact you within one business day.",
     });
   } catch (error) {
     console.error("[Contact API Error]:", error);
@@ -154,5 +140,72 @@ export async function POST(request: Request) {
       },
       { status: 500 }
     );
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Lead email delivery (Gmail SMTP with an App Password)               */
+/* ------------------------------------------------------------------ */
+
+const escapeHtml = (v: string) =>
+  v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+async function sendLeadEmail(
+  data: ContactFormData,
+  request: Request
+): Promise<{ ok: true } | { ok: false; reason: string }> {
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+  if (!user || !pass) {
+    return { ok: false, reason: "GMAIL_USER / GMAIL_APP_PASSWORD not set" };
+  }
+
+  const to = process.env.CONTACT_TO_EMAIL || siteConfig.emails.primary;
+  const referer = request.headers.get("referer") || "unknown page";
+
+  const rows: [string, string][] = [
+    ["Name", data.name],
+    ["Email", data.email],
+    ["Phone", data.phone],
+    ["Company", data.company || "Not provided"],
+    ["Website", data.website || "Not provided"],
+    ["Service", data.service],
+    ["Budget", data.budget || "Not specified"],
+    ["Preferred contact", data.preferredContact],
+    ["Submitted from", referer],
+  ];
+
+  const text =
+    rows.map(([k, v]) => `${k}: ${v}`).join("\n") + `\n\nMessage:\n${data.message}`;
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#0D2040">
+      <h2 style="margin:0 0 12px">New website enquiry — ${escapeHtml(data.service)}</h2>
+      <table cellpadding="6" style="border-collapse:collapse;font-size:14px">
+        ${rows
+          .map(
+            ([k, v]) =>
+              `<tr><td style="color:#64748b;white-space:nowrap">${k}</td><td><strong>${escapeHtml(v)}</strong></td></tr>`
+          )
+          .join("")}
+      </table>
+      <p style="font-size:14px;margin-top:16px"><strong>Message</strong><br>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>
+    </div>`;
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass },
+    });
+    await transporter.sendMail({
+      from: `"${siteConfig.name} Website" <${user}>`,
+      to,
+      replyTo: `"${data.name.replace(/"/g, "")}" <${data.email}>`,
+      subject: `New enquiry: ${data.service} — ${data.name}`,
+      text,
+      html,
+    });
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, reason: err instanceof Error ? err.message : String(err) };
   }
 }

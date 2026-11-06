@@ -9,8 +9,8 @@ export default function CaseStudies() {
     <section className="py-20 lg:py-28 bg-[#F0F8FF]/30 border-b border-slate-100">
       <Container>
         <SectionHeading
-          eyebrow="Portfolio & Proof"
-          title="Verified Case Studies & Solution Frameworks"
+          eyebrow="Proof, Done Honestly"
+          title="Solution Frameworks — Case Studies Coming Soon"
           description="We respect client confidentiality and refuse to invent fake testimonials, fabricated percentages, or placeholder logos."
         />
 
@@ -56,7 +56,7 @@ export default function CaseStudies() {
                 Commercial Project Lead Funnel
               </div>
               <div className="text-[11px] text-slate-500">
-                Meta Ads + Verified Buyer Verification
+                Meta Ads + Buyer Qualification
               </div>
             </div>
 

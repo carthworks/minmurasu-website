@@ -65,8 +65,8 @@ export const siteConfig = {
       blue: "#0082CA", // secondary accent (logo swoosh)
       white: "#FFFFFF",
     },
-    logo: "/icon.png",
-    ogImage: "/images/MIN_MURASU_business_card_preview.png",
+    logo: "/images/MIN_MURASU_logo_only_transparent.png",
+    ogImage: "/images/og-image.jpg",
   },
 
   /** Primary calls to action — reuse everywhere so wording stays consistent. */
@@ -78,10 +78,8 @@ export const siteConfig = {
   },
 
   emails: {
-    // primary: "hello@minmurasu.com",
+    /** Public business email — shown on the site and used for lead notifications. */
     primary: "minmurasu.digital@gmail.com",
-    // Internal/backup only — do not show a Gmail address publicly; it lowers trust.
-    // secondary: "minmurasu.digital@gmail.com",
   },
   phones: {
     primary: "+91 9486772206", // kept for existing components

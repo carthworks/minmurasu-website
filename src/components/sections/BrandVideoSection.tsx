@@ -63,7 +63,7 @@ export default function BrandVideoSection({
           <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D2040] text-white text-xs font-bold tracking-wide uppercase mb-4 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#F58220]" />
-              <span>Official Brand Intro &bull; 4K Ultra HD</span>
+              <span>Official Brand Intro &bull; 60 Seconds</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D2040] tracking-tight mb-3">
               The Digital Voice That Makes Your Brand Heard.
@@ -90,7 +90,7 @@ export default function BrandVideoSection({
               </span>
             </div>
             <span className="hidden sm:inline-block text-[11px] font-mono text-[#38BDF8] bg-white/5 px-2.5 py-0.5 rounded border border-white/10">
-              4K UHD
+              FULL HD
             </span>
           </div>
 
@@ -98,8 +98,8 @@ export default function BrandVideoSection({
           <div className="relative aspect-video w-full bg-[#071326] rounded-b-2xl overflow-hidden">
             <video
               ref={videoRef}
-              src="/video/MinMurasu_Intro_4K.mp4"
-              poster="/images/MIN_MURASU_business_card_preview.png"
+              src="/video/MinMurasu_Intro_1080p.mp4"
+              poster="/images/video-poster.jpg"
               loop
               playsInline
               preload="none"
@@ -107,7 +107,7 @@ export default function BrandVideoSection({
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
               className="w-full h-full object-cover cursor-pointer"
-              aria-label="MIN MURASU Official 4K Brand Intro Video"
+              aria-label="MIN MURASU brand intro video"
             >
               Your browser does not support the HTML5 video tag.
             </video>

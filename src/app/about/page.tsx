@@ -125,7 +125,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Official 4K Brand Intro Video Showcase */}
+        {/* Official Brand Intro Video Showcase */}
         <div className="mb-16 sm:mb-20">
           <BrandVideoSection compact />
         </div>

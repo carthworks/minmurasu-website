@@ -12,7 +12,7 @@ export interface IndustryDetail {
 export const industriesData: Record<string, IndustryDetail> = {
   "healthcare-clinics": {
     slug: "healthcare-clinics",
-    title: "Healthcare Providers & Specialty Clinics",
+    title: "Healthcare Providers & Clinics",
     headline: "Ethical Patient Acquisition & Frictionless Appointment Workflows",
     summary:
       "We help multi-specialty clinics, diagnostic centres, and medical practitioners establish trustworthy digital presence, rank locally for specialty treatments, and automate appointment enquiries.",
@@ -164,7 +164,7 @@ export const industriesData: Record<string, IndustryDetail> = {
 
   "retail-services": {
     slug: "retail-services",
-    title: "Retail & Multi-Location Services",
+    title: "Retail & Local Services",
     headline: "Local Search Domination & Automated Customer Booking",
     summary:
       "Drive predictable foot traffic and service bookings for premium retail showrooms, auto service networks, and consumer service centers across Coimbatore and Tamil Nadu.",

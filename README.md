@@ -1,10 +1,10 @@
 # MIN MURASU — Official Website
 
 > **The Digital Voice That Makes Your Brand Heard**  
-> Digital growth &amp; AI automation agency headquartered in Coimbatore, Tamil Nadu, India. Serving clients across Coimbatore, Chennai, Bengaluru, and PAN-India.  
+> Digital growth &amp; AI automation agency headquartered in Coimbatore, Tamil Nadu, India. Serving Coimbatore, Chennai, Bengaluru, across India, and remote clients worldwide.  
 > **Website:** [https://www.minmurasu.digital](https://www.minmurasu.digital)  
-> **Contact:** `hello@minmurasu.com` | `minmurasu.digital@gmail.com`  
-> **Phone / WhatsApp:** +91 9486772206, +91 94445277206  
+> **Contact:** `minmurasu.digital@gmail.com`  
+> **Phone / WhatsApp:** +91 94867 72206, +91 94452 77206  
 
 ---
 
@@ -13,10 +13,11 @@
 - **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19)
 - **Language:** TypeScript (Strict mode)
 - **Styling:** Tailwind CSS with custom brand design tokens
-  - Deep navy: `#14243A`
-  - Teal accent: `#0E7490`
-  - Light blue: `#F0F9FF`
-  - Amber highlight: `#F59E0B`
+  - Deep navy (primary / theme): `#0D2040`
+  - Orange (accent, CTAs): `#F58220`
+  - Blue (secondary accent): `#0082CA`
+  - Light blue (surfaces): `#F0F8FF`
+  - Single source of truth: `src/lib/site-config.ts` → `brand.colors`
 - **Icons:** `lucide-react`
 - **Forms & Validation:** `react-hook-form` + `zod`
 - **SEO & Structured Data:** Semantic HTML, Dynamic `sitemap.xml`, `robots.txt`, Open Graph metadata.
@@ -66,8 +67,10 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_SITE_URL` | Canonical site domain (`https://www.minmurasu.digital`) |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 Measurement ID (`G-XXXXXXXXXX`) |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager Container ID (`GTM-XXXXXX`) |
-| `CONTACT_TO_EMAIL` | Destination inbox for web leads (`hello@minmurasu.com`) |
-| `EMAIL_PROVIDER_API_KEY` | Transactional email provider key (e.g., Resend, SendGrid) |
+| `NEXT_PUBLIC_META_PIXEL_ID` / `NEXT_PUBLIC_CLARITY_ID` | Optional Meta Pixel and Microsoft Clarity IDs |
+| `GMAIL_USER` | Gmail account that sends lead notifications (`minmurasu.digital@gmail.com`) |
+| `GMAIL_APP_PASSWORD` | 16-character Google App Password for that account (never commit it) |
+| `CONTACT_TO_EMAIL` | Inbox that receives web leads (`minmurasu.digital@gmail.com`) |
 | `WHATSAPP_NUMBER` | WhatsApp Business destination number without `+` (`919486772206`) |
 
 ---
@@ -80,11 +83,11 @@ cp .env.example .env.local
 - `/industries` — Vertical-specific growth playbooks.
 - `/industries/[slug]` — 5 sector detail pages (Healthcare & Clinics, Real Estate, Manufacturing & Industrial, Education & Training, Retail & Local Services).
 - `/about` — Agency positioning, values, Coimbatore heritage, and operating principles.
-- `/work` — Verified architectural case study frameworks (zero-fabrication policy).
+- `/work` — Solution blueprints by industry (not client results — zero-fabrication policy).
 - `/insights` — Strategic B2B growth guides and technical articles.
 - `/contact` — Comprehensive enquiry routing, consultation booking, and instant WhatsApp launch.
 - `/privacy-policy` & `/terms` — Compliant legal documents.
-- `/api/contact` — Secure API route handler with in-memory IP rate limiting and honeypot spam protection.
+- `/api/contact` — Validates enquiries (honeypot, time-trap, rate limit) and emails each lead via Gmail SMTP. Returns an error with a WhatsApp fallback if delivery fails — it never reports false success.
 - `/sitemap.xml` & `/robots.txt` — Automated search engine indexing.
 
 ---
@@ -94,6 +97,6 @@ cp .env.example .env.local
 Before deploying to public production:
 1. [ ] Connect custom domain `minmurasu.digital` on Vercel or cloud provider.
 2. [ ] Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` once GA4 property is created.
-3. [ ] Set `EMAIL_PROVIDER_API_KEY` (e.g. Resend) for real transactional email dispatch.
+3. [ ] Set `GMAIL_USER` and `GMAIL_APP_PASSWORD` in Vercel → Settings → Environment Variables, then submit a test enquiry.
 4. [ ] Verify WhatsApp Business API account for automated messaging templates.
-5. [ ] Ensure DNS records (SPF, DKIM, DMARC) are validated for `hello@minmurasu.com`.
+5. [ ] Optional later: move to a domain email (e.g. hello@minmurasu.digital) with SPF, DKIM and DMARC.
