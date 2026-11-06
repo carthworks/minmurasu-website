@@ -65,7 +65,7 @@ export default function ProblemSection() {
                   <div className="w-10 h-10 rounded-lg bg-amber-50 text-[#F59E0B] border border-amber-200/60 flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-[#14243A] mb-2">
+                  <h3 className="text-base font-bold text-[#0D2040] mb-2">
                     {prob.title}
                   </h3>
                   <p className="text-sm text-[#475569] leading-relaxed">

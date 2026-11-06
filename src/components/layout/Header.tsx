@@ -31,7 +31,7 @@ export default function Header() {
       }`}
     >
       {/* Top micro bar for direct contact channels */}
-      <div className="bg-[#14243A] text-slate-300 text-xs py-1.5 px-4 hidden md:block">
+      <div className="bg-[#0D2040] text-slate-300 text-xs py-1.5 px-4 hidden md:block">
         <Container className="flex justify-between items-center">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-slate-300">
@@ -105,7 +105,7 @@ export default function Header() {
           {/* Mobile hamburger button */}
           <button
             type="button"
-            className="lg:hidden p-2 rounded-lg text-[#14243A] hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0E7490]"
+            className="lg:hidden p-2 rounded-lg text-[#0D2040] hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#0082CA]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"
@@ -127,7 +127,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-base font-medium py-2 px-3 rounded-md text-[#14243A] hover:bg-[#F0F9FF] hover:text-[#0E7490] transition-colors"
+                className="text-base font-medium py-2 px-3 rounded-md text-[#0D2040] hover:bg-[#F0F8FF] hover:text-[#0082CA] transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}

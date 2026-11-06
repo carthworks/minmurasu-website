@@ -57,21 +57,21 @@ export default function AISection() {
             return (
               <div
                 key={ws.step}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between hover:border-[#0E7490]/40 transition-colors relative"
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between hover:border-[#0082CA]/40 transition-colors relative"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold text-[#0E7490]">
+                    <span className="text-xs font-mono font-bold text-[#0082CA]">
                       Step {ws.step}
                     </span>
                     <span className="text-[10px] font-semibold text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded">
                       {ws.badge}
                     </span>
                   </div>
-                  <div className="w-10 h-10 rounded-xl bg-[#F0F9FF] text-[#0E7490] border border-[#BAE6FD] flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#F0F8FF] text-[#0082CA] border border-[#BAE6FD] flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-[#14243A] mb-2">
+                  <h3 className="text-base font-bold text-[#0D2040] mb-2">
                     {ws.title}
                   </h3>
                   <p className="text-xs text-[#475569] leading-relaxed">

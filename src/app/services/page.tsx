@@ -51,20 +51,20 @@ export default function ServicesPage() {
               <div
                 key={service.slug}
                 id={service.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0E7490]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
               >
                 <div className="lg:col-span-4 space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#F0F9FF] border border-[#BAE6FD] text-[#0E7490] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
                     <span className="text-xs font-mono font-bold text-slate-400">
                       Service 0{index + 1}
                     </span>
-                    <h2 className="text-2xl font-bold text-[#14243A] mt-1">
+                    <h2 className="text-2xl font-bold text-[#0D2040] mt-1">
                       {service.title}
                     </h2>
-                    <p className="text-xs font-medium text-[#0E7490] mt-1">
+                    <p className="text-xs font-medium text-[#0082CA] mt-1">
                       {service.subtitle}
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {service.deliverables.slice(0, 4).map((d) => (
                         <div key={d} className="flex items-start gap-2 text-xs text-[#475569]">
-                          <CheckCircle2 className="w-4 h-4 text-[#0E7490] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0 mt-0.5" />
                           <span>{d}</span>
                         </div>
                       ))}
@@ -101,7 +101,7 @@ export default function ServicesPage() {
 
                   <div className="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                     <div>
-                      <span className="font-bold text-[#14243A] block mb-1">
+                      <span className="font-bold text-[#0D2040] block mb-1">
                         Business Problem Addressed:
                       </span>
                       <p className="text-slate-600 leading-relaxed">
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                       </p>
                     </div>
                     <div>
-                      <span className="font-bold text-[#14243A] block mb-1">
+                      <span className="font-bold text-[#0D2040] block mb-1">
                         Best Suited For:
                       </span>
                       <p className="text-slate-600 leading-relaxed">
@@ -124,8 +124,8 @@ export default function ServicesPage() {
         </div>
 
         {/* Bottom consultation prompt */}
-        <div className="mt-16 text-center bg-[#F0F9FF] p-8 sm:p-10 rounded-3xl border border-[#BAE6FD]">
-          <h3 className="text-xl font-bold text-[#14243A] mb-2">
+        <div className="mt-16 text-center bg-[#F0F8FF] p-8 sm:p-10 rounded-3xl border border-[#BAE6FD]">
+          <h3 className="text-xl font-bold text-[#0D2040] mb-2">
             Not sure which capability your business needs first?
           </h3>
           <p className="text-sm text-[#475569] max-w-xl mx-auto mb-6">

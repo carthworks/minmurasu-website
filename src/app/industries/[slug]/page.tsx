@@ -51,26 +51,26 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
       <div className="bg-slate-50 border-b border-slate-200 py-3 text-xs text-slate-500">
         <Container>
           <div className="flex items-center gap-1.5">
-            <Link href="/" className="hover:text-[#0E7490]">Home</Link>
+            <Link href="/" className="hover:text-[#0082CA]">Home</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <Link href="/industries" className="hover:text-[#0E7490]">Industries</Link>
+            <Link href="/industries" className="hover:text-[#0082CA]">Industries</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#14243A] font-semibold">{ind.title}</span>
+            <span className="text-[#0D2040] font-semibold">{ind.title}</span>
           </div>
         </Container>
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#F0F9FF] to-white pt-12 pb-16 border-b border-slate-100">
+      <section className="bg-gradient-to-b from-[#F0F8FF] to-white pt-12 pb-16 border-b border-slate-100">
         <Container>
           <div className="max-w-3xl">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0E7490] bg-white border border-[#BAE6FD] px-3 py-1 rounded-full mb-3 inline-block">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0082CA] bg-white border border-[#BAE6FD] px-3 py-1 rounded-full mb-3 inline-block">
               Sector Playbook
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#14243A] tracking-tight mb-3 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-3 leading-tight">
               {ind.title}
             </h1>
-            <p className="text-lg text-[#0E7490] font-semibold mb-4">
+            <p className="text-lg text-[#0082CA] font-semibold mb-4">
               {ind.headline}
             </p>
             <p className="text-base text-[#475569] leading-relaxed mb-8">
@@ -101,7 +101,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
             <div className="lg:col-span-8 space-y-12">
               {/* Typical Pain Points */}
               <div>
-                <h2 className="text-xl font-bold text-[#14243A] mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-[#0D2040] mb-4 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-amber-600" />
                   <span>Common Commercial Roadblocks in This Sector</span>
                 </h2>
@@ -119,8 +119,8 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
 
               {/* The Sector Playbook */}
               <div>
-                <h2 className="text-xl font-bold text-[#14243A] mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-[#0E7490]" />
+                <h2 className="text-xl font-bold text-[#0D2040] mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-[#0082CA]" />
                   <span>The MIN MURASU Growth Architecture</span>
                 </h2>
                 <div className="space-y-4">
@@ -129,11 +129,11 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
                       key={gp.title}
                       className="p-6 rounded-2xl border border-slate-200 bg-slate-50 flex items-start gap-4"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#F0F9FF] border border-[#BAE6FD] text-[#0E7490] font-mono font-bold text-xs flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] font-mono font-bold text-xs flex items-center justify-center shrink-0">
                         0{idx + 1}
                       </div>
                       <div>
-                        <h3 className="text-base font-bold text-[#14243A] mb-1">
+                        <h3 className="text-base font-bold text-[#0D2040] mb-1">
                           {gp.title}
                         </h3>
                         <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
@@ -147,7 +147,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
 
               {/* Deliverables */}
               <div>
-                <h2 className="text-xl font-bold text-[#14243A] mb-4">
+                <h2 className="text-xl font-bold text-[#0D2040] mb-4">
                   What We Deliver for This Industry
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -156,7 +156,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
                       key={d}
                       className="p-4 rounded-xl border border-slate-200 bg-white flex items-start gap-3"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#0E7490] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0 mt-0.5" />
                       <span className="text-xs font-medium text-slate-700">{d}</span>
                     </div>
                   ))}
@@ -167,8 +167,8 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
             {/* Right Sidebar */}
             <div className="lg:col-span-4 space-y-6">
               {/* Metrics Box */}
-              <div className="p-6 rounded-2xl bg-[#F0F9FF] border border-[#BAE6FD]">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0E7490] mb-3">
+              <div className="p-6 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD]">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-3">
                   Key Metrics We Track:
                 </h3>
                 <ul className="space-y-2 text-xs text-slate-700">
@@ -182,7 +182,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
               </div>
 
               {/* Consultation Card */}
-              <div className="p-6 rounded-2xl bg-[#14243A] text-white">
+              <div className="p-6 rounded-2xl bg-[#0D2040] text-white">
                 <div className="flex items-center gap-2 text-xs text-[#38BDF8] font-bold uppercase tracking-wider mb-2">
                   <ShieldCheck className="w-4 h-4" />
                   <span>Free Consultation</span>

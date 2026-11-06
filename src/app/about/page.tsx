@@ -71,7 +71,7 @@ export default function AboutPage() {
         {/* Narrative Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20 pb-20 border-b border-slate-200">
           <div className="lg:col-span-7 space-y-5 text-sm text-[#475569] leading-relaxed">
-            <h2 className="text-2xl font-bold text-[#14243A]">
+            <h2 className="text-2xl font-bold text-[#0D2040]">
               Bridging the Gap Between Marketing &amp; Technical Execution
             </h2>
             <p>
@@ -85,18 +85,18 @@ export default function AboutPage() {
             </p>
             <div className="pt-2 flex flex-col sm:flex-row gap-4">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-5 h-5 text-[#0E7490] shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#0082CA] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[#14243A] block">Rooted in Coimbatore</strong>
+                  <strong className="text-[#0D2040] block">Rooted in Coimbatore</strong>
                   <span className="text-xs text-slate-500">
                     Proudly serving local industrial SMEs, regional clinics, and growing businesses across South India.
                   </span>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <Building className="w-5 h-5 text-[#0E7490] shrink-0 mt-0.5" />
+                <Building className="w-5 h-5 text-[#0082CA] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[#14243A] block">Serving Nationwide</strong>
+                  <strong className="text-[#0D2040] block">Serving Nationwide</strong>
                   <span className="text-xs text-slate-500">
                     Executing high-intent digital acquisition in Chennai, Bengaluru, and across India.
                   </span>
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-[#14243A] rounded-3xl p-8 text-white space-y-6">
+          <div className="lg:col-span-5 bg-[#0D2040] rounded-3xl p-8 text-white space-y-6">
             <div className="flex items-center gap-2 text-xs font-bold text-[#38BDF8] uppercase tracking-wider">
               <Target className="w-4 h-4" />
               <span>Our Operating Manifesto</span>
@@ -147,10 +147,10 @@ export default function AboutPage() {
                   className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-[#0E7490] flex items-center justify-center mb-4 shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-[#0082CA] flex items-center justify-center mb-4 shadow-xs">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-base font-bold text-[#14243A] mb-2">
+                    <h3 className="text-base font-bold text-[#0D2040] mb-2">
                       {v.title}
                     </h3>
                     <p className="text-xs text-[#475569] leading-relaxed">
@@ -164,8 +164,8 @@ export default function AboutPage() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#14243A] mb-3">
+        <div className="bg-[#F0F8FF] border border-[#BAE6FD] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-[#0D2040] mb-3">
             Interested in Partnering With Us?
           </h2>
           <p className="text-sm text-[#475569] mb-6 max-w-xl mx-auto">

@@ -46,17 +46,17 @@ export default function IndustriesPage() {
             return (
               <div
                 key={ind.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0E7490]/40 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/40 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
               >
                 <div className="lg:col-span-5 space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#F0F9FF] border border-[#BAE6FD] text-[#0E7490] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-[#14243A]">
+                    <h2 className="text-2xl font-bold text-[#0D2040]">
                       {ind.title}
                     </h2>
-                    <p className="text-sm font-semibold text-[#0E7490] mt-1">
+                    <p className="text-sm font-semibold text-[#0082CA] mt-1">
                       {ind.headline}
                     </p>
                   </div>
@@ -84,7 +84,7 @@ export default function IndustriesPage() {
                     <div className="space-y-3">
                       {ind.growthPlaybook.map((play) => (
                         <div key={play.title} className="bg-white p-3.5 rounded-xl border border-slate-200/80">
-                          <div className="text-xs font-bold text-[#14243A] mb-0.5">
+                          <div className="text-xs font-bold text-[#0D2040] mb-0.5">
                             {play.title}
                           </div>
                           <div className="text-xs text-[#475569]">
@@ -102,7 +102,7 @@ export default function IndustriesPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#475569]">
                       {ind.keyDeliverables.map((kd) => (
                         <div key={kd} className="flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0E7490] shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0" />
                           <span>{kd}</span>
                         </div>
                       ))}

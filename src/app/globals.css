@@ -128,9 +128,40 @@ body {
   animation: pulseMildGlow 4s ease-in-out infinite;
 }
 
+/* Skeleton Shimmer Token (vibe-ui-delight Pillar 1) */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.35) 40%,
+    rgba(255, 255, 255, 0.65) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+  content: "";
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float-mild,
-  .animate-glow-mild {
+  .animate-glow-mild,
+  .animate-shimmer::after {
     animation: none !important;
   }
 }

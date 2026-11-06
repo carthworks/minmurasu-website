@@ -10,6 +10,8 @@ import Button from "@/components/ui/Button";
 import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackLeadSubmission } from "@/lib/analytics";
+import { ToastItem, type Toast } from "@/components/ui/Toast";
+import { feedback } from "@/lib/vibe-feedback";
 import {
   MessageSquare,
   CheckCircle2,
@@ -23,6 +25,7 @@ export default function ContactPage() {
     type: "success" | "error" | null;
     message: string | null;
   }>({ type: null, message: null });
+  const [toast, setToast] = useState<Toast | null>(null);
 
   const {
     register,
@@ -52,12 +55,21 @@ export default function ContactPage() {
         throw new Error(result.error || "Submission failed. Please try again.");
       }
 
+      const successMsg =
+        result.message ||
+        "Thank you! Your enquiry has been received. Our team will contact you within 24 business hours.";
+
       setServerStatus({
         type: "success",
-        message:
-          result.message ||
-          "Thank you! Your enquiry has been received. Our team will contact you within 24 business hours.",
+        message: successMsg,
       });
+      setToast({
+        id: String(Date.now()),
+        type: "success",
+        message: "Enquiry received! Our team will reach out within 24 hours.",
+      });
+      feedback.playPop();
+      feedback.triggerHaptic([15, 30, 15]);
 
       // Track confirmed lead generation in analytics without PII
       trackLeadSubmission(data.service);
@@ -70,11 +82,22 @@ export default function ContactPage() {
         type: "error",
         message: errorMessage,
       });
+      setToast({
+        id: String(Date.now()),
+        type: "error",
+        message: errorMessage,
+      });
+      feedback.triggerHaptic(30);
     }
   };
 
   return (
-    <div className="py-16 sm:py-24 bg-slate-50/50">
+    <div className="py-16 sm:py-24 bg-slate-50/50 relative">
+      {toast && (
+        <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 max-w-md">
+          <ToastItem toast={toast} onDismiss={() => setToast(null)} />
+        </div>
+      )}
       <Container>
         <SectionHeading
           eyebrow="Initiate Conversation"

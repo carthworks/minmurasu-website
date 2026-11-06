@@ -3,6 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileActionBar from "@/components/layout/MobileActionBar";
 import CookieConsent from "@/components/layout/CookieConsent";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <MobileActionBar />
         <CookieConsent gaId={gaId} gtmId={gtmId} />
       </body>
     </html>

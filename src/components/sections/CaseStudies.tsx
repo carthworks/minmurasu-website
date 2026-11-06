@@ -6,7 +6,7 @@ import { Info, Sparkles, ArrowRight, Layers } from "lucide-react";
 
 export default function CaseStudies() {
   return (
-    <section className="py-20 lg:py-28 bg-[#F0F9FF]/30 border-b border-slate-100">
+    <section className="py-20 lg:py-28 bg-[#F0F8FF]/30 border-b border-slate-100">
       <Container>
         <SectionHeading
           eyebrow="Portfolio & Proof"
@@ -16,16 +16,16 @@ export default function CaseStudies() {
 
         {/* Honest Demonstration Box */}
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-xs max-w-4xl mx-auto text-center space-y-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#F0F9FF] border border-[#BAE6FD] text-[#0E7490] flex items-center justify-center mx-auto">
+          <div className="w-14 h-14 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center mx-auto">
             <Layers className="w-7 h-7" />
           </div>
 
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold text-slate-600">
-              <Info className="w-3.5 h-3.5 text-[#0E7490]" />
+              <Info className="w-3.5 h-3.5 text-[#0082CA]" />
               <span>Zero Fabricated Proof Policy</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#14243A]">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0D2040]">
               Selected Client Work &amp; Live Demonstrations Are Being Prepared
             </h3>
             <p className="text-sm sm:text-base text-[#475569] max-w-2xl mx-auto leading-relaxed">

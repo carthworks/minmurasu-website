@@ -60,26 +60,26 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <div className="bg-slate-50 border-b border-slate-200 py-3 text-xs text-slate-500">
         <Container>
           <div className="flex items-center gap-1.5">
-            <Link href="/" className="hover:text-[#0E7490]">Home</Link>
+            <Link href="/" className="hover:text-[#0082CA]">Home</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <Link href="/services" className="hover:text-[#0E7490]">Services</Link>
+            <Link href="/services" className="hover:text-[#0082CA]">Services</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[#14243A] font-semibold">{service.title}</span>
+            <span className="text-[#0D2040] font-semibold">{service.title}</span>
           </div>
         </Container>
       </div>
 
       {/* Hero Header */}
-      <section className="bg-gradient-to-b from-[#F0F9FF] to-white pt-12 pb-16 border-b border-slate-100">
+      <section className="bg-gradient-to-b from-[#F0F8FF] to-white pt-12 pb-16 border-b border-slate-100">
         <Container>
           <div className="max-w-3xl">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0E7490] bg-white border border-[#BAE6FD] px-3 py-1 rounded-full mb-3 inline-block">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0082CA] bg-white border border-[#BAE6FD] px-3 py-1 rounded-full mb-3 inline-block">
               MIN MURASU Service Detail
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#14243A] tracking-tight mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-4 leading-tight">
               {service.title}
             </h1>
-            <p className="text-lg text-[#0E7490] font-medium mb-4">
+            <p className="text-lg text-[#0082CA] font-medium mb-4">
               {service.subtitle}
             </p>
             <p className="text-base text-[#475569] leading-relaxed mb-8">
@@ -115,7 +115,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   <AlertCircle className="w-4 h-4 text-amber-600" />
                   <span>The Business Challenge Addressed</span>
                 </div>
-                <h2 className="text-2xl font-bold text-[#14243A] mb-4">
+                <h2 className="text-2xl font-bold text-[#0D2040] mb-4">
                   Why This Capability Matters
                 </h2>
                 <div className="p-6 rounded-2xl bg-amber-50/50 border border-amber-200/60 text-sm text-[#475569] leading-relaxed">
@@ -125,11 +125,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
               {/* Deliverables */}
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0E7490] mb-2">
-                  <FileText className="w-4 h-4 text-[#0E7490]" />
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-2">
+                  <FileText className="w-4 h-4 text-[#0082CA]" />
                   <span>Tangible Deliverables</span>
                 </div>
-                <h2 className="text-2xl font-bold text-[#14243A] mb-6">
+                <h2 className="text-2xl font-bold text-[#0D2040] mb-6">
                   What You Receive
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -138,7 +138,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       key={item}
                       className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-3"
                     >
-                      <CheckCircle2 className="w-5 h-5 text-[#0E7490] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-[#0082CA] shrink-0 mt-0.5" />
                       <span className="text-xs sm:text-sm text-slate-700 font-medium">
                         {item}
                       </span>
@@ -150,10 +150,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               {/* Execution Process */}
               <div>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                  <Clock className="w-4 h-4 text-[#0E7490]" />
+                  <Clock className="w-4 h-4 text-[#0082CA]" />
                   <span>Step-by-Step Delivery</span>
                 </div>
-                <h2 className="text-2xl font-bold text-[#14243A] mb-6">
+                <h2 className="text-2xl font-bold text-[#0D2040] mb-6">
                   Our Execution Process
                 </h2>
                 <div className="space-y-4">
@@ -162,11 +162,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       key={step.title}
                       className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs flex items-start gap-4"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#F0F9FF] border border-[#BAE6FD] text-[#0E7490] font-mono font-bold text-xs flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] font-mono font-bold text-xs flex items-center justify-center shrink-0">
                         0{idx + 1}
                       </div>
                       <div>
-                        <h3 className="text-base font-bold text-[#14243A] mb-1">
+                        <h3 className="text-base font-bold text-[#0D2040] mb-1">
                           {step.title}
                         </h3>
                         <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
@@ -184,7 +184,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   <BarChart2 className="w-4 h-4 text-emerald-600" />
                   <span>Accountability</span>
                 </div>
-                <h2 className="text-2xl font-bold text-[#14243A] mb-4">
+                <h2 className="text-2xl font-bold text-[#0D2040] mb-4">
                   How Success Is Measured
                 </h2>
                 <div className="p-6 rounded-2xl bg-emerald-50/40 border border-emerald-200/60 space-y-2.5">
@@ -200,10 +200,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               {/* FAQs */}
               <div>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                  <HelpCircle className="w-4 h-4 text-[#0E7490]" />
+                  <HelpCircle className="w-4 h-4 text-[#0082CA]" />
                   <span>Service FAQs</span>
                 </div>
-                <h2 className="text-2xl font-bold text-[#14243A] mb-6">
+                <h2 className="text-2xl font-bold text-[#0D2040] mb-6">
                   Frequently Asked Questions
                 </h2>
                 <div className="space-y-4">
@@ -212,7 +212,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       key={faq.q}
                       className="p-5 rounded-2xl border border-slate-200 bg-slate-50"
                     >
-                      <h3 className="text-sm font-bold text-[#14243A] mb-2">
+                      <h3 className="text-sm font-bold text-[#0D2040] mb-2">
                         {faq.q}
                       </h3>
                       <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
@@ -234,7 +234,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <ul className="space-y-2.5 text-xs text-slate-700">
                   {service.whoItsFor.map((w) => (
                     <li key={w} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0E7490] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
                       <span>{w}</span>
                     </li>
                   ))}
@@ -249,7 +249,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <ul className="space-y-2 text-xs text-slate-700">
                   {service.clientRequirements.map((cr) => (
                     <li key={cr} className="flex items-start gap-2">
-                      <span className="text-[#0E7490] font-bold">&bull;</span>
+                      <span className="text-[#0082CA] font-bold">&bull;</span>
                       <span>{cr}</span>
                     </li>
                   ))}
@@ -257,8 +257,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </div>
 
               {/* Commercial Clarity Box */}
-              <div className="p-6 rounded-2xl bg-[#F0F9FF] border border-[#BAE6FD]">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0E7490] mb-2">
+              <div className="p-6 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD]">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-2">
                   Pricing &amp; Scope Policy
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed mb-4">
@@ -282,7 +282,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       <Link
                         key={relSlug}
                         href={`/services/${relSlug}`}
-                        className="block p-3 rounded-lg border border-slate-100 hover:border-[#0E7490]/40 hover:bg-slate-50 transition-colors text-xs font-medium text-[#14243A]"
+                        className="block p-3 rounded-lg border border-slate-100 hover:border-[#0082CA]/40 hover:bg-slate-50 transition-colors text-xs font-medium text-[#0D2040]"
                       >
                         <div className="font-bold flex items-center justify-between">
                           <span>{rel.title}</span>

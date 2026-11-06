@@ -73,15 +73,15 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between text-left py-2 focus:outline-hidden focus-visible:text-[#0E7490] group"
+                  className="w-full flex items-center justify-between text-left py-2 focus:outline-hidden focus-visible:text-[#0082CA] group"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base font-bold text-[#14243A] group-hover:text-[#0E7490] transition-colors pr-4">
+                  <span className="text-base font-bold text-[#0D2040] group-hover:text-[#0082CA] transition-colors pr-4">
                     {faq.q}
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#0E7490]" : ""
+                      isOpen ? "rotate-180 text-[#0082CA]" : ""
                     }`}
                   />
                 </button>

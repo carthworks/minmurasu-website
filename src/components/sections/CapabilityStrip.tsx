@@ -32,9 +32,9 @@ export default function CapabilityStrip() {
               return (
                 <div
                   key={cap.label}
-                  className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#14243A] hover:text-[#0E7490] transition-colors"
+                  className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0D2040] hover:text-[#0082CA] transition-colors"
                 >
-                  <Icon className="w-4 h-4 text-[#0E7490]" />
+                  <Icon className="w-4 h-4 text-[#0082CA]" />
                   <span>{cap.label}</span>
                 </div>
               );

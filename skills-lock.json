@@ -12,6 +12,12 @@
       "sourceType": "local",
       "skillPath": ".agents/skills/web-trust-and-compliance/SKILL.md",
       "computedHash": "b649ce6e480dc1c010ecd5ec6331aceb00abd9c6fc3fd705216bab0204eee7ca"
+    },
+    "vibe-ui-delight": {
+      "source": ".agents/skills/vibe-ui-delight",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/vibe-ui-delight/SKILL.md",
+      "computedHash": "89849a512e4eef6a157f598318a7c51d9451da7261469a2287684ca3bec157a9"
     }
   }
 }

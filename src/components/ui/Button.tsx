@@ -23,7 +23,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed cursor-pointer";
 
   const sizeStyles = {
     sm: "px-3 py-1.5 text-xs sm:text-sm",
@@ -41,7 +41,7 @@ export default function Button({
     cyan:
       "bg-[#0082CA] text-white hover:bg-[#0070AE] active:bg-[#005E94] focus-visible:outline-[#0082CA]",
     teal:
-      "bg-[#0E7490] text-white hover:bg-[#0891B2] active:bg-[#155E75] focus-visible:outline-[#0E7490]",
+      "bg-[#0082CA] text-white hover:bg-[#0891B2] active:bg-[#155E75] focus-visible:outline-[#0082CA]",
     amber:
       "bg-[#F58220] text-white hover:bg-[#E06F12] active:bg-[#C95E09] font-semibold focus-visible:outline-[#F58220]",
     secondary:

@@ -64,11 +64,11 @@ export default function InsightsPage() {
           {articles.map((art) => (
             <article
               key={art.slug}
-              className="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-xs hover:border-[#0E7490]/50 hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
-                  <span className="inline-flex items-center gap-1 font-semibold text-[#0E7490] bg-[#F0F9FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full">
+                  <span className="inline-flex items-center gap-1 font-semibold text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full">
                     <Tag className="w-3 h-3" />
                     <span>{art.category}</span>
                   </span>
@@ -78,7 +78,7 @@ export default function InsightsPage() {
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-[#14243A] mb-3 leading-snug">
+                <h2 className="text-xl font-bold text-[#0D2040] mb-3 leading-snug">
                   {art.title}
                 </h2>
 
@@ -91,7 +91,7 @@ export default function InsightsPage() {
                 <span className="text-xs text-slate-400">{art.date}</span>
                 <Link
                   href="/contact"
-                  className="text-xs font-bold text-[#0E7490] hover:text-[#14243A] inline-flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#0082CA] hover:text-[#0D2040] inline-flex items-center gap-1 transition-colors"
                 >
                   <span>Discuss Strategy</span>
                   <ArrowRight className="w-3.5 h-3.5" />

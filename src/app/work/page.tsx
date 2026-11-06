@@ -76,8 +76,8 @@ export default function WorkPage() {
         />
 
         {/* Transparency Alert */}
-        <div className="mb-12 p-5 rounded-2xl bg-[#F0F9FF] border border-[#BAE6FD] text-xs sm:text-sm text-[#0E7490] flex items-start gap-3 max-w-4xl mx-auto">
-          <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5 text-[#0E7490]" />
+        <div className="mb-12 p-5 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD] text-xs sm:text-sm text-[#0082CA] flex items-start gap-3 max-w-4xl mx-auto">
+          <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5 text-[#0082CA]" />
           <div>
             <strong>Confidentiality Notice:</strong> Many of our clients operate in competitive regional markets
             under non-disclosure agreements (NDAs). Below, we outline our verified architectural frameworks
@@ -92,10 +92,10 @@ export default function WorkPage() {
             return (
               <div
                 key={arch.title}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0E7490]/40 transition-all"
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/40 transition-all"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0E7490] bg-[#F0F9FF] border border-[#BAE6FD] px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-3 py-1 rounded-full">
                     <Icon className="w-3.5 h-3.5" />
                     <span>{arch.category}</span>
                   </span>
@@ -104,26 +104,26 @@ export default function WorkPage() {
                   </span>
                 </div>
 
-                <h2 className="text-xl sm:text-2xl font-bold text-[#14243A] mb-3">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#0D2040] mb-3">
                   {arch.title}
                 </h2>
 
                 <div className="space-y-4 text-xs sm:text-sm text-[#475569]">
                   <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                    <strong className="text-[#14243A] block mb-1">
+                    <strong className="text-[#0D2040] block mb-1">
                       Business Challenge:
                     </strong>
                     <p>{arch.challenge}</p>
                   </div>
 
                   <div>
-                    <strong className="text-[#14243A] block mb-2">
+                    <strong className="text-[#0D2040] block mb-2">
                       System Architecture Deployed:
                     </strong>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                       {arch.architecture.map((item) => (
                         <li key={item} className="flex items-start gap-2">
-                          <span className="text-[#0E7490] font-bold">&bull;</span>
+                          <span className="text-[#0082CA] font-bold">&bull;</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -140,8 +140,8 @@ export default function WorkPage() {
         </div>
 
         {/* Final CTA */}
-        <div className="mt-16 text-center bg-[#14243A] text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto">
-          <div className="w-12 h-12 rounded-xl bg-[#0E7490] flex items-center justify-center mx-auto mb-4">
+        <div className="mt-16 text-center bg-[#0D2040] text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto">
+          <div className="w-12 h-12 rounded-xl bg-[#0082CA] flex items-center justify-center mx-auto mb-4">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <h3 className="text-2xl font-bold mb-3">
