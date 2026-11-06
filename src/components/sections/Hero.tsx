@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { getWhatsAppUrl } from "@/lib/site-config";
+import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
 import {
   ArrowRight,
   MessageSquare,
@@ -63,16 +63,14 @@ export default function Hero() {
                 Explore Our Services
               </Button>
 
-              <a
-                href={getWhatsAppUrl("Hi MIN MURASU, I would like to discuss digital growth & automation for my business.")}
-                target="_blank"
-                rel="noopener noreferrer"
+              <ProtectedWhatsApp
+                message="Hi MIN MURASU, I would like to discuss digital growth & automation for my business."
                 className="inline-flex items-center justify-center p-3.5 rounded-lg border border-emerald-300 bg-white text-emerald-600 hover:bg-emerald-50 transition-colors shadow-xs"
                 title="Chat with us on WhatsApp"
-                aria-label="Direct WhatsApp Enquiry"
+                ariaLabel="Direct WhatsApp Enquiry"
               >
                 <MessageSquare className="w-5 h-5 text-emerald-600" />
-              </a>
+              </ProtectedWhatsApp>
             </div>
 
             {/* Trust points matching mockup */}

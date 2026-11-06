@@ -3,7 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { Phone, MessageSquare, Layers, CalendarCheck } from "lucide-react";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import {
+  ProtectedPhone,
+  ProtectedWhatsApp,
+} from "@/components/ui/ProtectedContact";
 import { feedback } from "@/lib/vibe-feedback";
 
 export default function MobileActionBar() {
@@ -16,25 +19,20 @@ export default function MobileActionBar() {
       aria-label="Mobile quick actions"
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 px-3 py-2.5 bg-[#0D2040]/95 backdrop-blur-xl border-t border-slate-800 flex items-center justify-around shadow-2xl"
     >
-      <a
-        href={`tel:${siteConfig.phones.primaryRaw}`}
-        onClick={handleTouch}
+      <ProtectedPhone
+        variant="primary"
         className="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-300 hover:text-white active:scale-90 transition-transform"
       >
         <Phone className="w-4 h-4 text-[#38BDF8]" />
         <span>Call Now</span>
-      </a>
+      </ProtectedPhone>
 
-      <a
-        href={getWhatsAppUrl()}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={handleTouch}
+      <ProtectedWhatsApp
         className="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-300 hover:text-white active:scale-90 transition-transform"
       >
         <MessageSquare className="w-4 h-4 text-emerald-400" />
         <span>WhatsApp</span>
-      </a>
+      </ProtectedWhatsApp>
 
       <Link
         href="/services"

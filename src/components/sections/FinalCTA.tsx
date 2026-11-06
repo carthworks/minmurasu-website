@@ -1,7 +1,11 @@
 import React from "react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import {
+  ProtectedEmail,
+  ProtectedPhone,
+  ProtectedWhatsApp,
+} from "@/components/ui/ProtectedContact";
 import { ArrowRight, MessageSquare, ShieldCheck, Mail, Phone } from "lucide-react";
 
 export default function FinalCTA() {
@@ -45,30 +49,24 @@ export default function FinalCTA() {
             Request a Digital Presence Audit
           </Button>
 
-          <a
-            href={getWhatsAppUrl("Hi MIN MURASU, I would like to request an initial digital audit for my company.")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <ProtectedWhatsApp
+            message="Hi MIN MURASU, I would like to request an initial digital audit for my company."
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-500 transition-colors shadow-sm"
           >
             <MessageSquare className="w-4 h-4" />
             <span>Chat on WhatsApp</span>
-          </a>
+          </ProtectedWhatsApp>
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
           <span className="flex items-center gap-1.5">
             <Mail className="w-3.5 h-3.5 text-[#38BDF8]" />
-            <a href={`mailto:${siteConfig.emails.primary}`} className="hover:text-white">
-              {siteConfig.emails.primary}
-            </a>
+            <ProtectedEmail variant="primary" className="hover:text-white" />
           </span>
           <span className="hidden sm:inline text-slate-600">&bull;</span>
           <span className="flex items-center gap-1.5">
             <Phone className="w-3.5 h-3.5 text-[#38BDF8]" />
-            <a href={`tel:${siteConfig.phones.primaryRaw}`} className="hover:text-white">
-              {siteConfig.phones.primary}
-            </a>
+            <ProtectedPhone variant="primary" className="hover:text-white" />
           </span>
           <span className="hidden sm:inline text-slate-600">&bull;</span>
           <span>Coimbatore HQ &bull; Serving India</span>

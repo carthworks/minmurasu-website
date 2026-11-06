@@ -3,10 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
+import {
+  ProtectedEmail,
+  ProtectedPhone,
+  ProtectedWhatsApp,
+} from "@/components/ui/ProtectedContact";
 import { Menu, X, Phone, MessageSquare } from "lucide-react";
 
 export default function Header() {
@@ -40,28 +45,23 @@ export default function Header() {
             </span>
           </div>
           <div className="flex items-center gap-6">
-            <a
-              href={`tel:${siteConfig.phones.primaryRaw}`}
+            <ProtectedPhone
+              variant="primary"
               className="flex items-center gap-1 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />
               <span>{siteConfig.phones.primary}</span>
-            </a>
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
+            </ProtectedPhone>
+            <ProtectedWhatsApp
               className="flex items-center gap-1 hover:text-emerald-400 transition-colors"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
               <span>WhatsApp Us</span>
-            </a>
-            <a
-              href={`mailto:${siteConfig.emails.primary}`}
+            </ProtectedWhatsApp>
+            <ProtectedEmail
+              variant="primary"
               className="hover:text-white transition-colors"
-            >
-              {siteConfig.emails.primary}
-            </a>
+            />
           </div>
         </Container>
       </div>
@@ -142,17 +142,16 @@ export default function Header() {
               >
                 Book a Free Consultation
               </Button>
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+              <ProtectedWhatsApp
+                className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors w-full"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Chat on WhatsApp</span>
-              </a>
-              <div className="text-xs text-center text-slate-500 pt-1">
-                {siteConfig.phones.primary} &bull; {siteConfig.emails.primary}
+              </ProtectedWhatsApp>
+              <div className="text-xs text-center text-slate-500 pt-1 flex items-center justify-center gap-2">
+                <ProtectedPhone variant="primary" />
+                <span>&bull;</span>
+                <ProtectedEmail variant="primary" />
               </div>
             </div>
           </div>

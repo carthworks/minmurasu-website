@@ -4,7 +4,12 @@ import React from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
-import { siteConfig, getWhatsAppUrl } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import {
+  ProtectedEmail,
+  ProtectedPhone,
+  ProtectedWhatsApp,
+} from "@/components/ui/ProtectedContact";
 import {
   Mail,
   Phone,
@@ -100,52 +105,41 @@ export default function Footer() {
               Connect With Us
             </h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.emails.primary}`}
-                  className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                  <span className="truncate">{siteConfig.emails.primary}</span>
-                </a>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                <ProtectedEmail
+                  variant="primary"
+                  className="text-slate-300 hover:text-white transition-colors truncate"
+                />
               </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.emails.secondary}`}
-                  className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-xs"
-                >
-                  <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                  <span className="truncate">{siteConfig.emails.secondary}</span>
-                </a>
+              <li className="flex items-center gap-2 text-xs">
+                <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <ProtectedEmail
+                  variant="secondary"
+                  className="text-slate-400 hover:text-white transition-colors truncate"
+                />
               </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phones.primaryRaw}`}
-                  className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                  <span>{siteConfig.phones.primary}</span>
-                </a>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                <ProtectedPhone
+                  variant="primary"
+                  className="text-slate-300 hover:text-white transition-colors"
+                />
               </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phones.secondaryRaw}`}
-                  className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-xs"
-                >
-                  <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                  <span>{siteConfig.phones.secondary}</span>
-                </a>
+              <li className="flex items-center gap-2 text-xs">
+                <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <ProtectedPhone
+                  variant="secondary"
+                  className="text-slate-400 hover:text-white transition-colors"
+                />
               </li>
               <li className="pt-2">
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <ProtectedWhatsApp
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 transition-colors text-xs font-semibold"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Instant WhatsApp Enquiry</span>
-                </a>
+                </ProtectedWhatsApp>
               </li>
             </ul>
           </div>
