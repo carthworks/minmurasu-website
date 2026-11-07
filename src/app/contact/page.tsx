@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [serverStatus, setServerStatus] = useState<{
     type: "success" | "error" | null;
     message: string | null;
@@ -90,6 +92,7 @@ export default function ContactPage() {
       trackLeadSubmission(data.service);
 
       reset();
+      router.push("/thank-you");
     } catch (err: unknown) {
       const errorMessage =
         err instanceof Error ? err.message : "Something went wrong. Please reach out via WhatsApp or phone.";
