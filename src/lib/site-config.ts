@@ -73,7 +73,7 @@ export const siteConfig = {
   cta: {
     primary: { label: "Book a Free Consultation", href: "/contact" },
     secondary: { label: "Explore Our Services", href: "/#services" },
-    audit: { label: "Get a Free Digital Presence Audit", href: "/contact?type=audit" },
+    audit: { label: "Get a Free Digital Presence Audit", href: "/free-audit" },
     whatsapp: { label: "Chat on WhatsApp" }, // href: getWhatsAppUrl()
   },
 
@@ -176,17 +176,20 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Industries", href: "/industries" },
     { label: "Our Approach", href: "/approach" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Work", href: "/work" },
     { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   footerLinks: [
+    { label: "Pricing & Models", href: "/pricing" },
+    { label: "Free Digital Audit", href: "/free-audit" },
     { label: "About Us", href: "/about" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Cancellation & Refund Policy", href: "/refund-policy" },
-  ], // TODO: confirm hrefs match existing routes
+  ],
 
   services: [
     {

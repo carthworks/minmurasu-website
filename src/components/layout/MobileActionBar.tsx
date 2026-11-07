@@ -44,7 +44,7 @@ export default function MobileActionBar() {
       </Link>
 
       <Link
-        href="/contact"
+        href="/free-audit"
         onClick={() => {
           feedback.playPop();
           feedback.triggerHaptic(15);
@@ -52,7 +52,7 @@ export default function MobileActionBar() {
         className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#F58220] text-white text-xs font-bold active:scale-95 transition-transform shadow-md shadow-orange-950/40"
       >
         <CalendarCheck className="w-3.5 h-3.5" />
-        <span>Book Audit</span>
+        <span>Free Audit</span>
       </Link>
     </nav>
   );
