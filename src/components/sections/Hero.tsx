@@ -109,7 +109,7 @@ export default function Hero() {
             <div className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-cyan-400/25 via-blue-500/15 to-orange-400/25 blur-3xl pointer-events-none -z-10" />
             <div className="relative w-full max-w-[240px] sm:max-w-md">
               <div className="rounded-[2rem] bg-white/80 border border-white shadow-xl shadow-slate-900/10 px-5 pt-5 pb-5 sm:px-12 sm:pt-10 sm:pb-12">
-                <AnimatedDrumLogo className="w-full h-auto" />
+                <AnimatedDrumLogo className="w-full h-auto" twoSticks />
                 <p className="mt-2 text-center text-sm font-semibold text-[#334155]">
                   {siteConfig.nameMeaning}
                 </p>

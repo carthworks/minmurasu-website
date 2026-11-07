@@ -2,8 +2,11 @@ import React from "react";
 
 export default function AnimatedDrumLogo({
   className = "w-full h-auto",
+  twoSticks = false,
 }: {
   className?: string;
+  /** Hero only: a second stick from the left, alternating hits with the right stick. */
+  twoSticks?: boolean;
 }) {
   return (
     <svg
@@ -11,7 +14,7 @@ export default function AnimatedDrumLogo({
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Min Murasu drum logo, animated"
-      className={`${className} overflow-visible`}
+      className={`${className} overflow-visible${twoSticks ? " mm-two" : ""}`}
     >
       <defs>
         <linearGradient id="mmBody" x1="0" y1="0" x2="1" y2="0">
@@ -114,7 +117,23 @@ export default function AnimatedDrumLogo({
         />
       </g>
 
-      {/* stick */}
+      {/* left stick (two-stick mode) */}
+      {twoSticks && (
+        <g className="mm-stick2">
+          <line
+            x1="120"
+            y1="-5"
+            x2="212"
+            y2="58"
+            stroke="#F28A22"
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+          <circle cx="214" cy="59" r="8.5" fill="#E2761A" />
+        </g>
+      )}
+
+      {/* right stick */}
       <g className="mm-stick">
         <line
           x1="322"

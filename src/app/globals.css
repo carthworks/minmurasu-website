@@ -378,8 +378,61 @@ body {
   transform-origin: center;
   animation: mm-bar var(--dur, 2.4s) cubic-bezier(0.45, 0, 0.2, 1) infinite;
 }
+/* Two-stick mode (hero): sticks alternate left/right, so the drum is hit twice per cycle.
+   Stick A hits at 46% of --dur; stick B is delayed by half a cycle and hits at 96%.
+   Hit effects run at half the cycle length, offset by 23% so they land on both hits. */
+.mm-stick2 {
+  transform-origin: 120px -5px;
+  animation: mm-stick2 var(--dur, 2.4s) infinite;
+  animation-delay: calc(var(--dur, 2.4s) * -0.5);
+}
+@keyframes mm-stick2 {
+  0% {
+    transform: rotate(-22deg);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  34% {
+    transform: rotate(-30deg);
+    animation-timing-function: cubic-bezier(0.7, 0, 0.95, 0.6);
+  }
+  46% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1);
+  }
+  55% {
+    transform: rotate(-9deg);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.6, 1);
+  }
+  62% {
+    transform: rotate(-1.5deg);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  100% {
+    transform: rotate(-22deg);
+  }
+}
+.mm-two .mm-drum,
+.mm-two .mm-ripple,
+.mm-two .mm-flash,
+.mm-two .mm-swoosh,
+.mm-two .mm-shine,
+.mm-two .mm-wave {
+  animation-duration: calc(var(--dur, 2.4s) / 2);
+  animation-delay: calc(var(--dur, 2.4s) * 0.23);
+}
+.mm-two .mm-ripple.r2 {
+  animation-delay: calc(var(--dur, 2.4s) * 0.26);
+}
+.mm-two .mm-wave.w2 {
+  animation-delay: calc(var(--dur, 2.4s) * 0.2425);
+}
+.mm-two .mm-wave.w3 {
+  animation-delay: calc(var(--dur, 2.4s) * 0.255);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mm-stick,
+  .mm-stick2,
   .mm-drum,
   .mm-ripple,
   .mm-flash,
