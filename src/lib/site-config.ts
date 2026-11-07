@@ -71,7 +71,7 @@ export const siteConfig = {
 
   /** Primary calls to action — reuse everywhere so wording stays consistent. */
   cta: {
-    primary: { label: "Book a Free Consultation", href: "/contact" },
+    primary: { label: "Book a Free Consultation", href: "/book" },
     secondary: { label: "Explore Our Services", href: "/#services" },
     audit: { label: "Get a Free Digital Presence Audit", href: "/free-audit" },
     whatsapp: { label: "Chat on WhatsApp" }, // href: getWhatsAppUrl()
@@ -183,6 +183,7 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
   ],
   footerLinks: [
+    { label: "Book Consultation", href: "/book" },
     { label: "Pricing & Models", href: "/pricing" },
     { label: "Free Digital Audit", href: "/free-audit" },
     { label: "About Us", href: "/about" },
