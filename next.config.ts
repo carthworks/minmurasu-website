@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  /* Disable streaming metadata (<div hidden><Suspense name="Next.Metadata">) so browser extensions injecting nodes into <body> (e.g. #rcr-wrapper) do not trigger hydration mismatches */
+  htmlLimitedBots: /.*/,
   async headers() {
     return [
       {

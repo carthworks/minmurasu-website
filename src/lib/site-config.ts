@@ -109,15 +109,17 @@ export const siteConfig = {
   whatsapp: {
     number: "919486772206",
     defaultMessage:
-      "Hello MIN MURASU, I would like to enquire about your digital growth & automation services.",
+      "Hi MIN MURASU team! 👋 I visited www.minmurasu.digital and want to grow my business enquiries with your Digital Marketing, Website & AI Automation solutions.\n\n• My Business / Industry: \n• Website (if any): \n• Main Goal: \n\nWhen is a good time for a quick chat?",
     /** Context-specific openers — tells you which page or button produced the lead. */
     messages: {
-      consultation: "Hello MIN MURASU, I'd like to book a free consultation.",
-      audit: "Hello MIN MURASU, I'd like a free digital presence audit for my business.",
+      consultation:
+        "Hi MIN MURASU team! 👋 I'd like to book a free 30-minute growth consultation with Karthikeyan T.\n\n• My Business: \n• Website: \n• Preferred Day/Time: ",
+      audit:
+        "Hi MIN MURASU team! 👋 Please send me a Free 5-Point Digital Presence & SEO Audit for my business.\n\n• Business Name: \n• Website / Google Maps Link: \n• Biggest Priority: ",
       service: (serviceTitle: string) =>
-        `Hello MIN MURASU, I'm interested in ${serviceTitle}. Can we discuss?`,
+        `Hi MIN MURASU team! 👋 I'm interested in *${serviceTitle}* for my business.\n\n• My Business: \n• Website: \n\nCan we discuss how this would work for us?`,
       industry: (industryName: string) =>
-        `Hello MIN MURASU, I run a ${industryName} business and want more enquiries online.`,
+        `Hi MIN MURASU team! 👋 I run a *${industryName}* business and want to generate more qualified enquiries online. Can you share your playbook for our sector?`,
     },
   },
   businessHours: {

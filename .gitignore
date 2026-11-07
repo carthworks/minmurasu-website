@@ -47,6 +47,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+*.patch 
 
 # Skill & Checker artifacts
 shots/

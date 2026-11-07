@@ -96,7 +96,7 @@ export default function AboutPage() {
               />
 
               <div className="relative mx-auto w-60 sm:w-72 mb-2 flex items-center justify-center">
-                <AnimatedDrumLogo className="w-full h-auto drop-shadow-xs" />
+                <AnimatedDrumLogo className="w-full h-auto drop-shadow-xs" twoSticks />
               </div>
 
               <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0D2040] uppercase">
