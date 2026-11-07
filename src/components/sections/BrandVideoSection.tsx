@@ -63,16 +63,15 @@ export default function BrandVideoSection({
           <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D2040] text-white text-xs font-bold tracking-wide uppercase mb-4 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#F58220]" />
-              <span>Official Brand Intro &bull; 60 Seconds</span>
+              <span>60-second intro</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D2040] tracking-tight mb-3">
-              The Digital Voice That Makes Your Brand Heard.
+              See how it works in one minute.
             </h2>
             <div className="w-20 h-1 bg-[#F58220] mx-auto rounded-full mb-4" />
-            <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
-              Watch how MIN MURASU combines high-intent digital marketing,
-              conversion-engineered web systems, and AI workflow automation into one
-              disciplined growth engine.
+            <p className="text-base sm:text-lg text-[#334155] leading-relaxed">
+              Murasu is the drum once used to announce news to a whole kingdom. We do the
+              same for your business online — then make sure every enquiry gets an answer.
             </p>
           </div>
         )}
@@ -118,7 +117,7 @@ export default function BrandVideoSection({
                 type="button"
                 onClick={togglePlay}
                 aria-label="Play brand intro video"
-                className="absolute inset-0 flex items-center justify-center bg-slate-950/40 backdrop-blur-[2px] transition-opacity cursor-pointer"
+                className="absolute inset-0 flex items-center justify-center bg-slate-950/15 transition-opacity cursor-pointer"
               >
                 <span className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#F58220] text-white flex items-center justify-center shadow-xl shadow-orange-950/50 hover:scale-105 active:scale-95 transition-transform">
                   <Play className="w-8 h-8 fill-current ml-1" />

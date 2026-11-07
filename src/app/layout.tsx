@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileActionBar from "@/components/layout/MobileActionBar";
+import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import CookieConsent from "@/components/layout/CookieConsent";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
@@ -88,6 +89,7 @@ export default function RootLayout({
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
         <MobileActionBar />
+        <WhatsAppFloat />
         <CookieConsent gaId={gaId} gtmId={gtmId} />
       </body>
     </html>

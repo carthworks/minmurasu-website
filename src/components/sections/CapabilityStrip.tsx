@@ -1,48 +1,33 @@
 import React from "react";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
-import {
-  Compass,
-  Search,
-  TrendingUp,
-  Code2,
-  BarChart2,
-  Cpu,
-} from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
+import { Compass, Search, Bot, Share2, TrendingUp, Code2, Cpu } from "lucide-react";
 
-const capabilities = [
-  { label: "Digital Strategy", icon: Compass },
-  { label: "SEO & Content", icon: Search },
-  { label: "Performance Marketing", icon: TrendingUp },
-  { label: "Web Development", icon: Code2 },
-  { label: "Analytics & CRO", icon: BarChart2 },
-  { label: "AI Automation", icon: Cpu },
-];
+const iconMap = { Compass, Search, Bot, Share2, TrendingUp, Code2, Cpu };
 
+/** Service names come from siteConfig so they match the services section and menus exactly. */
 export default function CapabilityStrip() {
   return (
-    <section className="bg-slate-50 border-b border-slate-200/80 py-7">
+    <section aria-label="Our services" className="bg-white border-b border-slate-200/80 py-5">
       <Container>
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 shrink-0">
-            Core Agency Disciplines:
-          </div>
-          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-8 gap-y-3">
-            {capabilities.map((cap) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={cap.label}
-                  className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0D2040] hover:text-[#0082CA] transition-colors"
+        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
+          {siteConfig.services.map((s) => {
+            const Icon = iconMap[s.icon as keyof typeof iconMap] || Compass;
+            return (
+              <li key={s.slug}>
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="flex items-center gap-2 text-sm font-semibold text-[#0D2040] hover:text-[#0082CA] transition-colors"
                 >
                   <Icon className="w-4 h-4 text-[#0082CA]" />
-                  <span>{cap.label}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                  <span>{s.shortTitle}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </Container>
     </section>
   );
 }
-

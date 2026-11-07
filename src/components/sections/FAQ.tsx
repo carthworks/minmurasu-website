@@ -15,47 +15,47 @@ const faqs: FAQItem[] = [
   {
     question: "What types of businesses do you work with?",
     answer:
-      "We work primarily with established SMEs, healthcare providers and clinics, real estate firms, educational institutions, and industrial manufacturers in Coimbatore, Chennai, Bengaluru, and across India who need a predictable digital acquisition system.",
+      "Mostly small and growing businesses: clinics and healthcare providers, real estate developers, schools and training institutes, manufacturers, and local shops and services — in Coimbatore, Chennai, Bengaluru and across India.",
   },
   {
     question: "Do you work with businesses outside Coimbatore?",
     answer:
-      "Yes. While our headquarters are in Coimbatore and we frequently meet regional clients in person across Western Tamil Nadu, Chennai, and Bengaluru, we manage digital growth and automation engagements remotely across India and worldwide using modern collaboration and reporting tools.",
+      "Yes. We're based in Coimbatore and happy to meet in person around Western Tamil Nadu, but most of our work happens online — so we work with clients anywhere in India and abroad over video calls and WhatsApp.",
   },
   {
     question: "Can you build our website and manage its marketing?",
     answer:
-      "Yes. Having marketing and engineering under one roof is our core advantage. We engineer websites specifically designed for conversion, technical SEO speed, and analytics tracking, ensuring seamless alignment with your ad campaigns and automation.",
+      "Yes — that's our main advantage. The same team builds your website and runs your marketing, so the site is fast, easy to find on Google, and set up to turn visitors into enquiries from day one.",
   },
   {
     question: "Is advertising media spend included in your agency fee?",
     answer:
-      "No. Advertising media spend (Google Ads, Meta Ads) is billed directly by the ad platforms to your company card or account. This ensures you maintain 100% financial transparency and complete ownership of your ad assets. Our fee covers strategy, creative production, campaign management, and optimization.",
+      "No. You pay Google and Meta directly from your own card or account, so you always see exactly what was spent and the ad accounts stay yours. Our fee covers planning, creatives, running the campaigns and improving them.",
   },
   {
     question: "How soon can we expect to see measurable progress?",
     answer:
-      "Timeline depends on channel and market maturity. Paid search and social campaigns can generate qualified enquiries within weeks of launch. Organic SEO and Generative Engine Optimisation (GEO) typically take 3 to 6 months to establish durable authority. We provide realistic milestones during the audit phase.",
+      "Ads on Google and Meta can bring enquiries within a few weeks of launch. Ranking on Google search and appearing in AI answers (SEO and GEO) usually takes 3 to 6 months. We'll give you realistic milestones for your business after the free audit.",
   },
   {
     question: "Do you provide monthly reporting and reviews?",
     answer:
-      "Yes. Every client receives continuous dashboard access (Looker Studio / GA4) and a scheduled monthly performance review. We focus on business metrics: cost per qualified enquiry, channel efficiency, and pipeline velocity, rather than confusing vanity charts.",
+      "Yes. You get a live dashboard you can check anytime, plus a monthly review call. We report the numbers that matter — how many enquiries came in, what each one cost, and which channels brought customers — not confusing charts.",
   },
   {
     question: "Can you connect website enquiries to our existing CRM?",
     answer:
-      "Yes. We integrate form submissions and chat interactions with leading platforms such as HubSpot, Zoho CRM, LeadSquared, Salesforce, or custom webhooks and Google Sheets workflows.",
+      "Yes. Website forms and chats can flow straight into HubSpot, Zoho CRM, LeadSquared, Salesforce or a simple Google Sheet — no copy-pasting.",
   },
   {
     question: "Do you build AI chatbots and WhatsApp automation?",
     answer:
-      "Yes. We design practical conversational assistants that answer verified company facts, pre-qualify prospects, and trigger instant WhatsApp or email alerts for your human sales team. We strictly adhere to Meta's WhatsApp Business API policies.",
+      "Yes. We set up assistants that answer common questions instantly, ask the right questions to qualify a lead, and alert your team on WhatsApp or email — while your staff stay in control. Everything follows WhatsApp's official business rules.",
   },
   {
     question: "What do you need from us to get started?",
     answer:
-      "We begin with a 30-minute discovery consultation to understand your commercial objectives, current customer acquisition challenges, and technical setup. Once scope is defined, we initiate a thorough digital audit before executing campaigns.",
+      "Just your website (or social page) and a few minutes. Start with the free digital audit, or book a 30-minute call — we'll understand your goals, show you what we found, and suggest a plan. No obligation.",
   },
 ];
 
@@ -75,9 +75,8 @@ export default function FAQ() {
       />
       <Container>
         <SectionHeading
-          eyebrow="Clear Answers"
-          title="Frequently Asked Questions"
-          description="Transparent, straightforward expectations about our scope, commercial terms, and how we collaborate."
+          title="Questions people ask us"
+          description="Straight answers about how we work, costs, and timelines."
         />
 
         <div className="max-w-3xl mx-auto divide-y divide-slate-200 border-y border-slate-200">
@@ -101,7 +100,7 @@ export default function FAQ() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="pt-2 pb-3 text-sm text-[#475569] leading-relaxed animate-in fade-in-50 duration-150">
+                  <div className="pt-2 pb-3 text-base text-[#334155] leading-relaxed animate-in fade-in-50 duration-150">
                     {faq.answer}
                   </div>
                 )}

@@ -74,14 +74,14 @@ export default function Header() {
           <Logo variant="header" href="/" />
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {siteConfig.nav.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-[#0082CA] ${
+                  className={`whitespace-nowrap text-sm font-medium transition-colors hover:text-[#0082CA] ${
                     isActive ? "text-[#0082CA] font-bold" : "text-[#475569]"
                   }`}
                 >
@@ -94,12 +94,12 @@ export default function Header() {
           {/* Header Action Button */}
           <div className="hidden sm:flex items-center gap-3">
             <Button
-              href={siteConfig.cta.primary.href}
+              href={siteConfig.cta.audit.href}
               variant="orange"
               size="sm"
-              className="shadow-xs font-bold"
+              className="shadow-xs font-bold whitespace-nowrap"
             >
-              {siteConfig.cta.primary.label}
+              Free Audit
             </Button>
           </div>
 

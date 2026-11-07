@@ -175,7 +175,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#38BDF8] shrink-0" />
                 <ProtectedEmail
                   variant="primary"
-                  className="text-slate-300 hover:text-white transition-colors truncate"
+                  className="text-slate-300 hover:text-white transition-colors break-all"
                 />
               </li>
               <li className="flex items-center gap-2">

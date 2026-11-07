@@ -13,21 +13,21 @@ import {
 const workflowSteps = [
   {
     step: "01",
-    title: "Prospect Interaction",
+    title: "Customer Asks a Question",
     desc: "A visitor arrives and asks specific service questions. An approved AI assistant answers verified business facts instantly.",
     icon: MessageSquare,
     badge: "Instant Response",
   },
   {
     step: "02",
-    title: "Enquiry Ingestion",
+    title: "Enquiry Saved Automatically",
     desc: "Contact details and service requirements are validated and synced immediately to your CRM or database with zero manual copy-pasting.",
     icon: Database,
     badge: "CRM Sync",
   },
   {
     step: "03",
-    title: "Intelligent Routing",
+    title: "Sent to the Right Person",
     desc: "The enquiry is routed to the appropriate specialist (e.g. clinic manager, industrial sales lead) based on service category and location.",
     icon: UserCheck,
     badge: "Targeted Routing",

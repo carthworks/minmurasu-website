@@ -13,33 +13,33 @@ import {
 const problems = [
   {
     icon: EyeOff,
-    title: "Traffic Without Enquiries",
+    title: "Visitors, but no enquiries",
     description:
-      "Visitors land on your website or social profile, but leave without filling a form, picking up the phone, or initiating a conversation.",
+      "People find your website or Instagram, look around, and leave without calling, messaging or filling a form.",
   },
   {
     icon: Clock,
-    title: "Slow Lead Response",
+    title: "Slow replies lose customers",
     description:
-      "Enquiries sit in email inboxes or unmonitored WhatsApp accounts for hours or days before someone replies, losing the prospect to a faster competitor.",
+      "Enquiries wait hours or days in an inbox or WhatsApp. By the time you reply, they have already called a competitor.",
   },
   {
     icon: HelpCircle,
-    title: "Unclear Marketing Measurement",
+    title: "No idea what's working",
     description:
-      "Money is spent on boosts, campaigns, and posts without transparent attribution connecting spend to actual client acquisition.",
+      "You spend on boosts, ads and posts, but can't tell which of them actually brought in paying customers.",
   },
   {
     icon: GitFork,
-    title: "Disconnected Tools & Manual Repetition",
+    title: "Leads scattered everywhere",
     description:
-      "Website, ads, spreadsheet leads, and sales follow-ups exist in separate silos, creating redundant admin and lost follow-ups.",
+      "Website forms, ads, spreadsheets and WhatsApp all live in different places, so follow-ups get missed.",
   },
   {
     icon: AlertTriangle,
-    title: "Agency Misalignment",
+    title: "Reports full of likes, not sales",
     description:
-      "Traditional agencies focus on superficial impressions and vanity metrics rather than qualified pipelines and sales readiness.",
+      "Many agencies report reach and impressions. You need to know how many real enquiries and customers you got.",
   },
 ];
 
@@ -48,9 +48,8 @@ export default function ProblemSection() {
     <section className="py-20 lg:py-28 bg-white border-b border-slate-100">
       <Container>
         <SectionHeading
-          eyebrow="The Reality of Growth"
-          title="Getting Attention Is Only the First Step."
-          description="Most growing companies don't suffer from a lack of effort—they suffer from friction between marketing, website experience, and lead operations."
+          title="Getting attention is only the first step."
+          description="Most businesses aren't short of effort. They lose customers in the gaps between marketing, the website, and follow-up. Sound familiar?"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -65,10 +64,10 @@ export default function ProblemSection() {
                   <div className="w-10 h-10 rounded-lg bg-amber-50 text-[#F59E0B] border border-amber-200/60 flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-[#0D2040] mb-2">
+                  <h3 className="text-lg font-bold text-[#0D2040] mb-2">
                     {prob.title}
                   </h3>
-                  <p className="text-sm text-[#475569] leading-relaxed">
+                  <p className="text-[15px] text-[#334155] leading-relaxed">
                     {prob.description}
                   </p>
                 </div>
@@ -82,17 +81,17 @@ export default function ProblemSection() {
               <div className="w-10 h-10 rounded-lg bg-[#F58220] text-white flex items-center justify-center mb-4 shadow-xs">
                 <CheckCircle className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-white mb-2">
-                Our Systemic Approach
+              <h3 className="text-lg font-bold text-white mb-2">
+                How we fix it
               </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                We connect the pieces into one practical growth system: high-intent
-                traffic, friction-free conversion paths, automated qualification,
-                and transparent reporting.
+              <p className="text-[15px] text-slate-200 leading-relaxed">
+                We connect everything into one simple system: the right visitors,
+                a website that turns them into enquiries, instant replies, and a
+                monthly report in plain numbers.
               </p>
             </div>
-            <div className="pt-4 text-xs font-bold text-[#F58220] uppercase tracking-wide">
-              &bull; Complete Clarity &bull; Measurable ROI
+            <div className="pt-4 text-sm font-bold text-[#F58220] uppercase tracking-wide">
+              More enquiries &bull; Faster replies &bull; Clear numbers
             </div>
           </div>
         </div>

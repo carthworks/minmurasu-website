@@ -48,6 +48,19 @@ export const siteConfig = {
     name: "Karthikeyan T",
     role: "Founder | Digital Growth & AI Automation",
     linkedin: "", // TODO: founder's LinkedIn profile URL (adds trust + Person schema)
+    /** Square photo in /public/images (e.g. "/images/founder.jpg"). Empty = initials badge. */
+    photo: "", // TODO: add a real, friendly photo — people buy from people
+    /** 1–2 factual sentences about background and experience. Empty = generic line. */
+    bio: "", // TODO: e.g. years of experience, past work, certifications (Google Ads, Meta)
+  },
+  /**
+   * Optional launch offer shown in the homepage proof section.
+   * Switch on only once the partners have agreed the terms.
+   */
+  foundingClientOffer: {
+    enabled: false,
+    title: "Founding client programme",
+    text: "We're taking on a small number of launch clients at special pricing, in exchange for permission to publish the results as a case study.",
   },
   tagline: "Turn Digital Attention Into Business Growth",
   positioning: "DIGITAL GROWTH. REAL BUSINESS OUTCOMES.",

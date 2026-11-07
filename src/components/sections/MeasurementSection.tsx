@@ -27,7 +27,7 @@ const metrics = [
     icon: Eye,
   },
   {
-    title: "Conversion Velocity & Drop-Off",
+    title: "Where You Lose Customers",
     desc: "Funnel diagnostics showing where prospects exit, form drop-offs, and page load speed impacts on user intent.",
     icon: LineChart,
   },

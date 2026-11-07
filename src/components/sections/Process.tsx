@@ -1,72 +1,94 @@
 import React from "react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import { siteConfig } from "@/lib/site-config";
+import { ClipboardCheck, Map, Rocket, LineChart, ArrowRight } from "lucide-react";
 
-const stages = [
+/**
+ * One simple "how it works" sequence. Replaces the three separate step sections
+ * (growth architecture, engagement methodology, automation workflow) on the homepage.
+ */
+const steps = [
   {
-    step: "Stage 01",
-    title: "Discover",
+    icon: ClipboardCheck,
+    title: "Free audit",
+    time: "In 1–2 business days",
     description:
-      "We interview key stakeholders to understand your commercial goals, margin profile, ideal target customer, competitive landscape, and sales constraints.",
+      "We review your website, Google listing, ads and how fast enquiries get a reply — and show you where customers are slipping away.",
   },
   {
-    step: "Stage 02",
-    title: "Audit",
+    icon: Map,
+    title: "A clear plan",
+    time: "Right after the audit",
     description:
-      "We audit your website performance, technical SEO, Generative AI visibility, current paid ad spend, tracking integrity, and response speeds.",
+      "What to fix first, what it will cost, and what to expect by when. Monthly plans need only 15 days' notice to stop — no lock-in.",
   },
   {
-    step: "Stage 03",
-    title: "Plan",
+    icon: Rocket,
+    title: "Build and launch",
+    time: "Typically 2–4 weeks",
     description:
-      "We build a pragmatic, phased roadmap defining explicit deliverables, budget allocations, technical integrations, and measurable success KPIs.",
+      "We build the website or landing pages, launch the campaigns, and set up instant WhatsApp replies and lead tracking.",
   },
   {
-    step: "Stage 04",
-    title: "Execute",
+    icon: LineChart,
+    title: "Measure and improve",
+    time: "Every month",
     description:
-      "Our team deploys campaigns, codes websites, sets up CRM webhooks, programs AI workflows, and tests lead capture end-to-end.",
-  },
-  {
-    step: "Stage 05",
-    title: "Report & Optimise",
-    description:
-      "Regular transparent review sessions analyzing cost per lead, channel attribution, conversion bottlenecks, and prioritizing iterative improvements.",
+      "A monthly review in plain numbers — enquiries, cost per enquiry, and new customers — and what we'll improve next.",
   },
 ];
 
 export default function Process() {
   return (
-    <section className="py-20 lg:py-28 bg-white border-b border-slate-100">
+    <section className="py-20 lg:py-28 bg-slate-50 border-b border-slate-100">
       <Container>
         <SectionHeading
-          eyebrow="Structured Execution"
-          title="Our 5-Stage Engagement Methodology"
-          description="Clear milestones, defined deliverables, and transparent communication from Day One."
+          title="How it works"
+          description="Four simple steps from first conversation to measurable results."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          {stages.map((stg) => (
-            <div
-              key={stg.step}
-              className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 relative flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono font-bold text-[#F58220] bg-orange-50 border border-orange-200 px-2.5 py-1 rounded-md inline-block mb-4">
-                  {stg.step}
-                </span>
-                <h3 className="text-lg font-bold text-[#0D2040] mb-3">
-                  {stg.title}
-                </h3>
-                <p className="text-xs text-[#475569] leading-relaxed">
-                  {stg.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <li
+                key={step.title}
+                className="relative p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs"
+              >
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-full bg-[#0D2040] text-white flex items-center justify-center text-lg font-black">
+                    {i + 1}
+                  </div>
+                  <Icon className="w-6 h-6 text-[#F58220]" />
+                </div>
+                <h3 className="text-xl font-extrabold text-[#0D2040] mb-1">{step.title}</h3>
+                <div className="text-sm font-semibold text-[#0082CA] mb-3">{step.time}</div>
+                <p className="text-[15px] text-[#334155] leading-relaxed">{step.description}</p>
+                {i < steps.length - 1 && (
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="hidden lg:block absolute top-1/2 -right-5 w-4 h-4 text-slate-400 -translate-y-1/2"
+                  />
+                )}
+              </li>
+            );
+          })}
+        </ol>
+
+        <div className="mt-10 text-center">
+          <Button
+            href={siteConfig.cta.audit.href}
+            variant="orange"
+            size="lg"
+            className="font-bold shadow-md shadow-orange-950/20"
+          >
+            Start with step 1 — it&apos;s free
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
       </Container>
     </section>
   );
 }
-

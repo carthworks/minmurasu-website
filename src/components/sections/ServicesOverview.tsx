@@ -32,65 +32,83 @@ export default function ServicesOverview() {
     >
       <Container>
         <SectionHeading
-          eyebrow="Our Capabilities"
-          title="Engineered for Measurable Pipeline, Not Fluff."
-          description="We do not offer disjointed tasks. We deploy integrated services that attract high-intent prospects, qualify enquiries, and support your revenue teams."
+          title="What we do for you"
+          description="Seven services that work together — so you're not juggling a designer, an ads person and a developer who never talk to each other."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {siteConfig.services.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap] || Compass;
+            // The last service (AI automation) is our specialty: a wide card on large screens,
+            // which also avoids a lone card in the last row of the 3-column grid.
+            const featured = index === siteConfig.services.length - 1;
             return (
-              <div
+              <Link
                 key={service.slug}
-                className="relative bg-white rounded-2xl p-7 border border-slate-200/90 shadow-xs hover:shadow-lg hover:-translate-y-0.5 hover:border-[#0082CA]/50 transition-all flex flex-col justify-between group overflow-hidden"
+                href={`/services/${service.slug}`}
+                className={`relative rounded-2xl p-7 border shadow-xs hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col justify-between group overflow-hidden ${
+                  featured
+                    ? "md:col-span-2 lg:col-span-3 bg-[#0D2040] border-[#0D2040] text-white lg:flex-row lg:items-center lg:gap-10"
+                    : "bg-white border-slate-200/90 hover:border-[#0082CA]/50"
+                }`}
               >
-                {/* Top brand accent bar */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0082CA] to-[#38BDF8] group-hover:from-[#F58220] group-hover:to-[#FB923C] transition-colors" />
+                {!featured && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0082CA] to-[#38BDF8] group-hover:from-[#F58220] group-hover:to-[#FB923C] transition-colors" />
+                )}
 
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] text-[#0082CA] border border-[#BAE6FD] flex items-center justify-center group-hover:bg-[#0D2040] group-hover:text-white group-hover:border-[#0D2040] transition-colors shadow-2xs">
+                <div className={featured ? "lg:flex lg:items-center lg:gap-6 lg:flex-1" : ""}>
+                  <div className="flex items-center justify-between mb-5 lg:mb-5">
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                        featured
+                          ? "bg-[#F58220] text-white"
+                          : "bg-[#F0F8FF] text-[#0082CA] border border-[#BAE6FD] group-hover:bg-[#0D2040] group-hover:text-white transition-colors"
+                      }`}
+                    >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-sm font-mono font-extrabold text-[#F58220] bg-orange-50 border border-orange-200/80 px-2.5 py-1 rounded-lg">
-                      0{index + 1}
-                    </span>
+                    {featured && (
+                      <span className="lg:hidden text-xs font-bold uppercase tracking-wider text-[#F58220]">
+                        Our specialty
+                      </span>
+                    )}
                   </div>
 
-                  <h3 className="text-lg font-extrabold text-[#0D2040] mb-2.5 group-hover:text-[#0082CA] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-[#475569] leading-relaxed mb-4">
-                    {service.shortDescription}
-                  </p>
-                  <p className="text-xs font-semibold text-[#0D2040] bg-[#F0F8FF] border border-[#BAE6FD] rounded-xl px-3 py-2 mb-5">
-                    {service.outcome}
-                  </p>
+                  <div>
+                    {featured && (
+                      <span className="hidden lg:inline-block text-xs font-bold uppercase tracking-wider text-[#F58220] mb-1">
+                        Our specialty
+                      </span>
+                    )}
+                    <h3 className={`text-xl font-extrabold mb-2 ${featured ? "text-white" : "text-[#0D2040] group-hover:text-[#0082CA] transition-colors"}`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-base font-semibold mb-2 ${featured ? "text-orange-200" : "text-[#0D2040]"}`}>
+                      {service.outcome}
+                    </p>
+                    <p className={`text-[15px] leading-relaxed mb-5 ${featured ? "text-slate-300" : "text-[#334155]"}`}>
+                      {service.shortDescription}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="text-xs font-bold text-[#0082CA] group-hover:text-[#F58220] inline-flex items-center gap-1.5 transition-colors"
-                  >
-                    <span>Explore Service Scope</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <span className="text-[11px] text-slate-400 font-medium">
-                    Deliverable-based
-                  </span>
-                </div>
-              </div>
+                <span
+                  className={`inline-flex items-center gap-1.5 text-sm font-bold transition-colors shrink-0 ${
+                    featured ? "text-white group-hover:text-[#F58220]" : "text-[#0082CA] group-hover:text-[#F58220]"
+                  }`}
+                >
+                  <span>See what&apos;s included</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
             );
           })}
         </div>
 
         {/* Footnote on media spend */}
-        <div className="mt-10 p-4 rounded-xl bg-white/90 border border-slate-200/90 shadow-2xs text-xs text-slate-600 text-center max-w-2xl mx-auto">
-          <strong className="text-[#0D2040]">Commercial transparency:</strong> Media advertising budget (Google &amp; Meta)
-          is paid directly by the client to the advertising platforms. Third-party software
-          and WhatsApp messaging tier fees are billed transparently at cost.
+        <div className="mt-10 p-4 rounded-xl bg-white/90 border border-slate-200/90 shadow-2xs text-sm text-[#334155] text-center max-w-2xl mx-auto">
+          <strong className="text-[#0D2040]">No hidden costs:</strong> you pay Google and Meta directly for
+          your ad budget, and any software or WhatsApp fees are passed on at cost — no markup.
         </div>
       </Container>
     </section>

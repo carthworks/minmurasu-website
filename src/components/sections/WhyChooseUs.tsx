@@ -54,9 +54,8 @@ export default function WhyChooseUs() {
     <section className="py-20 lg:py-28 bg-slate-50 border-b border-slate-100">
       <Container>
         <SectionHeading
-          eyebrow="Why Work With Us"
-          title="Defensible Discipline Over Agency Hype"
-          description="We avoid vague vanity metrics, 10x marketing promises, and generic agency fluff. We partner with business leaders who value technical rigor and honest communication."
+          title="Why businesses choose us"
+          description="No vanity metrics, no 10x promises — just honest work you can measure."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
