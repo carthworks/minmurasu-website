@@ -74,6 +74,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
+      <head />
       <body
         className="min-h-full flex flex-col bg-white text-[#475569]"
         suppressHydrationWarning

@@ -87,6 +87,7 @@ export const siteConfig = {
     primary: { label: "Book a Free Consultation", href: "/book" },
     secondary: { label: "Explore Our Services", href: "/#services" },
     audit: { label: "Get a Free Digital Presence Audit", href: "/free-audit" },
+    calculator: { label: "Growth ROI Calculator", href: "/roi-calculator" },
     whatsapp: { label: "Chat on WhatsApp" }, // href: getWhatsAppUrl()
   },
 
@@ -199,6 +200,7 @@ export const siteConfig = {
   ],
   footerLinks: [
     { label: "Book Consultation", href: "/book" },
+    { label: "Growth ROI Calculator", href: "/roi-calculator" },
     { label: "Pricing & Models", href: "/pricing" },
     { label: "Free Digital Audit", href: "/free-audit" },
     { label: "About Us", href: "/about" },

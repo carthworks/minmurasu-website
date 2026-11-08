@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/book",
     "/free-audit",
     "/pricing",
+    "/roi-calculator",
     "/about",
     "/services",
     "/industries",
