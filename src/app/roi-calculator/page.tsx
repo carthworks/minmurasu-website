@@ -18,6 +18,7 @@ import {
   formatMonthlyCount,
   formatRange,
   formatRoughINR,
+  getRoiRecommendation,
   responseLossPct,
   type ResponseTimeSpeed,
 } from "@/lib/roi-model";
@@ -37,6 +38,8 @@ import {
   Building,
   Target,
   RefreshCw,
+  Compass,
+  Lightbulb,
 } from "lucide-react";
 
 const responseTimeMultiplier: Record<ResponseTimeSpeed, { label: string; lossPct: number; desc: string }> = {
@@ -119,6 +122,7 @@ export default function RoiCalculatorPage() {
     responseTime,
   };
   const roi = calculateRoi(roiInput);
+  const recommendation = getRoiRecommendation(roiInput);
   const responseLabel = responseTimeMultiplier[responseTime].label;
   const annualGainRange = formatRange(roi.annualGain.low, roi.annualGain.high, formatRoughINR);
   const extraLeadsRange = formatRange(roi.extraLeads.low, roi.extraLeads.high, formatMonthlyCount);
@@ -136,7 +140,7 @@ export default function RoiCalculatorPage() {
 
     try {
       // Append calculated snapshot to user's notes so founder gets context
-      const calculationContext = `\n\n--- [ROI CALCULATOR SNAPSHOT] ---\n• Traffic: ${visitors} visitors/mo\n• Current Conv: ${currentConvRate}%\n• Close Rate: ${closeRate}%\n• Deal Value: ${formatINR(dealValue)}\n• Response Time: ${responseTimeMultiplier[responseTime].label}\n• Estimated Annual Gain: ${annualGainRange}\n• Extra Leads/mo: ${extraLeadsRange}\n• Extra Clients/mo: ${extraCustomersRange}`;
+      const calculationContext = `\n\n--- [ROI CALCULATOR SNAPSHOT] ---\n• Traffic: ${visitors} visitors/mo\n• Current Conv: ${currentConvRate}%\n• Close Rate: ${closeRate}%\n• Deal Value: ${formatINR(dealValue)}\n• Response Time: ${responseTimeMultiplier[responseTime].label}\n• Estimated Annual Gain: ${annualGainRange}\n• Extra Leads/mo: ${extraLeadsRange}\n• Extra Clients/mo: ${extraCustomersRange}\n• Diagnosed Bottleneck: ${recommendation.bottleneck}\n• Recommended Focus: ${recommendation.headline}\n• Prescribed Strategy: ${recommendation.whatsappSummary}`;
 
       const payload = {
         ...data,
@@ -482,6 +486,26 @@ export default function RoiCalculatorPage() {
                   </div>
                 </div>
 
+                {/* Descriptive Diagnostic Advice Callout */}
+                <div className="mt-5 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-left">
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-[#F58220]/25 text-[#F58220] flex items-center justify-center shrink-0 mt-0.5">
+                      <Lightbulb className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block">
+                        Diagnostic Advice
+                      </span>
+                      <h4 className="text-sm font-bold text-white mt-0.5 leading-snug">
+                        {recommendation.headline}
+                      </h4>
+                      <p className="text-xs text-slate-200 mt-1 leading-relaxed">
+                        {recommendation.summary}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Primary WhatsApp Action with Live Calculation */}
                 <div className="mt-6">
                   <a
@@ -498,6 +522,27 @@ export default function RoiCalculatorPage() {
                     <span>WhatsApp My Growth Calculation</span>
                   </a>
                 </div>
+              </div>
+            </div>
+
+            {/* Strategic 3-Step Action Plan Card */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs space-y-3.5">
+              <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <Compass className="w-4 h-4 text-[#0082CA]" />
+                <h3 className="text-xs font-bold text-[#0D2040] uppercase tracking-wider">
+                  Recommended 3-Step Strategy
+                </h3>
+              </div>
+
+              <div className="space-y-2.5">
+                {recommendation.actions.map((actionText, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 text-xs text-[#475569]">
+                    <span className="w-5 h-5 rounded-full bg-[#0D2040] text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span className="leading-snug">{actionText}</span>
+                  </div>
+                ))}
               </div>
             </div>
 

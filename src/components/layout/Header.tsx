@@ -12,7 +12,7 @@ import {
   ProtectedPhone,
   ProtectedWhatsApp,
 } from "@/components/ui/ProtectedContact";
-import { Menu, X, Phone, MessageSquare } from "lucide-react";
+import { Menu, X, Phone, MessageSquare, Calculator } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +43,14 @@ export default function Header() {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
               {siteConfig.locations.coverageLine}
             </span>
+            <span className="text-slate-600 hidden xl:inline">•</span>
+            <Link
+              href="/roi-calculator"
+              className="hidden xl:inline-flex items-center gap-1.5 text-sky-300 hover:text-white transition-colors text-xs font-semibold"
+            >
+              <Calculator className="w-3.5 h-3.5 text-[#F58220]" />
+              <span>ROI Calculator</span>
+            </Link>
           </div>
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1">
@@ -134,6 +142,19 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/roi-calculator"
+              className="text-base font-semibold py-2 px-3 rounded-md text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] hover:bg-[#E0F2FE] transition-colors flex items-center justify-between"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="flex items-center gap-2">
+                <Calculator className="w-4 h-4 text-[#F58220]" />
+                <span>ROI & Growth Calculator</span>
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-[#0082CA] text-white rounded">
+                Interactive
+              </span>
+            </Link>
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
               <Button
                 href={siteConfig.cta.primary.href}

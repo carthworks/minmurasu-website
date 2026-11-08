@@ -17,6 +17,7 @@ import {
   HelpCircle,
   Sparkles,
   FileText,
+  Calculator,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -306,6 +307,39 @@ export default function PricingPage() {
               </div>
             );
           })}
+        </div>
+
+        {/* Interactive ROI Calculator Callout Banner */}
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="relative rounded-3xl p-8 sm:p-10 bg-linear-to-r from-[#0D2040] via-[#1E3A8A] to-[#0082CA] text-white shadow-xl overflow-hidden border border-white/10">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-[#F58220]/20 blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="max-w-2xl space-y-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-sky-200">
+                  <Calculator className="w-3.5 h-3.5 text-[#F58220]" />
+                  <span>Unsure About Expected Returns?</span>
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+                  Model Your Lead Volume &amp; Revenue Upside in 60 Seconds
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  Input your monthly website visitors, current conversion rate, and average deal value into our interactive calculator to see how much pipeline revenue sub-second speed and instant WhatsApp response can unlock for your business.
+                </p>
+              </div>
+
+              <div className="shrink-0 w-full md:w-auto">
+                <Button
+                  href="/roi-calculator"
+                  variant="orange"
+                  size="lg"
+                  className="w-full md:w-auto justify-center font-bold shadow-lg"
+                >
+                  <span>Launch ROI Calculator</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Capability Comparison Matrix */}
