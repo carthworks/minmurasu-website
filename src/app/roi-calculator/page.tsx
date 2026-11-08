@@ -7,11 +7,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site-config";
+import { getWhatsAppUrl } from "@/lib/site-config";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackEvent, trackLeadSubmission } from "@/lib/analytics";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
+import {
+  buildRoiWhatsAppMessage,
+  calculateRoi,
+  formatMonthlyCount,
+  formatRange,
+  formatRoughINR,
+  responseLossPct,
+  type ResponseTimeSpeed,
+} from "@/lib/roi-model";
 import {
   Calculator,
   TrendingUp,
@@ -30,23 +39,21 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-type ResponseTimeSpeed = "fast" | "medium" | "slow";
-
 const responseTimeMultiplier: Record<ResponseTimeSpeed, { label: string; lossPct: number; desc: string }> = {
   fast: {
     label: "Under 5 Minutes",
-    lossPct: 0.1,
-    desc: "Automated WhatsApp triage keeps lead drop-off minimal.",
+    lossPct: responseLossPct.fast,
+    desc: "Fast follow-up. We assume about 10% of enquiries are still lost.",
   },
   medium: {
     label: "30 Mins to 2 Hours",
-    lossPct: 0.38,
-    desc: "Standard manual response: up to ~38% of prospects contact a competitor first.",
+    lossPct: responseLossPct.medium,
+    desc: "Manual follow-up. We assume about 38% of enquiries go cold or choose someone else.",
   },
   slow: {
     label: "24+ Hours / Next Day",
-    lossPct: 0.65,
-    desc: "Severe lead decay: over ~65% of enquiries are cold or lost by the time someone replies.",
+    lossPct: responseLossPct.slow,
+    desc: "Slow follow-up. We assume about 65% of enquiries are lost before someone replies.",
   },
 };
 
@@ -64,16 +71,6 @@ function formatINR(val: number): string {
     currency: "INR",
     maximumFractionDigits: 0,
   }).format(val);
-}
-
-function formatCompactINR(val: number): string {
-  if (val >= 10000000) {
-    return `₹${(val / 10000000).toFixed(2)} Cr`;
-  }
-  if (val >= 100000) {
-    return `₹${(val / 100000).toFixed(2)} L`;
-  }
-  return formatINR(val);
 }
 
 export default function RoiCalculatorPage() {
@@ -104,7 +101,7 @@ export default function RoiCalculatorPage() {
     defaultValues: {
       service: "Digital Strategy & Consulting",
       preferredContact: "whatsapp",
-      consent: true,
+      consent: false as unknown as true, // Must start unticked: valid consent needs a clear user action.
       budget: "₹25,000 - ₹50,000 / month",
       formLoadedAt: 0,
     },
@@ -114,41 +111,23 @@ export default function RoiCalculatorPage() {
     setValue("formLoadedAt", Date.now());
   }, [setValue]);
 
-  // --- Dynamic Mathematical Calculations ---
-  // Baseline (Current Status)
-  const baselineLeads = Math.max(1, Math.round(visitors * (currentConvRate / 100)));
-  const baselineLeadsLost = Math.round(baselineLeads * responseTimeMultiplier[responseTime].lossPct);
-  const effectiveBaselineLeads = Math.max(1, baselineLeads - baselineLeadsLost);
-  const baselineCustomers = Math.max(1, Math.round(effectiveBaselineLeads * (closeRate / 100)));
-  const baselineMonthlyRev = baselineCustomers * dealValue;
-  const baselineAnnualRev = baselineMonthlyRev * 12;
-
-  // MIN MURASU System Optimizations:
-  // 1. Landing page speed & conversion engineering lifts rate conservatively by +1.2% to +1.8%
-  const projectedConvRate = Math.min(8.0, Number((currentConvRate * 1.75).toFixed(1)));
-  const projectedRawLeads = Math.round(visitors * (projectedConvRate / 100));
-  // 2. Instant WhatsApp triage recovers 80% of lost leads (drops loss to ~5-8%)
-  const minMurasuLossPct = 0.08;
-  const projectedLeadsLost = Math.round(projectedRawLeads * minMurasuLossPct);
-  const projectedEffectiveLeads = Math.max(1, projectedRawLeads - projectedLeadsLost);
-  // 3. Higher intent search + pre-qualification lifts close rate slightly (+2%)
-  const projectedCloseRate = Math.min(60, closeRate + 2);
-  const projectedCustomers = Math.max(baselineCustomers + 1, Math.round(projectedEffectiveLeads * (projectedCloseRate / 100)));
-  const projectedMonthlyRev = projectedCustomers * dealValue;
-  const projectedAnnualRev = projectedMonthlyRev * 12;
-
-  // Growth Gains
-  const monthlyRevenueGain = projectedMonthlyRev - baselineMonthlyRev;
-  const annualRevenueGain = projectedAnnualRev - baselineAnnualRev;
-  const additionalLeadsMonthly = projectedEffectiveLeads - effectiveBaselineLeads;
-  const additionalCustomersMonthly = projectedCustomers - baselineCustomers;
-  const growthMultiplier = Number((projectedMonthlyRev / Math.max(1, baselineMonthlyRev)).toFixed(1));
-
-  // Dynamic WhatsApp prefill URL with calculated numbers
-  const generateWhatsAppCalculatorUrl = () => {
-    const text = `Hi MIN MURASU team! 👋 I just ran my numbers through your *Interactive ROI & Growth Calculator* on minmurasu.digital:\n\n• Monthly Traffic: ${visitors.toLocaleString("en-IN")} visitors\n• Current Conversion: ${currentConvRate}%\n• Average Deal Value: ${formatINR(dealValue)}\n• Response Time: ${responseTimeMultiplier[responseTime].label}\n\n*Calculator Projection:*\n• Projected Annual Gain: *${formatCompactINR(annualRevenueGain)}* (${formatINR(annualRevenueGain)}/yr)\n• Additional Monthly Leads: +${additionalLeadsMonthly}\n• Additional Monthly Clients: +${additionalCustomersMonthly}\n\nCan we discuss how your growth system would achieve this for my business?`;
-    return `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(text)}`;
+  const roiInput = {
+    visitors,
+    conversionPct: currentConvRate,
+    closePct: closeRate,
+    dealValue,
+    responseTime,
   };
+  const roi = calculateRoi(roiInput);
+  const responseLabel = responseTimeMultiplier[responseTime].label;
+  const annualGainRange = formatRange(roi.annualGain.low, roi.annualGain.high, formatRoughINR);
+  const extraLeadsRange = formatRange(roi.extraLeads.low, roi.extraLeads.high, formatMonthlyCount);
+  const extraCustomersRange = formatRange(roi.extraCustomers.low, roi.extraCustomers.high, formatMonthlyCount);
+  const monthlyGainRange = formatRange(roi.annualGain.low / 12, roi.annualGain.high / 12, formatRoughINR);
+  const displayCount = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1));
+
+  const generateWhatsAppCalculatorUrl = () =>
+    getWhatsAppUrl(buildRoiWhatsAppMessage(roiInput, roi, responseLabel));
 
   const onSubmitLead = async (data: ContactFormData) => {
     feedback.playPop();
@@ -157,7 +136,7 @@ export default function RoiCalculatorPage() {
 
     try {
       // Append calculated snapshot to user's notes so founder gets context
-      const calculationContext = `\n\n--- [ROI CALCULATOR SNAPSHOT] ---\n• Traffic: ${visitors} visitors/mo\n• Current Conv: ${currentConvRate}%\n• Close Rate: ${closeRate}%\n• Deal Value: ${formatINR(dealValue)}\n• Response Time: ${responseTimeMultiplier[responseTime].label}\n• Projected Annual Gain: ${formatINR(annualRevenueGain)}\n• Extra Leads/mo: +${additionalLeadsMonthly}\n• Extra Clients/mo: +${additionalCustomersMonthly}`;
+      const calculationContext = `\n\n--- [ROI CALCULATOR SNAPSHOT] ---\n• Traffic: ${visitors} visitors/mo\n• Current Conv: ${currentConvRate}%\n• Close Rate: ${closeRate}%\n• Deal Value: ${formatINR(dealValue)}\n• Response Time: ${responseTimeMultiplier[responseTime].label}\n• Estimated Annual Gain: ${annualGainRange}\n• Extra Leads/mo: ${extraLeadsRange}\n• Extra Clients/mo: ${extraCustomersRange}`;
 
       const payload = {
         ...data,
@@ -180,7 +159,8 @@ export default function RoiCalculatorPage() {
       trackEvent("audit_request", {
         traffic: visitors,
         deal_value: dealValue,
-        annual_opportunity: annualRevenueGain,
+        annual_opportunity_low: Math.round(roi.annualGain.low),
+        annual_opportunity_high: Math.round(roi.annualGain.high),
       });
 
       router.push("/thank-you");
@@ -220,7 +200,7 @@ export default function RoiCalculatorPage() {
           <p className="mt-4 text-base sm:text-lg text-[#475569] leading-relaxed">
             Most businesses don&apos;t need 10x more ad spend; they need a faster website,
             focused search targeting, and automated lead response. Adjust the sliders below
-            to model your business&apos;s realistic upside.
+            to see a conservative and an expected estimate for your business.
           </p>
         </div>
 
@@ -318,9 +298,9 @@ export default function RoiCalculatorPage() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0082CA]"
               />
               <div className="flex justify-between text-[11px] text-slate-400">
-                <span>0.5% (Slow/WordPress)</span>
-                <span>2.0% (Average)</span>
-                <span>6.0% (High performance)</span>
+                <span>0.5% (Low)</span>
+                <span>2.0%</span>
+                <span>6.0% (High)</span>
               </div>
             </div>
 
@@ -336,7 +316,7 @@ export default function RoiCalculatorPage() {
                     <span>Average Value per Customer / Deal</span>
                   </label>
                   <p className="text-[11px] text-slate-400">
-                    Net profit or lifetime value from one closed customer
+                    Average revenue from one closed customer
                   </p>
                 </div>
                 <span className="text-base font-bold text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-3 py-1 rounded-lg">
@@ -413,7 +393,7 @@ export default function RoiCalculatorPage() {
               />
               <div className="flex justify-between text-[11px] text-slate-400">
                 <span>5% (Strict qualification)</span>
-                <span>15% (Typical B2B)</span>
+                <span>15%</span>
                 <span>40% (Referral level)</span>
               </div>
             </div>
@@ -473,16 +453,16 @@ export default function RoiCalculatorPage() {
               <div className="relative z-10">
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-sky-200 mb-4">
                   <Sparkles className="w-3.5 h-3.5 text-[#F58220]" />
-                  <span>Estimated Annual Revenue Gain</span>
+                  <span>Estimated Extra Revenue, Once Running</span>
                 </span>
 
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-2">
-                  +{formatCompactINR(annualRevenueGain)}
+                  {annualGainRange}
                   <span className="text-lg font-normal text-slate-300 ml-2">/ year</span>
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-300 mb-6">
-                  Approximately <strong className="text-white">{formatINR(monthlyRevenueGain)}</strong> additional revenue per month through system optimization.
+                  About <strong className="text-white">{monthlyGainRange}</strong> extra revenue a month. Two scenarios based on your inputs, not a guarantee.
                 </p>
 
                 {/* Growth Highlights */}
@@ -490,14 +470,14 @@ export default function RoiCalculatorPage() {
                   <div className="bg-white/10 rounded-2xl p-3 backdrop-blur-xs">
                     <span className="text-[11px] text-slate-300 block mb-0.5">Extra Enquiries</span>
                     <span className="text-xl font-bold text-emerald-400">
-                      +{additionalLeadsMonthly} <span className="text-xs font-normal text-slate-200">/ mo</span>
+                      {extraLeadsRange} <span className="text-xs font-normal text-slate-200">/ mo</span>
                     </span>
                   </div>
 
                   <div className="bg-white/10 rounded-2xl p-3 backdrop-blur-xs">
                     <span className="text-[11px] text-slate-300 block mb-0.5">New Customers</span>
                     <span className="text-xl font-bold text-sky-300">
-                      +{additionalCustomersMonthly} <span className="text-xs font-normal text-slate-200">/ mo</span>
+                      {extraCustomersRange} <span className="text-xs font-normal text-slate-200">/ mo</span>
                     </span>
                   </div>
                 </div>
@@ -524,20 +504,20 @@ export default function RoiCalculatorPage() {
             {/* Side-by-Side Comparison Matrix */}
             <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs">
               <h3 className="text-sm font-bold text-[#0D2040] uppercase tracking-wider mb-4 flex items-center justify-between">
-                <span>Performance Comparison</span>
+                <span>Today vs Expected Case</span>
                 <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
-                  {growthMultiplier}x Potential Lift
+                  About {roi.expectedMultiple.toFixed(1)}x in expected case
                 </span>
               </h3>
 
               <div className="space-y-3 text-xs">
                 {/* Metric 1 */}
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-500">Monthly Website Enquiries</span>
+                  <span className="text-slate-500">Usable Enquiries per Month</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-slate-400 line-through">{effectiveBaselineLeads}</span>
+                    <span className="text-slate-400 ">{displayCount(roi.baseline.leads)}</span>
                     <span className="font-bold text-[#0D2040] bg-slate-100 px-2 py-0.5 rounded">
-                      {projectedEffectiveLeads}
+                      {displayCount(roi.expected.leads)}
                     </span>
                   </div>
                 </div>
@@ -546,9 +526,9 @@ export default function RoiCalculatorPage() {
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
                   <span className="text-slate-500">Leads Lost to Slow Response</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-rose-500 font-medium">-{baselineLeadsLost}</span>
+                    <span className="text-rose-500 font-medium">-{displayCount(roi.baseline.leadsLost)}</span>
                     <span className="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
-                      -{projectedLeadsLost} (Saved)
+                      -{displayCount(roi.expected.leadsLost)}
                     </span>
                   </div>
                 </div>
@@ -557,29 +537,29 @@ export default function RoiCalculatorPage() {
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
                   <span className="text-slate-500">Monthly Paying Clients</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-slate-400">{baselineCustomers}</span>
+                    <span className="text-slate-400">{displayCount(roi.baseline.customers)}</span>
                     <span className="font-bold text-[#0082CA] bg-[#F0F8FF] px-2 py-0.5 rounded">
-                      {projectedCustomers}
+                      {displayCount(roi.expected.customers)}
                     </span>
                   </div>
                 </div>
 
                 {/* Metric 4 */}
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-500">Monthly Revenue Run-Rate</span>
+                  <span className="text-slate-500">Monthly Revenue from Website</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-slate-400">{formatINR(baselineMonthlyRev)}</span>
+                    <span className="text-slate-400">{formatRoughINR(roi.baseline.monthlyValue)}</span>
                     <span className="font-bold text-[#0D2040] bg-slate-100 px-2 py-0.5 rounded">
-                      {formatINR(projectedMonthlyRev)}
+                      {formatRoughINR(roi.expected.monthlyValue)}
                     </span>
                   </div>
                 </div>
 
                 {/* Metric 5 */}
                 <div className="flex items-center justify-between pt-1">
-                  <span className="font-bold text-[#0D2040]">12-Month Net Difference</span>
+                  <span className="font-bold text-[#0D2040]">Extra revenue per year, before fees</span>
                   <span className="font-black text-base text-emerald-600">
-                    +{formatINR(annualRevenueGain)}
+                    {formatRoughINR(roi.annualGain.high)}
                   </span>
                 </div>
               </div>
@@ -614,7 +594,7 @@ export default function RoiCalculatorPage() {
               How MIN MURASU Unlocks This Growth
             </h2>
             <p className="mt-2 text-sm text-[#475569]">
-              This model does not assume magical 10x traffic increases. It fixes the three fatal leaks where businesses lose 70% of potential buyers.
+              This model does not assume magical 10x traffic increases. It focuses on three common leaks: page speed, slow follow-up, and low-intent traffic.
             </p>
           </div>
 
@@ -628,12 +608,12 @@ export default function RoiCalculatorPage() {
                   1. Sub-Second Landing Page Speed
                 </h3>
                 <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-                  Every 1-second delay in page load drops conversions by 7%. We build custom Next.js web applications that load in under 800ms on 4G mobile connections, retaining mobile searchers before they bounce.
+                  Faster pages tend to keep more visitors: Akamai&apos;s 2017 retail study linked a 100 ms delay with conversion drops of up to 7%. We build fast Next.js sites and test them on mobile connections.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-[#0082CA] flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Impact: +40% to +80% Conversion Lift</span>
+                <span>Modelled: +20% to +40% conversion</span>
               </div>
             </div>
 
@@ -646,12 +626,12 @@ export default function RoiCalculatorPage() {
                   2. Instant WhatsApp & AI Lead Triage
                 </h3>
                 <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-                  Harvard Business Review research proves leads responded to within 5 minutes are 7x more likely to qualify. We connect your ads and website to instant WhatsApp verification and CRM notifications.
+                  A 2011 Harvard Business Review study found firms that tried to reach leads within an hour were nearly 7x as likely to qualify them as firms that waited even an hour longer. We connect your ads and website to instant WhatsApp verification and CRM notifications.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-600 flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Impact: Stops 60%+ Lead Decay</span>
+                <span>Modelled: fewer enquiries lost</span>
               </div>
             </div>
 
@@ -669,7 +649,7 @@ export default function RoiCalculatorPage() {
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-[#F58220] flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Impact: Lower CPL, Higher Deal Close Rate</span>
+                <span>Not included in this estimate</span>
               </div>
             </div>
           </div>
@@ -713,7 +693,7 @@ export default function RoiCalculatorPage() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Karthikeyan T"
+                  placeholder="Your name"
                   className={`w-full px-4 py-2.5 rounded-xl border text-sm text-slate-800 focus:outline-none focus:ring-2 ${
                     errors.name
                       ? "border-rose-400 focus:ring-rose-200"
@@ -735,7 +715,7 @@ export default function RoiCalculatorPage() {
                 </label>
                 <input
                   type="email"
-                  placeholder="karthik@company.com"
+                  placeholder="you@company.com"
                   className={`w-full px-4 py-2.5 rounded-xl border text-sm text-slate-800 focus:outline-none focus:ring-2 ${
                     errors.email
                       ? "border-rose-400 focus:ring-rose-200"
@@ -759,7 +739,7 @@ export default function RoiCalculatorPage() {
                 </label>
                 <input
                   type="tel"
-                  placeholder="+91 94867 72206"
+                  placeholder="+91 98765 43210"
                   className={`w-full px-4 py-2.5 rounded-xl border text-sm text-slate-800 focus:outline-none focus:ring-2 ${
                     errors.phone
                       ? "border-rose-400 focus:ring-rose-200"
@@ -790,7 +770,7 @@ export default function RoiCalculatorPage() {
 
             <div>
               <label className="block text-xs font-semibold text-[#0D2040] mb-1">
-                Briefly describe your main growth priority
+                Briefly describe your main growth priority <span className="text-rose-500">*</span>
               </label>
               <textarea
                 rows={3}
@@ -868,7 +848,7 @@ export default function RoiCalculatorPage() {
         {/* Mathematical Transparency & Zero-Fabrication Disclaimer */}
         <div className="mt-12 text-center text-xs text-slate-400 max-w-2xl mx-auto space-y-1">
           <p>
-            <strong>Transparency Notice:</strong> This calculator is an interactive estimation tool based on user-provided inputs and standard e-commerce/B2B conversion benchmarks.
+            <strong>Transparency Notice:</strong> This calculator is an interactive estimation tool based on your inputs and Min Murasu&apos;s planning assumptions: 20–40% more conversions and lower enquiry loss, shown before agency and ad costs, once the changes are live. Your close rate is left unchanged.
           </p>
           <p>
             It is provided for strategic planning purposes and does not constitute a legal earnings guarantee. Actual business outcomes depend on industry, pricing competitiveness, and market demand.
