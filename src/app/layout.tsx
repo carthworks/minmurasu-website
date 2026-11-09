@@ -75,7 +75,21 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
-      <head />
+      <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-NKVF5CCQ"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            `,
+          }}
+        />
+      </head>
       <body
         className="min-h-full flex flex-col bg-white text-[#475569]"
         suppressHydrationWarning
