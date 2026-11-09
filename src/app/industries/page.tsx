@@ -1,18 +1,18 @@
-import React from "react";
-import type { Metadata } from "next";
+import IndustriesStickyNav from "@/components/sections/IndustriesStickyNav";
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
 import { industriesData } from "@/content/industries";
 import {
-  Stethoscope,
-  Building2,
-  Factory,
-  GraduationCap,
-  Store,
-  ArrowRight,
-  CheckCircle2,
+    ArrowRight,
+    Building2,
+    CheckCircle2,
+    Factory,
+    GraduationCap,
+    Stethoscope,
+    Store,
 } from "lucide-react";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Industry Growth Solutions",
@@ -40,13 +40,17 @@ export default function IndustriesPage() {
           description="We avoid one-size-fits-all digital marketing. Each sector requires distinct positioning, compliance considerations, and conversion paths."
         />
 
+        {/* Sleek Fixed Industries Jump Bar */}
+        <IndustriesStickyNav industries={industries} />
+
         <div className="space-y-12">
           {industries.map((ind) => {
             const Icon = iconMap[ind.slug as keyof typeof iconMap] || Building2;
             return (
               <div
                 key={ind.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/40 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+                id={ind.slug}
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/40 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-44 md:scroll-mt-48"
               >
                 <div className="lg:col-span-5 space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center">
