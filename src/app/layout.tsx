@@ -1,12 +1,13 @@
-import type { Metadata, Viewport } from "next";
-import "./globals.css";
-import { siteConfig } from "@/lib/site-config";
-import Header from "@/components/layout/Header";
+import CookieConsent from "@/components/layout/CookieConsent";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import CookieConsent from "@/components/layout/CookieConsent";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import { siteConfig } from "@/lib/site-config";
+import { GoogleAnalytics } from '@next/third-parties/google';
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
 
 export const viewport: Viewport = {
   themeColor: siteConfig.brand.colors.navy,
@@ -92,6 +93,7 @@ export default function RootLayout({
         <MobileActionBar />
         <WhatsAppFloat />
         <CookieConsent gaId={gaId} gtmId={gtmId} />
+        <GoogleAnalytics gaId="G-8WV1Z3BFDY" />
       </body>
     </html>
   );
