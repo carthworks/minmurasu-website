@@ -76,6 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
         <script
           async
           src="https://www.googletagmanager.com/gtm.js?id=GTM-NKVF5CCQ"
