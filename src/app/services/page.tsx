@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { servicesData } from "@/content/services";
+import ServicesStickyNav from "@/components/sections/ServicesStickyNav";
 import {
   Compass,
   Search,
@@ -44,6 +45,9 @@ export default function ServicesPage() {
           description="We combine marketing strategy, modern web engineering, and practical AI automation into synchronized systems that deliver measurable business growth."
         />
 
+        {/* Sleek Fixed Services Jump Bar */}
+        <ServicesStickyNav services={serviceList} />
+
         <div className="space-y-12">
           {serviceList.map((service, index) => {
             const Icon = iconMap[service.slug as keyof typeof iconMap] || Compass;
@@ -51,7 +55,7 @@ export default function ServicesPage() {
               <div
                 key={service.slug}
                 id={service.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-44 md:scroll-mt-48"
               >
                 <div className="lg:col-span-4 space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center">
