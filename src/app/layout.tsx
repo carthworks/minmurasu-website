@@ -5,7 +5,7 @@ import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -77,19 +77,6 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-NKVF5CCQ"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            `,
-          }}
-        />
       </head>
       <body
         className="min-h-full flex flex-col bg-white text-[#475569]"
@@ -107,7 +94,8 @@ export default function RootLayout({
         <Footer />
         <MobileActionBar />
         <WhatsAppFloat />
-        <CookieConsent gaId={gaId} gtmId={gtmId} />
+        <CookieConsent gaId={gaId} gtmId={gtmId || "GTM-NKVF5CCQ"} />
+        <GoogleTagManager gtmId={gtmId || "GTM-NKVF5CCQ"} />
         <GoogleAnalytics gaId="G-8WV1Z3BFDY" />
       </body>
     </html>

@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* Disable streaming metadata (<div hidden><Suspense name="Next.Metadata">) so browser extensions injecting nodes into <body> (e.g. #rcr-wrapper) do not trigger hydration mismatches */
   htmlLimitedBots: /.*/,
+  /* Inline critical CSS to eliminate render-blocking stylesheet requests */
+  experimental: {
+    inlineCss: true,
+  },
   async headers() {
     return [
       {

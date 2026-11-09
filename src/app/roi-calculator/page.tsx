@@ -496,9 +496,9 @@ export default function RoiCalculatorPage() {
                       <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block">
                         Diagnostic Advice
                       </span>
-                      <h4 className="text-sm font-bold text-white mt-0.5 leading-snug">
+                      <h3 className="text-sm font-bold text-white mt-0.5 leading-snug">
                         {recommendation.headline}
-                      </h4>
+                      </h3>
                       <p className="text-xs text-slate-200 mt-1 leading-relaxed">
                         {recommendation.summary}
                       </p>
