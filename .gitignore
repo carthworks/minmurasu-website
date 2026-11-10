@@ -54,3 +54,6 @@ shots/
 .taste-skill/
 .agents/
 final/
+
+node_modules/
+

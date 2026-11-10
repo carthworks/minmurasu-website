@@ -204,6 +204,7 @@ export const siteConfig = {
     { label: "Pricing & Models", href: "/pricing" },
     { label: "Free Digital Audit", href: "/free-audit" },
     { label: "About Us", href: "/about" },
+    { label: "Brand Assets", href: "/brand" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Cancellation & Refund Policy", href: "/refund-policy" },

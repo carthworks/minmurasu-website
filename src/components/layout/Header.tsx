@@ -150,6 +150,13 @@ const companyMenuItems: SubMenuItem[] = [
     iconColor: "text-[#0082CA] bg-sky-50",
   },
   {
+    href: "/brand",
+    title: "Brand Assets & Identity",
+    shortDesc: "Official logos, color codes, guidelines & media kit",
+    icon: Sparkles,
+    iconColor: "text-[#F58220] bg-orange-50",
+  },
+  {
     href: "/insights",
     title: "Insights & Guides",
     shortDesc: "Real marketing breakdowns, data & frameworks",
@@ -758,6 +765,13 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     About MIN MURASU
+                  </Link>
+                  <Link
+                    href="/brand"
+                    className="block text-xs py-1.5 px-2.5 rounded-md text-slate-700 hover:text-[#0082CA] hover:bg-white"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Brand Identity &amp; Assets
                   </Link>
                   <Link
                     href="/insights"
