@@ -1,40 +1,38 @@
 import React from "react";
-import Container from "@/components/ui/Container";
+import AnimatedDrumLogo from "@/components/ui/AnimatedDrumLogo";
 
 export default function Loading() {
   return (
-    <div className="py-16 sm:py-24 bg-white" aria-busy="true" aria-label="Loading page content">
-      <Container>
-        {/* Header Skeleton */}
-        <div className="max-w-2xl mx-auto text-center space-y-4 mb-14">
-          <div className="h-5 w-36 rounded-full bg-slate-200/80 mx-auto animate-shimmer" />
-          <div className="h-10 w-3/4 rounded-2xl bg-slate-200/80 mx-auto animate-shimmer" />
-          <div className="h-4 w-2/3 rounded-xl bg-slate-100 mx-auto animate-shimmer" />
+    <div
+      role="status"
+      aria-live="polite"
+      aria-label="Loading page content"
+      className="min-h-[70vh] flex flex-col items-center justify-center py-20 bg-white"
+    >
+      <div className="relative flex flex-col items-center">
+        {/* Pulsing ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gradient-to-tr from-[#0082CA]/15 via-[#F58220]/20 to-transparent blur-2xl animate-pulse pointer-events-none" />
+
+        {/* Authentic Beating Drum */}
+        <div className="w-36 h-28 sm:w-44 sm:h-32 relative z-10 drop-shadow-md">
+          <AnimatedDrumLogo twoSticks={true} className="w-full h-full" />
         </div>
 
-        {/* 3-Column Card Grid Skeleton */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
-            <div
-              key={item}
-              className="p-7 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-4 animate-shimmer"
-            >
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-xl bg-slate-200/80" />
-                <div className="w-10 h-6 rounded-lg bg-slate-200/60" />
-              </div>
-              <div className="h-5 w-2/3 rounded-lg bg-slate-200/80" />
-              <div className="space-y-2 pt-1">
-                <div className="h-3 w-full rounded bg-slate-200/60" />
-                <div className="h-3 w-5/6 rounded bg-slate-200/60" />
-                <div className="h-3 w-3/4 rounded bg-slate-200/50" />
-              </div>
-              <div className="h-9 w-full rounded-xl bg-slate-200/50 mt-4" />
-            </div>
-          ))}
+        {/* Brand indicator */}
+        <div className="mt-4 text-center z-10">
+          <span className="font-black text-lg tracking-tight text-[#0D2040] block">
+            MIN MURASU
+          </span>
+          <span className="text-[10px] uppercase font-bold tracking-widest text-[#0082CA] block mt-0.5">
+            Loading...
+          </span>
+
+          {/* Rhythmic beat bar */}
+          <div className="w-28 h-1 bg-slate-100 rounded-full mx-auto mt-3 overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-[#0082CA] via-[#F58220] to-[#0082CA] rounded-full animate-[mm-loader-bar_1.2s_ease-in-out_infinite]" />
+          </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
-

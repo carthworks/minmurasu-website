@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import DrumPageLoader from "@/components/ui/DrumPageLoader";
 import { siteConfig } from "@/lib/site-config";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata, Viewport } from "next";
@@ -79,9 +80,10 @@ export default function RootLayout({
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
       </head>
       <body
-        className="min-h-full flex flex-col bg-white text-[#475569]"
+        className="min-h-full flex flex-col bg-white text-[#475569] antialiased"
         suppressHydrationWarning
       >
+        <DrumPageLoader />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#0D2040] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg"
