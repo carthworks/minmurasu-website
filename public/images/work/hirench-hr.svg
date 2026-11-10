@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#0f2b48"/>
+      <stop offset="100%" stop-color="#071220"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="100%" stop-color="#0082CA"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+  <circle cx="1000" cy="120" r="280" fill="#0082CA" opacity="0.12" filter="blur(80px)"/>
+  <circle cx="200" cy="550" r="220" fill="#00D2FF" opacity="0.08" filter="blur(60px)"/>
+
+  <!-- Top App Navigation Bar -->
+  <rect x="60" y="40" width="1080" height="64" rx="16" fill="#152438" stroke="#2A3F5B" stroke-width="1.5"/>
+  <circle cx="96" cy="72" r="8" fill="#EF4444" opacity="0.8"/>
+  <circle cx="120" cy="72" r="8" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="144" cy="72" r="8" fill="#10B981" opacity="0.8"/>
+  
+  <text x="200" y="78" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="20" letter-spacing="1">HIRENCH</text>
+  <text x="310" y="78" fill="#00D2FF" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14">HR SOLUTIONS &amp; EXECUTIVE SEARCH</text>
+  
+  <!-- Search Input on Header -->
+  <rect x="700" y="52" width="280" height="40" rx="10" fill="#0D1B2A" stroke="#253852" stroke-width="1"/>
+  <text x="730" y="77" fill="#64748B" font-family="system-ui, sans-serif" font-size="13">Search Tech Roles, VP, Directors...</text>
+  <rect x="1000" y="52" width="120" height="40" rx="10" fill="url(#cyanGrad)"/>
+  <text x="1025" y="77" fill="#0D2040" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Hire Talent</text>
+
+  <!-- Main Hero Headline on Mockup -->
+  <text x="80" y="160" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="800" font-size="34" letter-spacing="-0.5">Executive &amp; Tech Talent Acquisition Platform</text>
+  <text x="80" y="195" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="400" font-size="16">Connecting high-growth enterprises with vetted senior engineering &amp; leadership talent.</text>
+
+  <!-- 3 Metrics Badges -->
+  <g transform="translate(80, 230)">
+    <rect width="180" height="74" rx="12" fill="url(#cardGrad)" stroke="#22354E"/>
+    <text x="20" y="32" fill="#00D2FF" font-family="system-ui, sans-serif" font-weight="800" font-size="24">98.4%</text>
+    <text x="20" y="56" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Placement Retention</text>
+  </g>
+  <g transform="translate(280, 230)">
+    <rect width="180" height="74" rx="12" fill="url(#cardGrad)" stroke="#22354E"/>
+    <text x="20" y="32" fill="#10B981" font-family="system-ui, sans-serif" font-weight="800" font-size="24">&lt; 14 Days</text>
+    <text x="20" y="56" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Avg. Time-to-Hire</text>
+  </g>
+  <g transform="translate(480, 230)">
+    <rect width="180" height="74" rx="12" fill="url(#cardGrad)" stroke="#22354E"/>
+    <text x="20" y="32" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="800" font-size="24">500+</text>
+    <text x="20" y="56" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Vetted Candidates</text>
+  </g>
+
+  <!-- Candidate Talent Cards Grid in Preview -->
+  <g transform="translate(80, 330)">
+    <!-- Candidate 1 -->
+    <rect x="0" y="0" width="310" height="280" rx="16" fill="url(#cardGrad)" stroke="#243851" stroke-width="1.5"/>
+    <circle cx="45" cy="45" r="25" fill="#1E3A8A"/>
+    <text x="45" y="52" fill="#93C5FD" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">ST</text>
+    <text x="85" y="42" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="16">Senior Tech Lead</text>
+    <text x="85" y="60" fill="#00D2FF" font-family="system-ui, sans-serif" font-size="12">Cloud &amp; Microservices</text>
+    <rect x="25" y="85" width="260" height="1" fill="#20334A"/>
+    <text x="25" y="115" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Experience: 9+ Years</text>
+    <text x="25" y="140" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Location: Bengaluru / Remote</text>
+    <text x="25" y="165" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Skills: Next.js, Node.js, AWS, K8s</text>
+    <rect x="25" y="210" width="260" height="42" rx="10" fill="#0082CA" opacity="0.9"/>
+    <text x="155" y="236" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">View Verified Profile</text>
+
+    <!-- Candidate 2 -->
+    <rect x="330" y="0" width="310" height="280" rx="16" fill="url(#cardGrad)" stroke="#243851" stroke-width="1.5"/>
+    <circle cx="375" cy="45" r="25" fill="#065F46"/>
+    <text x="375" y="52" fill="#6EE7B7" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">EM</text>
+    <text x="415" y="42" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="16">Engineering Manager</text>
+    <text x="415" y="60" fill="#10B981" font-family="system-ui, sans-serif" font-size="12">SaaS Scale &amp; Org Building</text>
+    <rect x="355" y="85" width="260" height="1" fill="#20334A"/>
+    <text x="355" y="115" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Experience: 12+ Years</text>
+    <text x="355" y="140" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Leadership: 25+ Engineers</text>
+    <text x="355" y="165" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Expertise: Distributed Systems</text>
+    <rect x="355" y="210" width="260" height="42" rx="10" fill="#10B981" opacity="0.9"/>
+    <text x="485" y="236" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">Shortlist Profile</text>
+
+    <!-- Employer Benchmarking Panel -->
+    <rect x="660" y="0" width="380" height="280" rx="16" fill="#101F33" stroke="#00D2FF" stroke-width="1.5"/>
+    <text x="690" y="40" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="18">Salary Benchmark &amp; Talent SLA</text>
+    <text x="690" y="65" fill="#64748B" font-family="system-ui, sans-serif" font-size="12">Real-time industry hiring compensation curves</text>
+    
+    <!-- Mini Bar Chart -->
+    <rect x="690" y="100" width="45" height="100" rx="6" fill="#1E3A8A"/>
+    <rect x="745" y="70" width="45" height="130" rx="6" fill="#0082CA"/>
+    <rect x="800" y="50" width="45" height="150" rx="6" fill="#00D2FF"/>
+    <rect x="855" y="80" width="45" height="120" rx="6" fill="#10B981"/>
+    <rect x="910" y="110" width="45" height="90" rx="6" fill="#6366F1"/>
+    <rect x="965" y="60" width="45" height="140" rx="6" fill="#F59E0B"/>
+    
+    <text x="690" y="240" fill="#00D2FF" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Guaranteed SLA: 72-hr Candidate Shortlists</text>
+    <text x="690" y="260" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Backed by pre-assessed technical evaluations.</text>
+  </g>
+</svg>
