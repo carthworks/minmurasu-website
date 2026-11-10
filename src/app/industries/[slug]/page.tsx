@@ -14,7 +14,9 @@ import {
   TrendingUp,
   MessageSquare,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
+import BuildersReelPlayer from "@/components/ui/BuildersReelPlayer";
 
 interface IndustryPageProps {
   params: Promise<{ slug: string }>;
@@ -98,6 +100,37 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 space-y-12">
+              {/* Featured 4K Reel for Real Estate & Builders */}
+              {slug === "real-estate" && (
+                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0D2040] via-[#0A1931] to-[#071326] text-white shadow-xl border border-slate-800">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <div className="md:col-span-7 space-y-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#F58220] to-[#E1306C] text-white text-[11px] font-bold uppercase tracking-wider shadow-xs">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Featured 60s Instagram Reel</span>
+                      </div>
+                      <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
+                        Watch: How Builders &amp; Developers Win Qualified Buyer Enquiries Online
+                      </h2>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Watch this 60-second presenter breakdown explaining how Min Murasu builds high-speed project landing pages, runs hyper-targeted Meta &amp; Google ad campaigns, and automates instant WhatsApp brochure qualification for builders in Coimbatore, Chennai, and Bengaluru.
+                      </p>
+                      <div className="pt-2 flex flex-wrap gap-2 text-xs">
+                        <span className="px-3 py-1.5 rounded-lg bg-white/10 text-white border border-white/10">
+                          ✓ Sub-second project landing pages
+                        </span>
+                        <span className="px-3 py-1.5 rounded-lg bg-white/10 text-white border border-white/10">
+                          ✓ Automated WhatsApp brochure bots
+                        </span>
+                      </div>
+                    </div>
+                    <div className="md:col-span-5 flex justify-center">
+                      <BuildersReelPlayer />
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Typical Pain Points */}
               <div>
                 <h2 className="text-xl font-bold text-[#0D2040] mb-4 flex items-center gap-2">
