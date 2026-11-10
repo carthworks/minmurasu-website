@@ -335,3 +335,21 @@ export const servicesData: Record<string, ServiceDetail> = {
   },
 };
 
+// Aliases for URL variants & backward compatibility
+servicesData["search-engine-optimization"] = {
+  ...servicesData["seo-local-seo"],
+  slug: "search-engine-optimization",
+};
+servicesData["search-engine-optimisation"] = {
+  ...servicesData["seo-local-seo"],
+  slug: "search-engine-optimisation",
+};
+servicesData["web-development"] = {
+  ...servicesData["website-landing-pages"],
+  slug: "web-development",
+};
+servicesData["seo"] = {
+  ...servicesData["seo-local-seo"],
+  slug: "seo",
+};
+

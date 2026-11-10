@@ -52,7 +52,7 @@ interface SubMenuItem {
 
 const serviceMenuItems: SubMenuItem[] = [
   {
-    href: "/services/search-engine-optimisation",
+    href: "/services/seo-local-seo",
     title: "SEO & Local Search",
     shortDesc: "Rank #1 on Google for commercial buyer searches",
     icon: Search,
@@ -66,7 +66,7 @@ const serviceMenuItems: SubMenuItem[] = [
     iconColor: "text-[#F58220] bg-orange-50",
   },
   {
-    href: "/services/web-development",
+    href: "/services/website-landing-pages",
     title: "Next.js Web Engineering",
     shortDesc: "Sub-second, high-converting corporate web assets",
     icon: Laptop,
@@ -133,7 +133,7 @@ const industryMenuItems: SubMenuItem[] = [
     iconColor: "text-purple-600 bg-purple-50",
   },
   {
-    href: "/industries/retail-local-services",
+    href: "/industries/retail-services",
     title: "Retail & Local Services",
     shortDesc: "Google Maps dominance & direct footfall generation",
     icon: Store,

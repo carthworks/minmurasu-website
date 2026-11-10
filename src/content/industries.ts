@@ -201,3 +201,9 @@ export const industriesData: Record<string, IndustryDetail> = {
   },
 };
 
+// Aliases for URL variants & backward compatibility
+industriesData["retail-local-services"] = {
+  ...industriesData["retail-services"],
+  slug: "retail-local-services",
+};
+

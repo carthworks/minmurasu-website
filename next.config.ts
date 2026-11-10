@@ -7,6 +7,40 @@ const nextConfig: NextConfig = {
   experimental: {
     inlineCss: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/industries/retail-local-services",
+        destination: "/industries/retail-services",
+        permanent: true,
+      },
+      {
+        source: "/services/search-engine-optimization",
+        destination: "/services/seo-local-seo",
+        permanent: true,
+      },
+      {
+        source: "/services/search-engine-optimisation",
+        destination: "/services/seo-local-seo",
+        permanent: true,
+      },
+      {
+        source: "/services/web-development",
+        destination: "/services/website-landing-pages",
+        permanent: true,
+      },
+      {
+        source: "/web-development",
+        destination: "/services/website-landing-pages",
+        permanent: true,
+      },
+      {
+        source: "/services/seo",
+        destination: "/services/seo-local-seo",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
