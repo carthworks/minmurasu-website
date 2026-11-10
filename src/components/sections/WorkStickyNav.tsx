@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Container from "@/components/ui/Container";
-import { Wrench, Globe, Compass } from "lucide-react";
+import { Wrench, Globe, Compass, ExternalLink } from "lucide-react";
 
 interface WorkNavSection {
   id: string;
@@ -162,6 +162,18 @@ export default function WorkStickyNav() {
                   </a>
                 );
               })}
+
+              {/* Link to Engineering Lab (clean text, no bare URL) */}
+              <a
+                href="https://carthworks.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-bold text-[#0082CA] hover:text-[#0D2040] transition-colors ml-2 shrink-0 px-2.5 py-1 rounded-md hover:bg-[#F0F8FF]"
+                title="Visit In-House Engineering Lab"
+              >
+                <span>Engineering Lab</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
           </div>
         </Container>

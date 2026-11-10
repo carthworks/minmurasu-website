@@ -1,33 +1,32 @@
-import React from "react";
-import type { Metadata } from "next";
-import Image from "next/image";
+import WorkStickyNav from "@/components/sections/WorkStickyNav";
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
-import WorkStickyNav from "@/components/sections/WorkStickyNav";
 import {
-  Wrench,
-  ShieldAlert,
-  Stethoscope,
-  Building2,
-  Factory,
-  Sparkles,
-  ExternalLink,
-  CheckCircle2,
-  Palette,
-  Layers,
-  Video,
-  Crop,
-  Globe,
-  ShoppingBag,
-  TrendingUp,
-  Terminal,
-  Compass,
-  Zap,
   Briefcase,
+  Building2,
+  CheckCircle2,
+  Compass,
   Cpu,
+  Crop,
+  ExternalLink,
+  Factory,
+  Globe,
+  Layers,
+  Palette,
+  ShieldAlert,
+  ShoppingBag,
+  Sparkles,
+  Stethoscope,
   Store,
+  Terminal,
+  TrendingUp,
+  Video,
+  Wrench,
+  Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Work, Web Products & Solution Blueprints",
@@ -43,6 +42,7 @@ const carthworksProducts = [
     title: "ExtractTheme Studio",
     tagline: "Automated CSS, Tailwind Token & WCAG Contrast Extractor",
     category: "Web Design Systems & Frontend",
+    liveUrl: "https://carthworks.vercel.app/",
     image: "/images/work/extract-theme-studio.jpg",
     icon: Palette,
     badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
@@ -62,6 +62,7 @@ const carthworksProducts = [
     title: "TrustLens",
     tagline: "Real-Time Website Trust & Conversion Risk Inspector",
     category: "Web Trust & CRO Analytics",
+    liveUrl: "https://carthworks.vercel.app/",
     image: "/images/work/trust-lens.jpg",
     icon: ShieldAlert,
     badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
@@ -81,6 +82,7 @@ const carthworksProducts = [
     title: "Gantto Project Timeline",
     tagline: "Interactive Campaign Roadmap & Web Launch Manager",
     category: "Campaign Sprints & Web Operations",
+    liveUrl: "https://carthworks.vercel.app/",
     image: "/images/work/gantto.jpg",
     icon: Layers,
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -100,6 +102,7 @@ const carthworksProducts = [
     title: "TelePrompt Pro",
     tagline: "Cadence-Coached Studio Teleprompter for Video Marketing",
     category: "Video Marketing & Content Production",
+    liveUrl: "https://carthworks.vercel.app/",
     image: "/images/work/teleprompt-pro.jpg",
     icon: Video,
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
@@ -119,6 +122,7 @@ const carthworksProducts = [
     title: "Screenshotify",
     tagline: "Offline-First Visual Asset & Social Content Studio",
     category: "Marketing Collateral & Visual QA",
+    liveUrl: "https://carthworks.vercel.app/",
     image: "/images/work/screenshotify.jpg",
     icon: Crop,
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
@@ -222,7 +226,7 @@ const clientPlatforms = [
   },
   {
     title: "Royal Albatross Global Export Portal",
-    liveUrl: "https://structura-constructions.vercel.app/",
+    liveUrl: "https://royalalbatrossexports.in/",
     category: "B2B International Trade & Export Portal",
     image: "/images/work/royal-albatross.jpg",
     icon: Globe,
@@ -238,7 +242,7 @@ const clientPlatforms = [
   },
   {
     title: "Fit Bite D2C Fresh Food E-Commerce",
-    liveUrl: "https://www.lakshmistores.com/",
+    liveUrl: "https://fit-bite-cart.vercel.app/",
     category: "D2C E-Commerce & Wellness Brand",
     image: "/images/work/fit-bite.jpg",
     icon: Store,
@@ -330,14 +334,25 @@ export default function WorkPage() {
                 Founded by Karthikeyan T (Senior AI Engineer &amp; SaaS Architect), our engineering lab develops internal software to eliminate bottlenecks in web design, conversion trust, video pacing, and campaign timelines.
               </p>
             </div>
-            <Button
-              href="/contact"
-              variant="teal"
-              size="sm"
-              className="shrink-0 font-bold"
-            >
-              Request Live Tool Walkthrough
-            </Button>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href="https://carthworks.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0082CA] hover:bg-[#0070b0] text-white text-xs font-bold transition-all shadow-sm shrink-0"
+              >
+                <span>Visit Engineering Lab</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+              <Button
+                href="/contact"
+                variant="outline"
+                size="sm"
+                className="text-white border-white/20 hover:bg-white/10"
+              >
+                Request Walkthrough
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -348,17 +363,28 @@ export default function WorkPage() {
         {/* SECTION 1: In-House Web & Marketing Products                 */}
         {/* ------------------------------------------------------------ */}
         <section id="carthworks-products" className="scroll-mt-44 md:scroll-mt-48 mb-20">
-          <div className="mb-8 pb-4 border-b border-slate-200">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-1">
-              <Wrench className="w-4 h-4" />
-              <span>Proprietary Software Suite</span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
+            <div>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-1">
+                <Wrench className="w-4 h-4" />
+                <span>Proprietary Software Suite</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0D2040]">
+                Web &amp; Digital Marketing Products
+              </h2>
+              <p className="text-xs sm:text-sm text-[#475569] mt-1">
+                In-house tools developed to optimize website performance, conversion trust, and marketing assets.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0D2040]">
-              Web &amp; Digital Marketing Products
-            </h2>
-            <p className="text-xs sm:text-sm text-[#475569] mt-1">
-              In-house tools developed to optimize website performance, conversion trust, and marketing assets.
-            </p>
+            <a
+              href="https://carthworks.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0082CA] hover:underline shrink-0"
+            >
+              <span>Explore Engineering Lab</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -370,24 +396,29 @@ export default function WorkPage() {
                   className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-lg transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    {/* Visual UI Preview Image */}
-                    <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden mb-5 border border-slate-200/80 bg-slate-900 shadow-inner">
+                    {/* Visual UI Preview Image - Clickable to Live Tool */}
+                    <a
+                      href={product.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative block w-full h-52 sm:h-64 rounded-2xl overflow-hidden mb-5 border border-slate-200/80 bg-slate-900 shadow-inner group/img cursor-pointer"
+                      title={`Launch ${product.title} live`}
+                    >
                       <Image
                         src={product.image}
                         alt={`${product.title} Preview Mockup`}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-                      <div className="absolute top-3 right-3">
-                        <span className="text-[10px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-md bg-black/60 text-white backdrop-blur-md border border-white/20">
-                          Proprietary Tool
-                        </span>
+                      <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/60 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur-md border border-white/20 group-hover/img:bg-[#0082CA] transition-colors">
+                        <span>View Live</span>
+                        <ExternalLink className="w-3 h-3" />
                       </div>
-                    </div>
+                    </a>
 
-                    {/* Header: Icon, Category & Title */}
+                    {/* Header: Icon, Category & Title with external link */}
                     <div className="flex items-start justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded-2xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center shrink-0">
@@ -404,6 +435,16 @@ export default function WorkPage() {
                           </h3>
                         </div>
                       </div>
+
+                      <a
+                        href={product.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-lg bg-slate-50 hover:bg-[#F0F8FF] border border-slate-200 hover:border-[#BAE6FD] text-slate-500 hover:text-[#0082CA] flex items-center justify-center transition-colors shrink-0"
+                        title="View Live Tool"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
                     </div>
 
                     <p className="text-xs sm:text-sm font-semibold text-[#0082CA] mb-2">
@@ -455,12 +496,21 @@ export default function WorkPage() {
                     <div className="flex items-center gap-2">
                       <Button
                         href="/contact"
-                        variant="teal"
+                        variant="secondary"
                         size="sm"
                         className="text-xs py-1.5 px-3"
                       >
                         Request Demo
                       </Button>
+                      <a
+                        href={product.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0082CA] hover:bg-[#0070b0] text-white text-xs font-bold transition-all shadow-xs shrink-0"
+                      >
+                        <span>View Live</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -678,9 +728,15 @@ export default function WorkPage() {
             <Button href="/contact" variant="teal" size="md">
               Request an Interactive Walkthrough
             </Button>
-            <Button href="/free-audit" variant="secondary" size="md">
-              Request Free Website Audit
-            </Button>
+            <a
+              href="https://carthworks.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-white/20 text-white text-xs font-bold hover:bg-white/10 transition-colors"
+            >
+              <span>Explore Engineering Lab</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </Container>
