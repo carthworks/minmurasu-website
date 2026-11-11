@@ -2,6 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { industriesData } from "@/content/industries";
@@ -15,6 +16,8 @@ import {
   MessageSquare,
   ShieldCheck,
   Sparkles,
+  ArrowRight,
+  PhoneCall,
 } from "lucide-react";
 import BuildersReelPlayer from "@/components/ui/BuildersReelPlayer";
 
@@ -48,6 +51,10 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
     notFound();
   }
 
+  const heroImageSrc = slug.includes("retail")
+    ? "/images/industries/retail-services.jpg"
+    : `/images/industries/${slug}.jpg`;
+
   return (
     <div>
       {/* Breadcrumbs */}
@@ -63,33 +70,98 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
         </Container>
       </div>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-[#F0F8FF] to-white pt-12 pb-16 border-b border-slate-100">
+      {/* High-Impact 2-Column Hero Section */}
+      <section className="bg-gradient-to-b from-[#F0F8FF] via-white to-white pt-12 pb-16 sm:pt-16 sm:pb-20 border-b border-slate-100">
         <Container>
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0082CA] bg-white border border-[#BAE6FD] px-3 py-1 rounded-full mb-3 inline-block">
-              Sector Playbook
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-3 leading-tight">
-              {ind.title}
-            </h1>
-            <p className="text-lg text-[#0082CA] font-semibold mb-4">
-              {ind.headline}
-            </p>
-            <p className="text-base text-[#475569] leading-relaxed mb-8">
-              {ind.summary}
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button href="/contact" variant="teal" size="md">
-                Schedule a Sector Strategy Call
-              </Button>
-              <ProtectedWhatsApp
-                message={siteConfig.whatsapp.messages.industry(ind.title)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
-              >
-                <MessageSquare className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp Query</span>
-              </ProtectedWhatsApp>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column: Copy & Proper CTAs */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#BAE6FD] text-xs font-bold text-[#0082CA] shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#0082CA] animate-pulse" />
+                <span>Sector Growth Architecture</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D2040] tracking-tight mb-2 leading-tight">
+                {ind.title}
+              </h1>
+
+              <p className="text-lg sm:text-xl text-[#0082CA] font-bold">
+                {ind.headline}
+              </p>
+
+              <p className="text-base text-[#475569] leading-relaxed">
+                {ind.summary}
+              </p>
+
+              {/* Trust highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs font-semibold text-slate-700">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0" />
+                  <span>Custom High-Speed Landing Page</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0" />
+                  <span>Instant Automated WhatsApp Triage</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0" />
+                  <span>Full CRM &amp; Webhook Pipeline</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#0082CA] shrink-0" />
+                  <span>Zero Fabricated Proof Policy</span>
+                </div>
+              </div>
+
+              {/* Proper Action CTAs */}
+              <div className="flex flex-wrap items-center gap-3 pt-3">
+                <Button href="/contact" variant="teal" size="md">
+                  <span>Schedule Sector Strategy Call</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </Button>
+
+                <ProtectedWhatsApp
+                  message={siteConfig.whatsapp.messages.industry(ind.title)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 text-xs font-bold hover:bg-emerald-100 transition-colors shadow-2xs"
+                >
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
+                  <span>WhatsApp Query</span>
+                </ProtectedWhatsApp>
+
+                <Button href="/free-audit" variant="secondary" size="md">
+                  <span>Request Sector Audit</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Mockup Image */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div className="absolute -inset-2 bg-gradient-to-tr from-[#0082CA]/20 via-[#F58220]/15 to-transparent rounded-3xl blur-2xl" />
+                <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xl group">
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src={heroImageSrc}
+                      alt={`${ind.title} Digital System Hero Mockup`}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                  </div>
+
+                  <div className="p-4 bg-white/95 backdrop-blur-md border-t border-slate-100 flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="font-bold text-[#0D2040] truncate max-w-[200px]">{ind.title}</span>
+                    </div>
+                    <span className="font-mono text-[#0082CA] font-bold text-[11px] bg-[#F0F8FF] px-2.5 py-1 rounded-md border border-[#BAE6FD] shrink-0">
+                      Sector Engine
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Container>
@@ -229,6 +301,44 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
                   Book a Consultation
                 </Button>
               </div>
+
+              {/* Direct Phone / Call Card */}
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0D2040] mb-1">
+                  <PhoneCall className="w-4 h-4 text-[#0082CA]" />
+                  <span>Direct Founder Access</span>
+                </div>
+                <p className="text-xs text-slate-500 mb-3">
+                  Discuss your commercial goals directly with Karthikeyan T.
+                </p>
+                <a
+                  href={`tel:${siteConfig.phones.primaryE164}`}
+                  className="text-xs font-bold text-[#0082CA] hover:underline"
+                >
+                  {siteConfig.phones.primaryDisplay}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Full-Width CTA Banner */}
+          <div className="mt-16 text-center bg-[#0D2040] text-white p-8 sm:p-12 rounded-3xl">
+            <div className="w-12 h-12 rounded-xl bg-[#0082CA] flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+              Ready to Deploy This Growth Architecture for Your {ind.title}?
+            </h2>
+            <p className="text-sm text-slate-300 max-w-xl mx-auto mb-6 leading-relaxed">
+              We build specialized high-converting landing pages, targeted Google &amp; Meta ad funnels, and automated WhatsApp triage bots tailored specifically to {ind.title}.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Button href="/contact" variant="teal" size="md">
+                Schedule a Consultation
+              </Button>
+              <Button href="/free-audit" variant="secondary" size="md">
+                Request Free Sector Audit
+              </Button>
             </div>
           </div>
         </Container>
@@ -236,4 +346,3 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
     </div>
   );
 }
-

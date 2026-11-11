@@ -16,6 +16,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "manufacturing-industrial": Factory,
   "education-training": GraduationCap,
   "retail-services": Store,
+  "retail-local-services": Store,
 };
 
 const shortTitles: Record<string, string> = {
@@ -23,7 +24,8 @@ const shortTitles: Record<string, string> = {
   "real-estate": "Real Estate",
   "manufacturing-industrial": "Manufacturing",
   "education-training": "Education",
-  "retail-services": "Retail & D2C",
+  "retail-services": "Retail & Local Services",
+  "retail-local-services": "Retail & Local Services",
 };
 
 interface IndustryItem {
