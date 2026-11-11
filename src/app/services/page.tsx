@@ -1,5 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -33,8 +35,20 @@ const iconMap = {
   "ai-business-automation": Cpu,
 };
 
+const canonicalOrder = [
+  "digital-strategy",
+  "seo-local-seo",
+  "generative-engine-optimisation",
+  "social-media-content",
+  "google-meta-ads",
+  "website-landing-pages",
+  "ai-business-automation",
+];
+
 export default function ServicesPage() {
-  const serviceList = Object.values(servicesData);
+  const serviceList = canonicalOrder
+    .map((slug) => servicesData[slug])
+    .filter(Boolean);
 
   return (
     <div className="py-16 sm:py-24">
@@ -55,23 +69,64 @@ export default function ServicesPage() {
               <div
                 key={service.slug}
                 id={service.slug}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-44 md:scroll-mt-48"
+                className="relative overflow-hidden group bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-44 md:scroll-mt-48"
               >
-                <div className="lg:col-span-4 space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center">
-                    <Icon className="w-6 h-6" />
+                {/* Ambient Card Background Graphic Layer */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
+                  <Image
+                    src={`/images/services/${service.slug}.jpg`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 1200px"
+                    className="object-cover object-right-top opacity-15 sm:opacity-20 group-hover:opacity-30 transition-all duration-700 ease-out scale-100 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/75" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/80" />
+                </div>
+
+                {/* Left Column: Visual Architecture Banner & Identity */}
+                <div className="relative z-10 lg:col-span-5 space-y-4">
+                  {/* Dedicated Service Architecture Visual Preview */}
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="relative block w-full h-44 sm:h-52 rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-sm group/img cursor-pointer"
+                    title={`Open ${service.title} Details`}
+                  >
+                    <Image
+                      src={`/images/services/${service.slug}.jpg`}
+                      alt={`${service.title} Architecture Preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      className="object-cover object-center transition-transform duration-500 group-hover/img:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80" />
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-[#0D2040]/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur-md border border-white/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0082CA] animate-pulse" />
+                      <span>Service 0{index + 1} Architecture</span>
+                    </div>
+                    <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 bg-black/65 text-white text-[10px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md backdrop-blur-md border border-white/20 group-hover/img:bg-[#0082CA] transition-colors">
+                      <span>View Capability</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </div>
+                  </Link>
+
+                  <div className="flex items-center gap-3 pt-1">
+                    <div className="w-11 h-11 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center shrink-0 shadow-2xs">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                        Service 0{index + 1}
+                      </span>
+                      <h2 className="text-xl sm:text-2xl font-bold text-[#0D2040] leading-snug">
+                        {service.title}
+                      </h2>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs font-mono font-bold text-slate-400">
-                      Service 0{index + 1}
-                    </span>
-                    <h2 className="text-2xl font-bold text-[#0D2040] mt-1">
-                      {service.title}
-                    </h2>
-                    <p className="text-xs font-medium text-[#0082CA] mt-1">
-                      {service.subtitle}
-                    </p>
-                  </div>
+
+                  <p className="text-xs font-semibold text-[#0082CA]">
+                    {service.subtitle}
+                  </p>
                   <p className="text-sm text-[#475569] leading-relaxed">
                     {service.heroDescription}
                   </p>
@@ -88,7 +143,8 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-8 bg-slate-50/70 rounded-2xl p-6 sm:p-7 border border-slate-200/80 space-y-6">
+                {/* Right Column: Inclusions, Problem & Fit */}
+                <div className="relative z-10 lg:col-span-7 bg-white/85 backdrop-blur-xs rounded-2xl p-6 sm:p-7 border border-slate-200/90 space-y-6 shadow-xs">
                   <div>
                     <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
                       Core Deliverables:
