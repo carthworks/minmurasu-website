@@ -17,9 +17,9 @@ export const servicesData: Record<string, ServiceDetail> = {
   "digital-strategy": {
     slug: "digital-strategy",
     title: "Digital Strategy & Growth Consulting",
-    subtitle: "Clarity on where to invest, what to communicate, and how to scale.",
+    subtitle: "Clarity on lead generation services, conversion rate optimization, where to invest, and how to scale.",
     heroDescription:
-      "A structured roadmap connecting your commercial targets to channel strategy, customer journey design, and conversion mechanics.",
+      "A structured roadmap connecting your commercial targets to inbound lead generation services, conversion rate optimization (CRO), customer journey design, and conversion mechanics.",
     problem:
       "Companies often jump straight into spending on ads or random social posts without defining their offer positioning, customer journey, or target unit economics.",
     whoItsFor: [
@@ -31,7 +31,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Competitor and market landscape analysis",
       "Customer persona and high-intent journey mapping",
       "Channel prioritization matrix (SEO vs Ads vs Social vs Automation)",
-      "90-day actionable execution roadmap",
+      "Inbound lead generation framework & conversion rate optimization (CRO) roadmap",
       "Budget sizing and projected acquisition economics",
     ],
     process: [
@@ -202,10 +202,10 @@ export const servicesData: Record<string, ServiceDetail> = {
 
   "google-meta-ads": {
     slug: "google-meta-ads",
-    title: "Google Ads & Meta Performance Advertising",
-    subtitle: "High-intent paid acquisition with complete media budget transparency.",
+    title: "Google Ads, Meta Ads & B2B Lead Generation Services",
+    subtitle: "High-intent lead generation services and paid acquisition with complete media budget transparency.",
     heroDescription:
-      "Precision search campaigns, remarketing funnels, and targeted paid social designed to capture buyers actively searching for solutions.",
+      "Precision search campaigns, remarketing funnels, and targeted B2B lead generation services designed to capture buyers actively searching for solutions.",
     problem:
       "Unmanaged ad campaigns waste budget on negative keywords, spam clicks, and broad match traps without tracking down to actual closed revenue.",
     whoItsFor: [
@@ -215,6 +215,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     deliverables: [
       "Complete account architecture with tight ad-group themes",
+      "High-intent B2B lead generation funnels with automated CRM synchronization",
       "High-intent keyword selection and negative keyword library",
       "Ad copy variations with continuous A/B testing",
       "Server-side conversion tracking setup (Meta CAPI & GA4)",
@@ -246,10 +247,10 @@ export const servicesData: Record<string, ServiceDetail> = {
 
   "website-landing-pages": {
     slug: "website-landing-pages",
-    title: "Website & High-Converting Landing Page Development",
-    subtitle: "Fast, responsive web engineering designed for conversion and SEO.",
+    title: "Websites, Landing Pages & Conversion Rate Optimization (CRO)",
+    subtitle: "Fast, responsive web engineering and conversion rate optimization (CRO) built to maximize enquiry yield.",
     heroDescription:
-      "Modern Next.js and Tailwind web experiences engineered for mobile speed, accessible UX, friction-free forms, and seamless CRM integrations.",
+      "Modern Next.js and Tailwind web experiences engineered for mobile speed, conversion rate optimization (CRO), accessible UX, friction-free forms, and seamless CRM integrations.",
     problem:
       "Slow, bloated template websites confuse visitors, fail Core Web Vitals, and leak potential enquiries due to cumbersome forms.",
     whoItsFor: [
@@ -259,6 +260,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     deliverables: [
       "Custom responsive design (360px mobile to 4K desktop)",
+      "Conversion rate optimization (CRO) audits, multi-variant testing, and funnel tuning",
       "High-performance Next.js and TypeScript implementation",
       "Accessible form design with client and server-side validation",
       "Automated spam filtering (honeypots & rate limiting)",

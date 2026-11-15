@@ -33,11 +33,73 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const service = servicesData[slug];
   if (!service) return { title: "Service Not Found" };
 
+  const serviceKeywordsMap: Record<string, string[]> = {
+    "google-meta-ads": [
+      "lead generation services",
+      "B2B lead generation services",
+      "lead generation agency",
+      "conversion rate optimization",
+      "Google Ads management",
+      "Meta Ads agency",
+    ],
+    "website-landing-pages": [
+      "conversion rate optimization",
+      "conversion rate optimization services",
+      "CRO services",
+      "lead generation services",
+      "high-converting landing pages",
+      "Next.js web development",
+    ],
+    "digital-strategy": [
+      "lead generation services",
+      "conversion rate optimization",
+      "digital growth consulting",
+      "B2B marketing strategy roadmap",
+    ],
+    "seo-local-seo": [
+      "lead generation services",
+      "SEO services Coimbatore",
+      "technical SEO services",
+      "organic lead generation",
+    ],
+    "generative-engine-optimisation": [
+      "Generative Engine Optimisation",
+      "GEO services",
+      "AI search visibility",
+      "ChatGPT search optimization",
+    ],
+    "social-media-content": [
+      "social media marketing agency",
+      "B2B content marketing",
+      "video production studio",
+      "commercial brand publishing",
+    ],
+    "ai-business-automation": [
+      "AI business automation",
+      "WhatsApp business automation",
+      "lead qualification automation",
+      "CRM workflow automation",
+    ],
+  };
+
+  const keywords = [
+    ...(serviceKeywordsMap[slug] || []),
+    "lead generation services",
+    "conversion rate optimization",
+    "MIN MURASU",
+  ];
+
   return {
     title: service.title,
     description: service.heroDescription,
+    keywords,
     alternates: {
       canonical: `${siteConfig.url}/services/${slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | MIN MURASU`,
+      description: service.heroDescription,
+      url: `${siteConfig.url}/services/${slug}`,
     },
   };
 }

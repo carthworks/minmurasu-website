@@ -20,9 +20,37 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Growth & Automation Services",
+  title: "B2B Growth, Lead Generation Services & Conversion Rate Optimization (CRO)",
   description:
-    "Explore MIN MURASU's specialized B2B services: Digital Strategy, Technical SEO, Generative Engine Optimisation (GEO), Paid Ads, Web Development, and AI Automation.",
+    "Explore MIN MURASU's B2B growth systems: Inbound lead generation services, conversion rate optimization (CRO), technical SEO, Generative Engine Optimisation (GEO), Google and Meta ads, and AI automation.",
+  keywords: [
+    "lead generation services",
+    "conversion rate optimization",
+    "conversion rate optimization services",
+    "B2B lead generation services",
+    "CRO services",
+    "lead generation agency",
+    "conversion rate optimization agency",
+    "digital marketing services Coimbatore",
+    "technical SEO services",
+    "Generative Engine Optimisation",
+    "GEO services",
+    "Google Ads lead generation",
+    "Meta Ads lead generation",
+    "high-converting landing pages",
+    "AI business automation",
+    "sales pipeline acceleration",
+  ],
+  alternates: {
+    canonical: "https://www.minmurasu.digital/services",
+  },
+  openGraph: {
+    title: "Lead Generation Services & Conversion Rate Optimization | MIN MURASU",
+    description:
+      "Engineered digital growth systems combining B2B lead generation services, conversion rate optimization (CRO), high-intent SEO, and AI workflow automation.",
+    url: "https://www.minmurasu.digital/services",
+    type: "website",
+  },
 };
 
 const iconMap = {
@@ -54,9 +82,9 @@ export default function ServicesPage() {
     <div className="py-16 sm:py-24">
       <Container>
         <SectionHeading
-          eyebrow="Integrated Service Suite"
-          title="Digital Growth, Powered by Intelligent Technology"
-          description="We combine marketing strategy, modern web engineering, and practical AI automation into synchronized systems that deliver measurable business growth."
+          eyebrow="Integrated Service Suite · Lead Generation & CRO"
+          title="Digital Growth, Lead Generation & Conversion Rate Optimization"
+          description="We combine targeted B2B lead generation services, conversion rate optimization (CRO), modern web engineering, and practical AI automation into synchronized systems that deliver measurable business pipeline."
         />
 
         {/* Sleek Fixed Services Jump Bar */}
