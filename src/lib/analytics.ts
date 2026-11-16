@@ -79,34 +79,69 @@ export function trackServiceView(serviceSlug: string) {
 }
 
 /**
- * UTM Parameter Extraction
- * Stores initial attribution parameters into sessionStorage to attribute conversion
+ * Marketing attribution (UTM tags, ad click IDs, landing page, external referrer).
+ * Captured once per browser session on first page view and attached to every lead.
+ * Stored in sessionStorage only and never contains PII.
  */
-export function captureUtmParameters(): Record<string, string> {
+const ATTRIBUTION_KEY = "mm_attribution";
+const ATTRIBUTION_PARAMS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "gclid",
+  "gbraid",
+  "wbraid",
+  "fbclid",
+] as const;
+
+function readStoredAttribution(): Record<string, string> {
+  try {
+    return JSON.parse(sessionStorage.getItem(ATTRIBUTION_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+/** Call on every client navigation; only the first touch of the session is kept,
+ *  except that a later visit carrying new campaign params replaces it. */
+export function captureAttribution(): Record<string, string> {
   if (typeof window === "undefined") return {};
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
-  const captured: Record<string, string> = {};
+  const stored = readStoredAttribution();
+  const params = new URLSearchParams(window.location.search);
+  const fresh: Record<string, string> = {};
+  for (const key of ATTRIBUTION_PARAMS) {
+    const val = params.get(key);
+    if (val) fresh[key] = val.slice(0, 300);
+  }
 
-  utmKeys.forEach((key) => {
-    const val = urlParams.get(key);
-    if (val) {
-      captured[key] = val;
-      try {
-        sessionStorage.setItem(key, val);
-      } catch {
-        // Ignore session storage errors
-      }
-    } else {
-      try {
-        const stored = sessionStorage.getItem(key);
-        if (stored) captured[key] = stored;
-      } catch {
-        // Ignore session storage errors
-      }
-    }
-  });
+  if (Object.keys(stored).length > 0 && Object.keys(fresh).length === 0) return stored;
 
-  return captured;
+  const next: Record<string, string> = {
+    ...fresh,
+    landing_page: (window.location.pathname + window.location.search).slice(0, 300),
+    first_seen_at: new Date().toISOString(),
+  };
+  try {
+    const ref = document.referrer ? new URL(document.referrer) : null;
+    if (ref && ref.host !== window.location.host) next.referrer = ref.origin + ref.pathname;
+  } catch {
+    // Ignore malformed referrers
+  }
+  try {
+    sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(next));
+  } catch {
+    // Ignore session storage errors
+  }
+  return next;
+}
+
+/** Attribution to send with a lead: stored first touch plus the page the form was on. */
+export function getLeadAttribution(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const stored = readStoredAttribution();
+  const base = Object.keys(stored).length ? stored : captureAttribution();
+  return { ...base, submitted_from: window.location.pathname.slice(0, 300) };
 }

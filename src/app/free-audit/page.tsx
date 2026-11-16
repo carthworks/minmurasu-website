@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/ProtectedContact";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackLeadSubmission, trackEvent } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads/client";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
 import {
@@ -108,17 +109,7 @@ export default function FreeAuditPage() {
         } | Focus Area: ${data.service} | Details: ${data.message}`,
       };
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Submission failed. Please try again.");
-      }
+      await submitLead("free-audit", payload, { audit_focus: data.service });
 
       feedback.playPop();
       feedback.triggerHaptic([15, 30, 15]);

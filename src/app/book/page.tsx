@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/ProtectedContact";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackLeadSubmission, trackConsultationClick } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads/client";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
 import {
@@ -102,17 +103,11 @@ export default function BookConsultationPage() {
         message: `[30-MIN CONSULTATION BOOKING] Preferred Day: ${selectedDayOffset} | Time Slot: ${selectedSlot} | Format: ${selectedMode} | Notes: ${data.message}`,
       };
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      await submitLead("book", payload, {
+        preferred_day: String(selectedDayOffset),
+        preferred_slot: String(selectedSlot),
+        meeting_mode: String(selectedMode),
       });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Booking request failed. Please try again.");
-      }
 
       feedback.playPop();
       feedback.triggerHaptic([15, 30, 15]);

@@ -11,10 +11,13 @@
   "dependencies": {
     "@hookform/resolvers": "^7.0.3",
     "@next/third-parties": "^16.4.5",
+    "@upstash/ratelimit": "^2.2.1",
+    "@upstash/redis": "^1.41.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.70.0",
     "next": "16.4.5",
     "nodemailer": "^10.3.1",
+    "postgres": "^4.1.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-hook-form": "^7.91.0",
