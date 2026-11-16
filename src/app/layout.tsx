@@ -1,3 +1,4 @@
+import AttributionCapture from "@/components/layout/AttributionCapture";
 import CookieConsent from "@/components/layout/CookieConsent";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -8,6 +9,7 @@ import DrumPageLoader from "@/components/ui/DrumPageLoader";
 import { siteConfig } from "@/lib/site-config";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -97,6 +99,9 @@ export default function RootLayout({
         <Footer />
         <MobileActionBar />
         <WhatsAppFloat />
+        <Suspense fallback={null}>
+          <AttributionCapture />
+        </Suspense>
         <CookieConsent gaId={gaId} gtmId={gtmId || "GTM-NKVF5CCQ"} />
         <GoogleTagManager gtmId={gtmId || "GTM-NKVF5CCQ"} />
         <GoogleAnalytics gaId="G-8WV1Z3BFDY" />

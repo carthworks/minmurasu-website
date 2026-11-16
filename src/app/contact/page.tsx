@@ -16,6 +16,7 @@ import {
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { siteConfig } from "@/lib/site-config";
 import { trackLeadSubmission } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads/client";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
 import {
@@ -60,17 +61,7 @@ export default function ContactPage() {
   const onSubmit = async (data: ContactFormData) => {
     setServerStatus({ type: null, message: null });
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Submission failed. Please try again.");
-      }
+      const result = await submitLead("contact", data);
 
       const successMsg =
         result.message ||

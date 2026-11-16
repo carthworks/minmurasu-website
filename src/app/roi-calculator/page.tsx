@@ -10,6 +10,7 @@ import Button from "@/components/ui/Button";
 import { getWhatsAppUrl } from "@/lib/site-config";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { trackEvent, trackLeadSubmission } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads/client";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
 import { feedback } from "@/lib/vibe-feedback";
 import {
@@ -147,17 +148,19 @@ export default function RoiCalculatorPage() {
         message: `${data.message}${calculationContext}`,
       };
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      await submitLead("roi-calculator", payload, {
+        roi_visitors_per_month: visitors,
+        roi_conversion_pct: currentConvRate,
+        roi_close_pct: closeRate,
+        roi_deal_value_inr: dealValue,
+        roi_response_time: responseTime,
+        roi_annual_gain_low_inr: Math.round(roi.annualGain.low),
+        roi_annual_gain_high_inr: Math.round(roi.annualGain.high),
+        roi_extra_leads_low: Math.round(roi.extraLeads.low),
+        roi_extra_leads_high: Math.round(roi.extraLeads.high),
+        roi_bottleneck: recommendation.bottleneck.slice(0, 500),
+        roi_recommended_focus: recommendation.headline.slice(0, 500),
       });
-
-      const result = await res.json();
-
-      if (!res.ok) {
-        throw new Error(result.error || "Unable to send your request. Please try again.");
-      }
 
       trackLeadSubmission("ROI Calculator Lead");
       trackEvent("audit_request", {
