@@ -187,18 +187,21 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#0D2040] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
-                    W
+                <div className="flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#0D2040] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                    HQ
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[11px] uppercase font-semibold tracking-wider">
-                      Web &amp; Headquarters
+                      Headquarters Address
                     </span>
                     <span className="font-bold text-[#0D2040] block">
-                      www.minmurasu.digital
+                      Gandhipuram, Coimbatore
                     </span>
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-slate-500 block">
+                      Tamil Nadu 641012, India
+                    </span>
+                    <span className="text-[11px] text-slate-400 block mt-0.5">
                       {siteConfig.locations.coverageLine}
                     </span>
                   </div>

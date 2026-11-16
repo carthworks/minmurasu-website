@@ -36,14 +36,33 @@ export default function Footer() {
               businesses attract, convert, and retain valuable clients.
             </p>
 
-            <div className="pt-2 flex flex-col gap-2 text-xs text-slate-400">
+            <div
+              className="pt-2 flex flex-col gap-2 text-xs text-slate-400"
+              itemScope
+              itemType="https://schema.org/LocalBusiness"
+            >
+              <meta itemProp="name" content={siteConfig.name} />
+              <meta itemProp="url" content={siteConfig.url} />
+              <meta itemProp="telephone" content={siteConfig.phones.primaryE164} />
+              <meta itemProp="email" content={siteConfig.emails.primary} />
+              <meta itemProp="priceRange" content="₹₹" />
               <div className="text-slate-300 font-medium">
                 <strong>{siteConfig.founderDetails.name}</strong> &bull; {siteConfig.founderDetails.role}
               </div>
-              <div className="flex items-start gap-2">
+              <div
+                className="flex items-start gap-2"
+                itemProp="address"
+                itemScope
+                itemType="https://schema.org/PostalAddress"
+              >
                 <MapPin className="w-4 h-4 text-[#F58220] shrink-0 mt-0.5" />
                 <span>
-                  <strong>HQ:</strong> {siteConfig.locations.headquarters}.
+                  <strong>HQ:</strong>{" "}
+                  <span itemProp="streetAddress">{siteConfig.locations.headquartersAddress.streetAddress}</span>,{" "}
+                  <span itemProp="addressLocality">{siteConfig.locations.headquartersAddress.city}</span>,{" "}
+                  <span itemProp="addressRegion">{siteConfig.locations.headquartersAddress.region}</span>{" "}
+                  <span itemProp="postalCode">{siteConfig.locations.headquartersAddress.postalCode}</span>.
+                  <meta itemProp="addressCountry" content="IN" />
                   <br />
                   <span className="text-slate-400">
                     {siteConfig.locations.coverageLine}

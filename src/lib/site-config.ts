@@ -135,13 +135,17 @@ export const siteConfig = {
     /** Structured address — needed for Google Business Profile and LocalBusiness schema. */
     headquartersAddress: {
       label: "Coimbatore HQ",
-      streetAddress: "", // TODO
+      streetAddress: "Gandhipuram",
       city: "Coimbatore",
       region: "Tamil Nadu",
-      postalCode: "", // TODO
+      postalCode: "641012",
       country: "India",
       countryCode: "IN",
-      mapsUrl: "", // TODO: Google Business Profile link
+      mapsUrl: "https://maps.google.com/?q=Coimbatore,+Tamil+Nadu,+India",
+    },
+    geo: {
+      latitude: 11.0168,
+      longitude: 76.9558,
     },
     primaryCities: ["Coimbatore", "Chennai", "Bengaluru"],
     coverage: {
@@ -374,15 +378,15 @@ export function getSocialLinks() {
 }
 
 /**
- * Organization + ProfessionalService JSON-LD.
- * Render in the root layout:
- * <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationSchema()) }} />
+ * Organization JSON-LD.
+ * Standard entity definition for Google Knowledge Graph and search engines.
  */
 export function getOrganizationSchema() {
   const a = siteConfig.locations.headquartersAddress;
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Organization",
+    "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     alternateName: siteConfig.tamilName,
     slogan: siteConfig.tagline,
@@ -396,13 +400,14 @@ export function getOrganizationSchema() {
       "@type": "Person",
       name: siteConfig.founderDetails.name,
       jobTitle: siteConfig.founderDetails.role,
+      url: absoluteUrl("/about"),
     },
     address: {
       "@type": "PostalAddress",
-      ...(a.streetAddress && { streetAddress: a.streetAddress }),
+      streetAddress: a.streetAddress,
       addressLocality: a.city,
       addressRegion: a.region,
-      ...(a.postalCode && { postalCode: a.postalCode }),
+      postalCode: a.postalCode,
       addressCountry: a.countryCode,
     },
     areaServed: [
@@ -417,12 +422,98 @@ export function getOrganizationSchema() {
       areaServed: "IN",
       availableLanguage: ["English", "Tamil"],
     },
+  };
+}
+
+/**
+ * LocalBusiness + ProfessionalService JSON-LD.
+ * Required for Google LocalBusiness rich results, Google Maps local entity resolution,
+ * and local search ranking across Coimbatore, Chennai, and South India.
+ */
+export function getLocalBusinessSchema() {
+  const a = siteConfig.locations.headquartersAddress;
+  const geo = siteConfig.locations.geo;
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": `${siteConfig.url}/#localbusiness`,
+    name: siteConfig.name,
+    alternateName: siteConfig.tamilName,
+    legalName: siteConfig.name,
+    slogan: siteConfig.tagline,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    logo: absoluteUrl(siteConfig.brand.logo),
+    image: [
+      absoluteUrl(siteConfig.brand.ogImage),
+      absoluteUrl(siteConfig.brand.logo),
+    ],
+    email: siteConfig.emails.primary,
+    telephone: siteConfig.phones.primaryE164,
+    priceRange: "₹₹",
+    currenciesAccepted: "INR, USD",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer, UPI",
+    founder: {
+      "@type": "Person",
+      name: siteConfig.founderDetails.name,
+      jobTitle: siteConfig.founderDetails.role,
+      url: absoluteUrl("/about"),
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: a.streetAddress,
+      addressLocality: a.city,
+      addressRegion: a.region,
+      postalCode: a.postalCode,
+      addressCountry: a.countryCode,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: geo.latitude,
+      longitude: geo.longitude,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "09:30",
+        closes: "18:30",
+      },
+    ],
+    hasMap: a.mapsUrl,
+    areaServed: [
+      ...siteConfig.locations.primaryCities.map((name) => ({ "@type": "City", name })),
+      { "@type": "State", name: "Tamil Nadu" },
+      { "@type": "Country", name: "India" },
+    ],
+    sameAs: getSocialLinks(),
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      telephone: siteConfig.phones.primaryE164,
+      email: siteConfig.emails.primary,
+      url: absoluteUrl("/contact"),
+      areaServed: "IN",
+      availableLanguage: ["English", "Tamil"],
+    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Digital growth services",
+      name: "Digital Growth & Automation Services",
       itemListElement: siteConfig.services.map((s) => ({
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.title, description: s.shortDescription, url: absoluteUrl(`/services/${s.slug}`) },
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.shortDescription,
+          url: absoluteUrl(`/services/${s.slug}`),
+        },
       })),
     },
   };

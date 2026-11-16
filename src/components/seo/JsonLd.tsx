@@ -1,8 +1,24 @@
 import React from "react";
-import { siteConfig, getOrganizationSchema, absoluteUrl } from "@/lib/site-config";
+import {
+  siteConfig,
+  getOrganizationSchema,
+  getLocalBusinessSchema,
+  absoluteUrl,
+} from "@/lib/site-config";
 
 export function OrganizationJsonLd() {
   const schema = getOrganizationSchema();
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function LocalBusinessJsonLd() {
+  const schema = getLocalBusinessSchema();
 
   return (
     <script

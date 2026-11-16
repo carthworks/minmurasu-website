@@ -1,0 +1,16 @@
+▲ Next.js 16.4.5 (Turbopack)
+- Local:         http://localhost:4000
+- Network:       http://192.168.1.7:4000
+✓ Ready in 1874ms
+✓ Running next.config.ts took 218ms
+- Experiments (use with caution):
+  ✓ inlineCss
+
+○ Compiling / ...
+ GET / 200 in 1130ms (next.js: 467ms, application-code: 663ms)
+ GET / 200 in 339ms (next.js: 4ms, application-code: 335ms)
+ GET / 200 in 250ms (next.js: 3ms, application-code: 247ms)
+ GET / 200 in 279ms (next.js: 3ms, application-code: 276ms)
+ GET / 200 in 297ms (next.js: 4ms, application-code: 293ms)
+ GET / 200 in 247ms (next.js: 3ms, application-code: 244ms)
+ GET / 200 in 486ms (next.js: 4ms, application-code: 481ms)
