@@ -1,3 +1,5 @@
+import { formatPrice, getPlan } from "@/content/pricing";
+
 /**
  * Distribution Sprint offer, kept in one place so the test page can be re-priced
  * without touching the layout. These are draft values: confirm before outreach.
@@ -13,7 +15,7 @@ export const sprintOffer: {
 } = {
   name: "Distribution Sprint",
   durationDays: 14,
-  price: "₹49,999",
+  price: formatPrice(getPlan("distribution-sprint").price.INR, "INR"),
   priceNote: "Founding price for the first 3 clients, in exchange for a public case study.",
   regularPrice: null,
   foundingSlots: 3,

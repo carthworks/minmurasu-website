@@ -34,7 +34,7 @@
 ## Interactive Tools & Key URLs
 - [Interactive Growth ROI Calculator](https://www.minmurasu.digital/roi-calculator): Interactive commercial tool to estimate potential monthly enquiries, new customers, and recovered annual revenue based on traffic, conversion rate, and deal size.
 - [Free 5-Point Digital Presence Audit](https://www.minmurasu.digital/free-audit): Complimentary audit reviewing technical SEO, AI search (GEO) visibility, mobile speed, ad tracking, and lead response speed.
-- [Pricing & Engagement Models](https://www.minmurasu.digital/pricing): Transparent models (Digital Foundation Project, Monthly Growth Retainer, Custom AI Automation) with 15-day notice periods and zero lock-in traps.
+- [Pricing & Plans](https://www.minmurasu.digital/pricing): Five published plans in INR (India, excluding 18% GST) and USD (international). Monthly: Local Visibility ₹14,999 / $249, Growth Engine ₹39,999 / $649, Scale & Automation from ₹89,999 / $1,490. One-time: Digital Foundation website from ₹39,999 / $649, Distribution Sprint for developers ₹49,999 / $790. 15-day notice, no lock-in, no ad spend markup.
 - [Book a Free Consultation](https://www.minmurasu.digital/book): Direct 30-minute growth and automation strategy call with Karthikeyan T.
 - [About Company & Founder](https://www.minmurasu.digital/about): Mission, technical engineering standards, and founder background.
 - [Solution Blueprints & Work](https://www.minmurasu.digital/work): Real architectural blueprints demonstrating growth systems for clinics, real estate, and manufacturing.

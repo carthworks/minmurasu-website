@@ -4,96 +4,26 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site-config";
-import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
-import {
-  CheckCircle2,
-  ShieldCheck,
-  Code2,
-  TrendingUp,
-  Cpu,
-  ArrowRight,
-  MessageSquare,
-  HelpCircle,
-  Sparkles,
-  FileText,
-  Calculator,
-} from "lucide-react";
+import PricingPlans from "@/components/sections/PricingPlans";
+import { siteConfig, absoluteUrl } from "@/lib/site-config";
+import { formatPrice, getPlan, plans } from "@/content/pricing";
+import { ShieldCheck, ArrowRight, HelpCircle, FileText, Calculator, Check, Minus } from "lucide-react";
+
+const startingMonthly = formatPrice(getPlan("local-visibility").price.INR, "INR");
 
 export const metadata: Metadata = {
-  title: "Pricing & Engagement Models",
-  description:
-    "Transparent engagement models, deliverable-based project scopes, and monthly digital growth retainers from MIN MURASU. Zero hidden fees or ad spend markups.",
+  title: "Pricing: Digital Marketing Plans in INR & USD",
+  description: `Published prices for SEO, Google & Meta Ads, AI search and automation. Monthly plans from ${startingMonthly}/month, one-time website and developer sprint projects. No ad spend markup.`,
   alternates: {
     canonical: `${siteConfig.url}/pricing`,
   },
+  openGraph: {
+    title: "Pricing & Plans | MIN MURASU",
+    description: `Five published plans in INR and USD. Monthly plans from ${startingMonthly}/month. No lock-in, no ad spend markup.`,
+    url: `${siteConfig.url}/pricing`,
+    type: "website",
+  },
 };
-
-const engagementTiers = [
-  {
-    badge: "One-Time Engineering & Setup",
-    name: "Digital Foundation & Web Launch",
-    subtitle: "Best for businesses launching or upgrading their website, tracking, and local search presence.",
-    billingModel: "Milestone-Based Project Fee",
-    timeline: "Typical Delivery: 2 – 4 Weeks",
-    icon: Code2,
-    featured: false,
-    ctaLabel: "Request Foundation Proposal",
-    ctaHref: "/contact",
-    whatsappMsg:
-      "Hello MIN MURASU, I would like a proposal for the Digital Foundation & Web Launch package.",
-    inclusions: [
-      "Custom Next.js responsive business website or high-converting landing pages",
-      "Technical SEO foundation, sitemap, schema.org JSON-LD & Google Search Console setup",
-      "Google Business Profile (Local SEO) optimization for Coimbatore / Chennai / regional markets",
-      "GA4 & Google Tag Manager conversion tracking setup",
-      "Anti-spam lead capture forms + direct WhatsApp enquiry button integration",
-      "100% code, domain, and analytics ownership upon completion",
-    ],
-  },
-  {
-    badge: "Most Popular • Monthly Growth Engine",
-    name: "Performance & SEO Growth Retainer",
-    subtitle: "Best for clinics, real estate, education, and B2B companies seeking consistent monthly enquiries.",
-    billingModel: "Monthly Retainer (15-Day Notice, No Lock-In Traps)",
-    timeline: "Recommended Commitment: 3 – 6 Months",
-    icon: TrendingUp,
-    featured: true,
-    ctaLabel: "Get a Custom Retainer Quote",
-    ctaHref: "/contact",
-    whatsappMsg:
-      "Hello MIN MURASU, I would like a quote for the Monthly Performance & SEO Growth Retainer.",
-    inclusions: [
-      "Dedicated Digital Strategy roadmap & monthly campaign calendar",
-      "Search Engine Optimisation (SEO) & Generative Engine Optimisation (GEO for ChatGPT/Gemini)",
-      "Google Search Ads & Meta Ads campaign management, A/B testing & ROI optimization",
-      "Landing page conversion rate optimization (CRO) & ongoing technical maintenance",
-      "Social media content direction & high-impact brand publishing",
-      "Live Looker Studio / GA4 reporting dashboard + monthly executive review call",
-    ],
-  },
-  {
-    badge: "End-to-End Architecture",
-    name: "Custom AI & Revenue Automation",
-    subtitle: "Best for organizations scaling high enquiry volumes across WhatsApp, CRM, and multi-location sales teams.",
-    billingModel: "Custom Scope + Optional Support Retainer",
-    timeline: "Scoped After Technical Discovery",
-    icon: Cpu,
-    featured: false,
-    ctaLabel: "Scope Your AI Workflow",
-    ctaHref: "/contact",
-    whatsappMsg:
-      "Hello MIN MURASU, I would like to discuss Custom AI & Revenue Automation for our business.",
-    inclusions: [
-      "Website AI chat assistant trained strictly on verified company facts",
-      "Automated WhatsApp Business API enquiry qualification & brochure/appointment flows",
-      "Two-way CRM webhook integration (Zoho, HubSpot, LeadSquared, Salesforce, or Google Sheets)",
-      "Instant lead routing & SLA notifications for sales or clinic front-desk teams",
-      "Custom B2B product/RFQ catalogue engineering & server-side tracking (Meta CAPI)",
-      "Dedicated engineering support & team onboarding",
-    ],
-  },
-];
 
 const commercialGuarantees = [
   {
@@ -114,199 +44,129 @@ const commercialGuarantees = [
   },
 ];
 
-const comparisonRows = [
+/** Columns follow the order of `plans`; true = included, false = not included, string = detail. */
+const comparisonRows: { capability: string; cells: Record<string, string | boolean> }[] = [
   {
-    capability: "Initial Digital Presence & Funnel Audit",
-    foundation: "Included",
-    retainer: "Included",
-    customAi: "Included",
+    capability: "Website & landing pages",
+    cells: {
+      "local-visibility": "Location page",
+      "growth-engine": "1 page or CRO test / month",
+      "scale-automation": "Custom pages & portals",
+      "digital-foundation": "Full 5–8 page build",
+      "distribution-sprint": "Landing page rewrite",
+    },
   },
   {
-    capability: "Next.js Website / Landing Page Engineering",
-    foundation: "Full Build",
-    retainer: "Ongoing CRO & Landing Pages",
-    customAi: "Custom Web Apps & Portals",
+    capability: "Technical & local SEO",
+    cells: {
+      "local-visibility": "1 location, monthly",
+      "growth-engine": "Monthly",
+      "scale-automation": "Multi-location",
+      "digital-foundation": "Initial setup",
+      "distribution-sprint": "Quick fixes",
+    },
   },
   {
-    capability: "Technical SEO, Local SEO & Schema Markup",
-    foundation: "Initial Setup",
-    retainer: "Continuous Monthly Execution",
-    customAi: "Enterprise / Programmatic SEO",
+    capability: "AI search (GEO) content",
+    cells: {
+      "local-visibility": false,
+      "growth-engine": "2 pages / month",
+      "scale-automation": "Content + entity work",
+      "digital-foundation": "Baseline schema",
+      "distribution-sprint": false,
+    },
   },
   {
-    capability: "Generative Engine Optimisation (GEO / AI Search)",
-    foundation: "Baseline Schema",
-    retainer: "Active Citation & Content Optimization",
-    customAi: "Full Entity & Knowledge Graph Setup",
+    capability: "Paid ads management",
+    cells: {
+      "local-visibility": "Google Search",
+      "growth-engine": "Google + Meta",
+      "scale-automation": "All channels",
+      "digital-foundation": "Tag setup only",
+      "distribution-sprint": false,
+    },
   },
   {
-    capability: "Google Ads & Meta Ads Campaign Management",
-    foundation: " Pixel & Tag Setup",
-    retainer: "Full Campaign Management",
-    customAi: "Multi-Channel + Server-Side CAPI",
+    capability: "Conversion tracking",
+    cells: {
+      "local-visibility": "Calls, WhatsApp, forms",
+      "growth-engine": "+ CRM loop to ad platforms",
+      "scale-automation": "+ server-side tracking",
+      "digital-foundation": "GA4 + GTM",
+      "distribution-sprint": "Visit → signup → paid",
+    },
   },
   {
-    capability: "WhatsApp & CRM Lead Automation",
-    foundation: "Direct Click-to-Chat + Lead Forms",
-    retainer: "Webhook Lead Routing",
-    customAi: "Custom AI Chatbots & Multi-Step Flows",
+    capability: "WhatsApp & CRM automation",
+    cells: {
+      "local-visibility": false,
+      "growth-engine": "Lead routing",
+      "scale-automation": "AI assistant & flows",
+      "digital-foundation": "Click-to-chat",
+      "distribution-sprint": false,
+    },
   },
   {
-    capability: "Reporting & Performance Reviews",
-    foundation: "Launch Handover Report",
-    retainer: "Live Dashboard + Monthly Review",
-    customAi: "Custom Attribution & SLA Dashboards",
+    capability: "Reporting & reviews",
+    cells: {
+      "local-visibility": "Monthly report",
+      "growth-engine": "Dashboard + monthly call",
+      "scale-automation": "Dashboard + fortnightly call",
+      "digital-foundation": "Handover report",
+      "distribution-sprint": "30-day playbook",
+    },
   },
 ];
 
+function Cell({ value }: { value: string | boolean }) {
+  if (value === true) return <Check className="w-4 h-4 text-emerald-600" aria-label="Included" />;
+  if (value === false) return <Minus className="w-4 h-4 text-slate-300" aria-label="Not included" />;
+  return <>{value}</>;
+}
+
 export default function PricingPage() {
+  const offerJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: `${siteConfig.name} plans`,
+    url: absoluteUrl("/pricing"),
+    itemListElement: plans.flatMap((p) =>
+      (["INR", "USD"] as const).map((currency) => ({
+        "@type": "Offer",
+        name: p.name,
+        description: p.tagline,
+        price: p.price[currency],
+        priceCurrency: currency,
+        eligibleRegion: currency === "INR" ? { "@type": "Country", name: "India" } : undefined,
+        ...(p.kind === "monthly"
+          ? {
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: p.price[currency],
+                priceCurrency: currency,
+                billingDuration: "P1M",
+              },
+            }
+          : {}),
+        seller: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+      }))
+    ),
+  };
+
   return (
     <div className="py-16 sm:py-24 bg-gradient-to-b from-[#F0F8FF]/60 via-white to-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerJsonLd) }} />
       <Container>
         {/* Hero Header */}
         <SectionHeading
-          eyebrow="Transparent Commercial Models"
-          title="Deliverable-Based Pricing. Zero Hidden Markups."
-          description="Every business has a different starting point, market competition, and sales capacity. We structure engagements around clear deliverables and measurable outcomes—never vague packages."
+          eyebrow="Transparent Pricing"
+          title="Published Prices. Clear Deliverables. Zero Hidden Markups."
+          description="Five plans, priced in rupees for India and in dollars for international clients. Pick a monthly growth plan or a one-time project; the free audit confirms which one fits before you pay anything."
         />
 
-        {/* 3 Core Engagement Models */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20 items-stretch">
-          {engagementTiers.map((tier) => {
-            const Icon = tier.icon;
-            return (
-              <div
-                key={tier.name}
-                className={`relative rounded-3xl p-8 flex flex-col justify-between transition-all ${
-                  tier.featured
-                    ? "bg-[#0D2040] text-white border-2 border-[#F58220] shadow-2xl lg:-translate-y-2"
-                    : "bg-white text-[#0D2040] border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50"
-                }`}
-              >
-                <div>
-                  {/* Top Badge */}
-                  <div className="flex items-center justify-between gap-2 mb-5">
-                    <span
-                      className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full ${
-                        tier.featured
-                          ? "bg-[#F58220] text-white"
-                          : "bg-[#F0F8FF] text-[#0082CA] border border-[#BAE6FD]"
-                      }`}
-                    >
-                      {tier.featured && <Sparkles className="w-3 h-3" />}
-                      <span>{tier.badge}</span>
-                    </span>
-                    <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                        tier.featured
-                          ? "bg-white/10 text-[#F58220]"
-                          : "bg-[#F0F8FF] text-[#0082CA] border border-[#BAE6FD]"
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </div>
-                  </div>
-
-                  {/* Tier Title & Subtitle */}
-                  <h2
-                    className={`text-2xl font-black tracking-tight mb-2 ${
-                      tier.featured ? "text-white" : "text-[#0D2040]"
-                    }`}
-                  >
-                    {tier.name}
-                  </h2>
-                  <p
-                    className={`text-xs sm:text-sm leading-relaxed mb-5 ${
-                      tier.featured ? "text-slate-300" : "text-[#475569]"
-                    }`}
-                  >
-                    {tier.subtitle}
-                  </p>
-
-                  {/* Billing & Timeline Pill */}
-                  <div
-                    className={`p-4 rounded-2xl mb-6 border ${
-                      tier.featured
-                        ? "bg-slate-800/80 border-slate-700 text-slate-200"
-                        : "bg-slate-50 border-slate-200/80 text-slate-700"
-                    }`}
-                  >
-                    <div className="text-[11px] uppercase font-bold tracking-wider text-[#F58220] mb-0.5">
-                      Commercial Structure
-                    </div>
-                    <div
-                      className={`text-sm font-extrabold ${
-                        tier.featured ? "text-white" : "text-[#0D2040]"
-                      }`}
-                    >
-                      {tier.billingModel}
-                    </div>
-                    <div
-                      className={`text-xs mt-1 ${
-                        tier.featured ? "text-slate-400" : "text-slate-500"
-                      }`}
-                    >
-                      {tier.timeline}
-                    </div>
-                  </div>
-
-                  {/* Inclusions */}
-                  <div className="space-y-3 mb-8">
-                    <div
-                      className={`text-xs font-extrabold uppercase tracking-wider ${
-                        tier.featured ? "text-[#38BDF8]" : "text-[#0D2040]"
-                      }`}
-                    >
-                      What’s Included:
-                    </div>
-                    <ul className="space-y-2.5 text-xs sm:text-sm">
-                      {tier.inclusions.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5">
-                          <CheckCircle2
-                            className={`w-4 h-4 shrink-0 mt-0.5 ${
-                              tier.featured ? "text-[#F58220]" : "text-[#0082CA]"
-                            }`}
-                          />
-                          <span
-                            className={
-                              tier.featured ? "text-slate-200" : "text-[#475569]"
-                            }
-                          >
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="space-y-2.5 pt-4 border-t border-slate-200/20">
-                  <Button
-                    href={tier.ctaHref}
-                    variant={tier.featured ? "orange" : "navy"}
-                    size="md"
-                    className="w-full justify-center font-bold"
-                  >
-                    <span>{tier.ctaLabel}</span>
-                    <ArrowRight className="w-4 h-4 ml-1.5" />
-                  </Button>
-
-                  <ProtectedWhatsApp
-                    message={tier.whatsappMsg}
-                    className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-semibold transition-colors ${
-                      tier.featured
-                        ? "bg-white/10 text-emerald-300 hover:bg-white/15"
-                        : "bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100"
-                    }`}
-                  >
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>Ask About This Model on WhatsApp</span>
-                  </ProtectedWhatsApp>
-                </div>
-              </div>
-            );
-          })}
+        {/* Five plans with currency toggle */}
+        <div className="mb-20">
+          <PricingPlans />
         </div>
 
         {/* Interactive ROI Calculator Callout Banner */}
@@ -343,39 +203,49 @@ export default function PricingPage() {
         </div>
 
         {/* Capability Comparison Matrix */}
-        <div className="max-w-5xl mx-auto mb-20">
+        <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-black text-[#0D2040]">
-              Side-by-Side Engagement Comparison
-            </h2>
+            <h2 className="text-2xl font-black text-[#0D2040]">Compare all five plans</h2>
             <p className="text-xs sm:text-sm text-[#475569] mt-1">
-              How deliverables scale across our three engagement models.
+              What each plan includes, side by side. Scroll sideways on small screens.
             </p>
           </div>
 
           <div className="overflow-x-auto bg-white rounded-3xl border border-slate-200/90 shadow-xs">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+            <table className="w-full min-w-[860px] text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr className="bg-[#0D2040] text-white">
-                  <th className="p-4 sm:p-5 font-bold">Capability / Deliverable</th>
-                  <th className="p-4 sm:p-5 font-bold">1. Digital Foundation</th>
-                  <th className="p-4 sm:p-5 font-bold text-[#F58220]">
-                    2. Growth Retainer
-                  </th>
-                  <th className="p-4 sm:p-5 font-bold">3. Custom AI &amp; Automation</th>
+                  <th scope="col" className="p-4 font-bold">Capability</th>
+                  {plans.map((p) => (
+                    <th
+                      key={p.id}
+                      scope="col"
+                      className={`p-4 font-bold ${p.featured ? "text-[#F58220]" : ""}`}
+                    >
+                      {p.name}
+                      <span className="block text-[11px] font-medium text-slate-400">
+                        {p.kind === "monthly" ? "Monthly" : "One-time"}
+                      </span>
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
                 {comparisonRows.map((row) => (
                   <tr key={row.capability} className="hover:bg-slate-50/80">
-                    <td className="p-4 sm:p-5 font-bold text-[#0D2040]">
+                    <th scope="row" className="p-4 font-bold text-[#0D2040]">
                       {row.capability}
-                    </td>
-                    <td className="p-4 sm:p-5 text-[#475569]">{row.foundation}</td>
-                    <td className="p-4 sm:p-5 font-semibold text-[#0082CA] bg-[#F0F8FF]/40">
-                      {row.retainer}
-                    </td>
-                    <td className="p-4 sm:p-5 text-[#475569]">{row.customAi}</td>
+                    </th>
+                    {plans.map((p) => (
+                      <td
+                        key={p.id}
+                        className={`p-4 ${
+                          p.featured ? "font-semibold text-[#0082CA] bg-[#F0F8FF]/40" : "text-[#475569]"
+                        }`}
+                      >
+                        <Cell value={row.cells[p.id] ?? false} />
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
@@ -435,18 +305,18 @@ export default function PricingPage() {
           </div>
         </div>
 
-        {/* Why We Don't Publish Fixed ₹9,999 "Menu Prices" */}
+        {/* Not sure which plan */}
         <div className="max-w-4xl mx-auto bg-[#0D2040] text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-xs font-bold text-[#F58220] mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Not Sure Where to Start?</span>
+            <span>Not Sure Which Plan Fits?</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black mb-3">
             Start With a Free Digital Presence Audit First.
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
-            Before quoting a single rupee, we inspect your current website, search rankings,
-            and lead workflow so you only pay for capabilities that will actually move the
+            We inspect your current website, search rankings, and lead workflow, then recommend
+            the plan that fits, so you only pay for capabilities that will actually move the
             needle for your business.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -468,4 +338,3 @@ export default function PricingPage() {
     </div>
   );
 }
-
