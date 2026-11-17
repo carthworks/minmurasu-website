@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Growth System | Predictable Construction & B2B Growth Engine | MIN MURASU",
+  title: "Growth System | Predictable Construction & B2B Growth Engine",
   description:
     "Interactive client demonstration of the 6-Step Construction Growth Engine. Systematic client acquisition architecture for commercial builders, EPC, and infrastructure firms.",
   robots: {
