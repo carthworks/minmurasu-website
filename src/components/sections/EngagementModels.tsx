@@ -3,15 +3,22 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Rocket, TrendingUp, Cpu, ArrowRight, Check } from "lucide-react";
+import { formatPrice, getPlan } from "@/content/pricing";
+
+const fromPrice = (id: string) => {
+  const p = getPlan(id);
+  return `From ${formatPrice(p.price.INR, "INR")}${p.kind === "monthly" ? " / month" : ""}`;
+};
 
 /**
- * Short pricing teaser — mirrors the three engagement models on /pricing.
- * Keep wording in sync with src/app/pricing/page.tsx.
+ * Short pricing teaser for the homepage. Prices come from src/content/pricing.ts,
+ * which also drives the five plans on /pricing.
  */
 const models = [
   {
     icon: Rocket,
     name: "Website & Launch",
+    price: fromPrice("digital-foundation"),
     billing: "One-time project",
     bestFor: "Launching or upgrading your website, tracking and Google listing.",
     points: ["Fixed milestones", "Typically 2–4 weeks"],
@@ -19,6 +26,7 @@ const models = [
   {
     icon: TrendingUp,
     name: "Monthly Growth",
+    price: fromPrice("local-visibility"),
     billing: "Monthly plan",
     bestFor: "A steady flow of enquiries from Google, ads and social media.",
     points: ["15-day notice, no lock-in", "Best results over 3–6 months"],
@@ -27,9 +35,10 @@ const models = [
   {
     icon: Cpu,
     name: "AI & WhatsApp Automation",
-    billing: "Custom project",
+    price: fromPrice("scale-automation"),
+    billing: "Monthly plan",
     bestFor: "Handling high enquiry volumes across WhatsApp, CRM and sales teams.",
-    points: ["Scoped after a discovery call", "Optional support plan"],
+    points: ["Scoped after a discovery call", "Multi-location ready"],
   },
 ];
 
@@ -39,11 +48,11 @@ export default function EngagementModels() {
       <Container>
         <SectionHeading
           title="Ways to work with us"
-          description="Every quote is sized to your business after the free audit. Your ad budget is always paid directly to Google or Meta — never marked up."
+          description="Published starting prices, confirmed for your business after the free audit. Your ad budget is always paid directly to Google or Meta — never marked up."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {models.map(({ icon: Icon, name, billing, bestFor, points, popular }) => (
+          {models.map(({ icon: Icon, name, price, billing, bestFor, points, popular }) => (
             <div
               key={name}
               className={`relative p-7 rounded-2xl bg-white flex flex-col ${
@@ -57,7 +66,10 @@ export default function EngagementModels() {
               )}
               <Icon className="w-8 h-8 text-[#0082CA] mb-4" />
               <h3 className="text-xl font-extrabold text-[#0D2040]">{name}</h3>
-              <div className="text-sm font-semibold text-[#0082CA] mb-3">{billing}</div>
+              <div className="text-sm font-semibold text-[#0082CA]">{billing}</div>
+              <div className="text-lg font-black text-[#0D2040] mt-1 mb-3">
+                {price} <span className="text-xs font-semibold text-slate-500">+ GST</span>
+              </div>
               <p className="text-[15px] text-[#334155] leading-relaxed mb-5">{bestFor}</p>
               <ul className="space-y-2 mt-auto">
                 {points.map((p) => (
