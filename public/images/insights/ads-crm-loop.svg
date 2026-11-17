@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Click to form to CRM, and qualified stages back to ad platforms">
+  <rect width="1200" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0082CA"/></marker>
+    <marker id="o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#F58220"/></marker>
+  </defs>
+  <g font-family="system-ui, Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <g font-weight="800" font-size="20">
+      <rect x="40" y="120" width="220" height="110" rx="20" fill="#0D2040"/>
+      <text x="150" y="168" fill="#fff">Ad click</text>
+      <text x="150" y="196" font-size="14" font-weight="500" fill="#BAE6FD">gclid · gbraid · fbclid · UTM</text>
+
+      <rect x="340" y="120" width="220" height="110" rx="20" fill="#F0F8FF" stroke="#BAE6FD" stroke-width="2"/>
+      <text x="450" y="168" fill="#0D2040">Website form</text>
+      <text x="450" y="196" font-size="14" font-weight="500" fill="#475569">hidden fields + consent</text>
+
+      <rect x="640" y="120" width="220" height="110" rx="20" fill="#F0F8FF" stroke="#BAE6FD" stroke-width="2"/>
+      <text x="750" y="168" fill="#0D2040">CRM</text>
+      <text x="750" y="196" font-size="14" font-weight="500" fill="#475569">Zoho · HubSpot · Sheet</text>
+
+      <rect x="940" y="120" width="220" height="110" rx="20" fill="#0082CA"/>
+      <text x="1050" y="168" fill="#fff">Stage change</text>
+      <text x="1050" y="196" font-size="14" font-weight="500" fill="#F0F8FF">Qualified · Won</text>
+    </g>
+    <g stroke="#0082CA" stroke-width="3" marker-end="url(#b)">
+      <line x1="262" y1="175" x2="336" y2="175"/>
+      <line x1="562" y1="175" x2="636" y2="175"/>
+      <line x1="862" y1="175" x2="936" y2="175"/>
+    </g>
+
+    <!-- return path -->
+    <path d="M1050 232 V 360 H 560" fill="none" stroke="#F58220" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#o)"/>
+    <rect x="300" y="310" width="260" height="100" rx="20" fill="#fff7ed" stroke="#F58220" stroke-width="2"/>
+    <text x="430" y="352" font-size="19" font-weight="800" fill="#0D2040">Upload / API</text>
+    <text x="430" y="380" font-size="14" fill="#9a3412">Data Manager · Conversions API</text>
+    <path d="M300 360 H 150 V 236" fill="none" stroke="#F58220" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#o)"/>
+    <text x="760" y="345" font-size="15" font-weight="700" fill="#F58220">hashed email/phone + click ID + value</text>
+
+    <text x="600" y="480" font-size="17" fill="#475569">Result: Google and Meta learn which clicks become customers, not just which fill in forms.</text>
+  </g>
+</svg>

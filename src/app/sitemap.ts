@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { servicesData } from "@/content/services";
 import { industriesData } from "@/content/industries";
+import { articles } from "@/content/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -46,6 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...servicePages, ...industryPages];
+  const insightPages = articles.map((a) => ({
+    url: `${baseUrl}/insights/${a.slug}`,
+    lastModified: a.updatedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...servicePages, ...industryPages, ...insightPages];
 }
 
