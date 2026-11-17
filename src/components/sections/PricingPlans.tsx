@@ -1,30 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ArrowRight, CheckCircle2, Clock, MessageSquare, Sparkles } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { ProtectedWhatsApp } from "@/components/ui/ProtectedContact";
+import { CurrencyToggle } from "@/components/ui/CurrencyToggle";
+import { useCurrency } from "@/lib/currency";
 import { AD_FEE_ABOVE_CAP, formatPrice, plans, type Currency, type Plan } from "@/content/pricing";
-
-const STORAGE_KEY = "mm-pricing-currency";
-
-function readStored(): Currency | null {
-  try {
-    const v = window.localStorage.getItem(STORAGE_KEY);
-    return v === "INR" || v === "USD" ? v : null;
-  } catch {
-    return null;
-  }
-}
-
-function guessCurrency(): Currency {
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    return tz === "Asia/Kolkata" || tz === "Asia/Calcutta" ? "INR" : "USD";
-  } catch {
-    return "INR";
-  }
-}
 
 function PlanCard({ plan, currency }: { plan: Plan; currency: Currency }) {
   const f = plan.featured;
@@ -109,57 +91,14 @@ function PlanCard({ plan, currency }: { plan: Plan; currency: Currency }) {
 }
 
 export default function PricingPlans() {
-  const [currency, setCurrency] = useState<Currency>("INR");
-
-  useEffect(() => {
-    // Pick a sensible default after hydration: a stored choice, else India time zone → INR.
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from browser-only APIs
-    setCurrency(readStored() ?? guessCurrency());
-  }, []);
-
-  const choose = (c: Currency) => {
-    setCurrency(c);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, c);
-    } catch {
-      /* storage unavailable: the choice just won't persist */
-    }
-  };
-
+  const currency = useCurrency();
   const monthly = plans.filter((p) => p.kind === "monthly");
   const projects = plans.filter((p) => p.kind === "project");
 
   return (
     <div className="max-w-6xl mx-auto">
       {/* Currency toggle */}
-      <div className="flex flex-col items-center gap-2 mb-12">
-        <div role="radiogroup" aria-label="Currency" className="inline-flex rounded-full bg-slate-100 p-1 border border-slate-200">
-          {(
-            [
-              ["INR", "₹ INR · India"],
-              ["USD", "$ USD · International"],
-            ] as const
-          ).map(([c, label]) => (
-            <button
-              key={c}
-              type="button"
-              role="radio"
-              aria-checked={currency === c}
-              onClick={() => choose(c)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-sm font-bold transition-colors ${
-                currency === c ? "bg-[#0D2040] text-white shadow" : "text-slate-600 hover:text-[#0D2040]"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs text-slate-500">
-          {currency === "INR"
-            ? "Prices for businesses in India, excluding 18% GST."
-            : "Prices for businesses outside India, invoiced in US dollars."}
-        </p>
-      </div>
+      <CurrencyToggle className="mb-12" />
 
       {/* Monthly plans */}
       <h2 className="text-center text-xl sm:text-2xl font-black text-[#0D2040] mb-2">Monthly growth plans</h2>

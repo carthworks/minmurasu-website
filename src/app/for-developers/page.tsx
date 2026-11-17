@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 import SprintApplyForm from "./SprintApplyForm";
 import { sprintOffer } from "./sprint-offer";
+import { CurrencyToggle, Price, TaxNote } from "@/components/ui/CurrencyToggle";
 
 export const metadata: Metadata = {
   title: "Distribution Sprint for Developers: Get Your Product to Paying Customers",
@@ -87,7 +88,7 @@ const notFit = [
   "You want ads run on a monthly retainer",
 ];
 
-const faqs = [
+const faqs: { q: string; a: React.ReactNode }[] = [
   {
     q: "Why a fixed-price sprint instead of a retainer?",
     a: "Most developer products don't need months of agency work. They need clear positioning, a page that converts, and one channel that works. Two weeks is enough to find out whether yours does.",
@@ -98,9 +99,18 @@ const faqs = [
   },
   {
     q: "What does the founding price involve?",
-    a: `The first ${sprintOffer.foundingSlots} clients pay ${sprintOffer.price}${
-      sprintOffer.regularPrice ? ` instead of ${sprintOffer.regularPrice}` : ""
-    }. In return, I write up what we did and what happened as a public case study (numbers shared only with your approval).`,
+    a: (
+      <>
+        The first {sprintOffer.foundingSlots} clients pay <Price amounts={sprintOffer.price} />
+        {sprintOffer.regularPrice && (
+          <>
+            {" "}instead of <Price amounts={sprintOffer.regularPrice} />
+          </>
+        )}
+        . In return, I write up what we did and what happened as a public case study (numbers shared only with
+        your approval).
+      </>
+    ),
   },
   {
     q: "What if it doesn't work?",
@@ -135,7 +145,8 @@ export default function ForDevelopersPage() {
             </Button>
           </div>
           <p className="mt-5 text-xs text-slate-400">
-            {sprintOffer.foundingSlots} founding slots at {sprintOffer.price} · No retainer · You keep everything
+            {sprintOffer.foundingSlots} founding slots at <Price amounts={sprintOffer.price} /> · No retainer · You
+            keep everything
           </p>
         </Container>
       </section>
@@ -228,12 +239,20 @@ export default function ForDevelopersPage() {
       <section className="py-16 sm:py-20 bg-[#F0F8FF]">
         <Container className="max-w-xl text-center">
           <span className="text-xs uppercase font-extrabold tracking-wider text-[#0082CA]">Founding price</span>
-          <div className="mt-3 flex items-baseline justify-center gap-3">
-            <span className="text-5xl font-black text-[#0D2040]">{sprintOffer.price}</span>
+          <CurrencyToggle className="mt-4" showNote={false} />
+          <div className="mt-5 flex items-baseline justify-center gap-3">
+            <span className="text-5xl font-black text-[#0D2040]">
+              <Price amounts={sprintOffer.price} />
+            </span>
             {sprintOffer.regularPrice && (
-              <span className="text-lg text-slate-400 line-through">{sprintOffer.regularPrice}</span>
+              <span className="text-lg text-slate-400 line-through">
+                <Price amounts={sprintOffer.regularPrice} />
+              </span>
             )}
           </div>
+          <p className="mt-1 text-xs font-semibold text-slate-500">
+            <TaxNote />
+          </p>
           <p className="mt-3 text-sm text-[#475569]">{sprintOffer.priceNote}</p>
           <p className="mt-1 text-sm text-[#475569]">One-time. No retainer. You own every asset.</p>
         </Container>
