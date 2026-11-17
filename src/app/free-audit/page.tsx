@@ -1,37 +1,37 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site-config";
+import Container from "@/components/ui/Container";
 import {
   ProtectedEmail,
   ProtectedPhone,
   ProtectedWhatsApp,
 } from "@/components/ui/ProtectedContact";
-import { contactFormSchema, type ContactFormData } from "@/lib/validation";
-import { trackLeadSubmission, trackEvent } from "@/lib/analytics";
-import { submitLead } from "@/lib/leads/client";
 import { ToastItem, type Toast } from "@/components/ui/Toast";
+import { trackEvent, trackLeadSubmission } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads/client";
+import { siteConfig } from "@/lib/site-config";
+import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { feedback } from "@/lib/vibe-feedback";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  CheckCircle2,
   AlertCircle,
-  ShieldCheck,
-  Search,
   Bot,
-  Gauge,
-  TrendingUp,
-  MessageSquare,
-  Send,
-  Sparkles,
-  FileCheck2,
+  CheckCircle2,
   Clock,
+  FileCheck2,
+  Gauge,
+  MessageSquare,
+  Search,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const auditPillars = [
   {
@@ -104,9 +104,7 @@ export default function FreeAuditPage() {
     try {
       const payload: ContactFormData = {
         ...data,
-        message: `[FREE DIGITAL PRESENCE AUDIT REQUEST] Website: ${
-          data.website || "Not provided"
-        } | Focus Area: ${data.service} | Details: ${data.message}`,
+        message: `[FREE DIGITAL PRESENCE AUDIT REQUEST] Focus Area: ${data.service} | Details: ${data.message}`,
       };
 
       await submitLead("free-audit", payload, { audit_focus: data.service });

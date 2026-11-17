@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Brand Identity, Logos & Media Kit | MIN MURASU",
+  title: "Brand Identity, Logos & Media Kit",
   description:
     "Official brand assets, logos, color codes, typography, boilerplates, and media guidelines for MIN MURASU (மின் முரசு) — The Digital Drum.",
   alternates: {
