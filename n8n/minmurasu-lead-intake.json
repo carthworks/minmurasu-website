@@ -1,0 +1,104 @@
+{
+  "name": "MIN MURASU – Lead intake",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "minmurasu-lead",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "a1f0c6c2-0001-4c8e-9b1a-000000000001",
+      "name": "Lead webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "minmurasu-lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Verifies X-MinMurasu-Signature = sha256=HMAC_SHA256(secret, `${timestamp}.${rawBody}`)\n// Self-hosted n8n: set NODE_FUNCTION_ALLOW_BUILTIN=crypto so require('crypto') works.\nconst crypto = require('crypto');\n\n// Paste the same value as LEAD_WEBHOOK_SECRET in Vercel / .env.local.\nconst SECRET = 'PASTE_LEAD_WEBHOOK_SECRET_HERE';\n\nconst item = $input.first();\nconst headers = item.json.headers || {};\nconst ts = headers['x-minmurasu-timestamp'];\nconst sig = String(headers['x-minmurasu-signature'] || '');\n\nlet raw;\ntry {\n  raw = (await this.helpers.getBinaryDataBuffer(0, 'data')).toString('utf8');\n} catch (e) {\n  // The site sends compact JSON.stringify output, so re-serialising is byte-identical.\n  raw = JSON.stringify(item.json.body);\n}\n\nconst expected = 'sha256=' + crypto.createHmac('sha256', SECRET).update(`${ts}.${raw}`).digest('hex');\nconst fresh = Boolean(ts) && Math.abs(Date.now() / 1000 - Number(ts)) < 300;\nconst valid = fresh && sig.length === expected.length &&\n  crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));\n\nconst payload = valid ? JSON.parse(raw) : null;\nreturn [{ json: { valid, event: payload?.event ?? null, lead: payload?.lead ?? null } }];"
+      },
+      "id": "a1f0c6c2-0002-4c8e-9b1a-000000000002",
+      "name": "Verify signature",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.valid }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "a1f0c6c2-0003-4c8e-9b1a-000000000003",
+      "name": "Signature valid?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "ok",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "a1f0c6c2-0004-4c8e-9b1a-000000000004",
+      "name": "Respond 200",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, -100]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "invalid signature",
+        "options": {
+          "responseCode": 401
+        }
+      },
+      "id": "a1f0c6c2-0005-4c8e-9b1a-000000000005",
+      "name": "Respond 401",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 100]
+    },
+    {
+      "parameters": {},
+      "id": "a1f0c6c2-0006-4c8e-9b1a-000000000006",
+      "name": "Phase 1: CRM / WhatsApp / Slack go here",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [960, -100]
+    }
+  ],
+  "connections": {
+    "Lead webhook": {
+      "main": [[{ "node": "Verify signature", "type": "main", "index": 0 }]]
+    },
+    "Verify signature": {
+      "main": [[{ "node": "Signature valid?", "type": "main", "index": 0 }]]
+    },
+    "Signature valid?": {
+      "main": [
+        [{ "node": "Respond 200", "type": "main", "index": 0 }],
+        [{ "node": "Respond 401", "type": "main", "index": 0 }]
+      ]
+    },
+    "Respond 200": {
+      "main": [[{ "node": "Phase 1: CRM / WhatsApp / Slack go here", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

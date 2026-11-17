@@ -7,7 +7,6 @@ import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import { OrganizationJsonLd, LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 import DrumPageLoader from "@/components/ui/DrumPageLoader";
 import { siteConfig } from "@/lib/site-config";
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import "./globals.css";
@@ -74,7 +73,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { gaId, gtmId } = siteConfig.analytics;
+  // Fallbacks keep tracking working when the env vars are missing on the host.
+  const gaId = siteConfig.analytics.gaId || "G-8WV1Z3BFDY";
+  const gtmId = siteConfig.analytics.gtmId || "GTM-NKVF5CCQ";
 
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
@@ -102,9 +103,8 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <AttributionCapture />
         </Suspense>
-        <CookieConsent gaId={gaId} gtmId={gtmId || "GTM-NKVF5CCQ"} />
-        <GoogleTagManager gtmId={gtmId || "GTM-NKVF5CCQ"} />
-        <GoogleAnalytics gaId="G-8WV1Z3BFDY" />
+        {/* GA4 and GTM load only inside CookieConsent, after opt-in. */}
+        <CookieConsent gaId={gaId} gtmId={gtmId} />
       </body>
     </html>
   );

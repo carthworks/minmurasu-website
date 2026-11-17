@@ -15,6 +15,7 @@ export type AnalyticsEvent =
   | "book_consultation_click"
   | "whatsapp_click"
   | "click_to_call"
+  | "email_click"
   | "service_view"
   | "audit_request";
 
@@ -29,7 +30,9 @@ export function trackEvent(
     window.gtag("event", eventName, params);
   }
 
-  // Google Tag Manager dataLayer
+  // Google Tag Manager dataLayer (for GTM triggers such as an Ads conversion tag).
+  // GA4 already gets the event from gtag above, so the GTM container must NOT also
+  // have a GA4 event tag on these events, or GA4 will count them twice.
   if (Array.isArray(window.dataLayer)) {
     window.dataLayer.push({
       event: eventName,
@@ -42,7 +45,8 @@ export function trackEvent(
   }
 }
 
-// Track confirmed successful lead generation
+// Track confirmed successful lead generation. Only call this after the server has
+// accepted a form submission; clicks on email/phone/WhatsApp have their own events.
 export function trackLeadSubmission(service: string) {
   trackEvent("generate_lead", {
     service_category: service,

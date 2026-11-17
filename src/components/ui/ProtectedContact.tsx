@@ -33,7 +33,7 @@ export function ProtectedEmail({
       href={`mailto:${addr}`}
       onClick={() => {
         feedback.triggerHaptic(10);
-        trackEvent("generate_lead", { channel: "email_click" });
+        trackEvent("email_click");
       }}
       className={`inline-flex items-center text-left break-all ${className}`}
       title="Send us an email"

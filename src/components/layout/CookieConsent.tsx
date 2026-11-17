@@ -56,30 +56,39 @@ export default function CookieConsent({
     } catch {
       // ignore storage errors in private mode
     }
+    // If tags were already loaded in this page view and the visitor withdraws consent,
+    // tell Google to stop using analytics storage straight away (scripts stay out after reload).
+    if (decision === "declined" && typeof window.gtag === "function") {
+      window.gtag("consent", "update", { analytics_storage: "denied" });
+    }
     setConsent(decision);
     setIsVisible(false);
   };
 
   return (
     <>
-      {/* Only load non-essential analytics scripts after explicit user opt-in */}
+      {/* The only place GA4 and GTM are loaded: once, and only after explicit opt-in.
+          The visitor accepted analytics only, so advertising storage stays denied. */}
       {consent === "accepted" && gaId && (
         <>
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function(){window.dataLayer.push(arguments);};
+              gtag('consent', 'default', {
+                analytics_storage: 'granted',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied'
+              });
+              gtag('js', new Date());
+              gtag('config', '${gaId}');
+            `}
+          </Script>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="afterInteractive"
           />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}', {
-                anonymize_ip: true,
-                page_path: window.location.pathname,
-              });
-            `}
-          </Script>
         </>
       )}
 
