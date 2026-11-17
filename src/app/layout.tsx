@@ -75,7 +75,7 @@ export default function RootLayout({
 }) {
   // Fallbacks keep tracking working when the env vars are missing on the host.
   const gaId = siteConfig.analytics.gaId || "G-8WV1Z3BFDY";
-  const gtmId = siteConfig.analytics.gtmId || "GTM-NKVF5CCQ";
+  const gtmId = siteConfig.analytics.gtmId || "GTM-NPN4DQ6G";
 
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
