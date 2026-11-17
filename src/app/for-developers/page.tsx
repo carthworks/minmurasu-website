@@ -98,7 +98,9 @@ const faqs = [
   },
   {
     q: "What does the founding price involve?",
-    a: `The first ${sprintOffer.foundingSlots} clients pay ${sprintOffer.price} instead of ${sprintOffer.regularPrice}. In return, I write up what we did and what happened as a public case study (numbers shared only with your approval).`,
+    a: `The first ${sprintOffer.foundingSlots} clients pay ${sprintOffer.price}${
+      sprintOffer.regularPrice ? ` instead of ${sprintOffer.regularPrice}` : ""
+    }. In return, I write up what we did and what happened as a public case study (numbers shared only with your approval).`,
   },
   {
     q: "What if it doesn't work?",
@@ -228,7 +230,9 @@ export default function ForDevelopersPage() {
           <span className="text-xs uppercase font-extrabold tracking-wider text-[#0082CA]">Founding price</span>
           <div className="mt-3 flex items-baseline justify-center gap-3">
             <span className="text-5xl font-black text-[#0D2040]">{sprintOffer.price}</span>
-            <span className="text-lg text-slate-400 line-through">{sprintOffer.regularPrice}</span>
+            {sprintOffer.regularPrice && (
+              <span className="text-lg text-slate-400 line-through">{sprintOffer.regularPrice}</span>
+            )}
           </div>
           <p className="mt-3 text-sm text-[#475569]">{sprintOffer.priceNote}</p>
           <p className="mt-1 text-sm text-[#475569]">One-time. No retainer. You own every asset.</p>

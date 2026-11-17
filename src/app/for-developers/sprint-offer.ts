@@ -2,14 +2,22 @@
  * Distribution Sprint offer, kept in one place so the test page can be re-priced
  * without touching the layout. These are draft values: confirm before outreach.
  */
-export const sprintOffer = {
+export const sprintOffer: {
+  name: string;
+  durationDays: number;
+  price: string;
+  priceNote: string;
+  /** Shown struck through next to the price when set. */
+  regularPrice: string | null;
+  foundingSlots: number;
+} = {
   name: "Distribution Sprint",
   durationDays: 14,
-  price: "$990",
+  price: "₹49,999",
   priceNote: "Founding price for the first 3 clients, in exchange for a public case study.",
-  regularPrice: "$1,900",
+  regularPrice: null,
   foundingSlots: 3,
-} as const;
+};
 
 export const productStages = [
   { value: "pre-revenue", label: "Shipped, no paying customers yet" },
