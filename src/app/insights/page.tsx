@@ -1,80 +1,45 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRight, Clock, Tag } from "lucide-react";
+import { articles, formatDate, readingMinutes } from "@/content/insights";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Growth Insights & Strategic Articles",
   description:
-    "Practical perspectives on Generative Engine Optimisation (GEO), technical SEO, conversion rate engineering, and B2B automation.",
+    "Practical guides on Generative Engine Optimisation (GEO), Core Web Vitals, ad-to-CRM conversion tracking, local SEO for clinics, and distribution for developers.",
+  alternates: { canonical: absoluteUrl("/insights") },
+  openGraph: {
+    title: "Growth Insights | MIN MURASU",
+    description:
+      "Practical guides on AI search, web performance, conversion tracking, local SEO and product distribution.",
+    url: absoluteUrl("/insights"),
+    type: "website",
+  },
 };
 
-interface Article {
-  title: string;
-  slug: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  href?: string;
-  cta?: string;
-}
-
-const articles: Article[] = [
-  {
-    title: "Building Is the Easy Part Now: Why Developers Stall at Distribution",
-    slug: "developer-distribution-sprint",
-    excerpt:
-      "AI made shipping cheap, so every niche now has ten products and the one people find wins. The four things that move a shipped product to paying customers, and our 14-day sprint for developers.",
-    date: "November 2026",
-    readTime: "4 min read",
-    category: "For Developers",
-    href: "/for-developers",
-    cta: "See the Sprint",
-  },
-  {
-    title: "How to Prepare Your Brand for Generative Engine Optimisation (GEO)",
-    slug: "generative-engine-optimisation-guide",
-    excerpt:
-      "Why standard keyword stuffing fails with large language models, and how to structure your website schema and citations so ChatGPT, Perplexity, and Gemini cite your brand.",
-    date: "November 2026",
-    readTime: "6 min read",
-    category: "AI & Search",
-  },
-  {
-    title: "Why Modern B2B Websites Must Be Engineered in Next.js Instead of Bloated Themes",
-    slug: "nextjs-vs-wordpress-b2b",
-    excerpt:
-      "Core Web Vitals directly impact conversion rates. Exploring how sub-second load speeds, server-side rendering, and zero-vulnerability codebases protect your media ad spend.",
-    date: "October 2026",
-    readTime: "5 min read",
-    category: "Web Engineering",
-  },
-  {
-    title: "Connecting Ads to CRM: The Missing Link in Indian SME Marketing",
-    slug: "ad-tracking-crm-integration",
-    excerpt:
-      "Most agencies stop at 'click count'. Here is how to configure Meta CAPI, Google Tag Manager, and Zoho/HubSpot webhooks to track true cost per closed deal.",
-    date: "September 2026",
-    readTime: "7 min read",
-    category: "Analytics & Automation",
-  },
-  {
-    title: "Local SEO for Coimbatore & Chennai Clinics: A Medical Practice Playbook",
-    slug: "local-seo-healthcare-tamil-nadu",
-    excerpt:
-      "How multi-specialty healthcare providers can rank in the Google 3-Pack, manage patient reviews ethically, and eliminate booking no-shows.",
-    date: "August 2026",
-    readTime: "8 min read",
-    category: "Healthcare Growth",
-  },
-];
-
 export default function InsightsPage() {
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${siteConfig.name} Insights`,
+    url: absoluteUrl("/insights"),
+    blogPost: articles.map((a) => ({
+      "@type": "BlogPosting",
+      headline: a.title,
+      url: absoluteUrl(`/insights/${a.slug}`),
+      datePublished: a.publishedAt,
+      dateModified: a.updatedAt,
+    })),
+  };
+
   return (
     <div className="py-16 sm:py-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       <Container>
         <SectionHeading
           eyebrow="Knowledge & Strategy"
@@ -86,38 +51,47 @@ export default function InsightsPage() {
           {articles.map((art) => (
             <article
               key={art.slug}
-              className="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-md transition-all flex flex-col justify-between"
+              className="group relative bg-white rounded-3xl border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-md transition-all flex flex-col overflow-hidden"
             >
-              <div>
-                <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
-                  <span className="inline-flex items-center gap-1 font-semibold text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full">
-                    <Tag className="w-3 h-3" />
-                    <span>{art.category}</span>
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-slate-400" />
-                    <span>{art.readTime}</span>
-                  </span>
+              <Image
+                src={art.cover.src}
+                alt={art.cover.alt}
+                width={1200}
+                height={630}
+                unoptimized
+                className="w-full h-auto border-b border-slate-100"
+              />
+              <div className="p-7 sm:p-8 flex flex-col flex-1 justify-between">
+                <div>
+                  <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full">
+                      <Tag className="w-3 h-3" />
+                      <span>{art.category}</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
+                      <span>{readingMinutes(art)} min read</span>
+                    </span>
+                  </div>
+
+                  <h2 className="text-xl font-bold text-[#0D2040] mb-3 leading-snug">
+                    <Link href={`/insights/${art.slug}`} className="after:absolute after:inset-0 group-hover:text-[#0082CA]">
+                      {art.title}
+                    </Link>
+                  </h2>
+
+                  <p className="text-sm text-[#475569] leading-relaxed mb-6">{art.excerpt}</p>
                 </div>
 
-                <h2 className="text-xl font-bold text-[#0D2040] mb-3 leading-snug">
-                  {art.title}
-                </h2>
-
-                <p className="text-sm text-[#475569] leading-relaxed mb-6">
-                  {art.excerpt}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs text-slate-400">{art.date}</span>
-                <Link
-                  href={art.href ?? "/contact"}
-                  className="text-xs font-bold text-[#0082CA] hover:text-[#0D2040] inline-flex items-center gap-1 transition-colors"
-                >
-                  <span>{art.cta ?? "Discuss Strategy"}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <time dateTime={art.updatedAt} className="text-xs text-slate-400">
+                    {formatDate(art.updatedAt)}
+                  </time>
+                  <span className="text-xs font-bold text-[#0082CA] group-hover:text-[#0D2040] inline-flex items-center gap-1 transition-colors">
+                    <span>Read the guide</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </div>
             </article>
           ))}
@@ -126,4 +100,3 @@ export default function InsightsPage() {
     </div>
   );
 }
-

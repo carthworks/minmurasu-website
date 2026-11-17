@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="An AI answer box citing a website among several sources">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F0F8FF"/>
+      <stop offset="1" stop-color="#dbeefe"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0082CA" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0082CA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="300" cy="320" r="260" fill="url(#glow)"/>
+
+  <!-- AI spark -->
+  <g transform="translate(300 320)">
+    <circle r="120" fill="#0D2040"/>
+    <path d="M0 -62 C 8 -18, 18 -8, 62 0 C 18 8, 8 18, 0 62 C -8 18, -18 8, -62 0 C -18 -8, -8 -18, 0 -62 Z" fill="#ffffff"/>
+    <path d="M58 -64 C 61 -52, 64 -49, 76 -46 C 64 -43, 61 -40, 58 -28 C 55 -40, 52 -43, 40 -46 C 52 -49, 55 -52, 58 -64 Z" fill="#F58220"/>
+  </g>
+
+  <!-- connector lines -->
+  <g stroke="#0082CA" stroke-width="3" fill="none" stroke-dasharray="6 8" opacity="0.7">
+    <path d="M420 300 C 520 300, 540 210, 640 210"/>
+    <path d="M420 330 C 520 330, 540 330, 640 330"/>
+    <path d="M420 360 C 520 360, 540 450, 640 450"/>
+  </g>
+
+  <!-- Answer card -->
+  <g transform="translate(640 130)" font-family="system-ui, Segoe UI, Arial, sans-serif">
+    <rect width="470" height="380" rx="24" fill="#ffffff" stroke="#BAE6FD" stroke-width="2"/>
+    <text x="32" y="52" font-size="18" font-weight="800" fill="#0082CA" letter-spacing="1">AI ANSWER</text>
+    <rect x="32" y="76" width="400" height="14" rx="7" fill="#0D2040" opacity="0.85"/>
+    <rect x="32" y="102" width="360" height="14" rx="7" fill="#0D2040" opacity="0.55"/>
+    <rect x="32" y="128" width="300" height="14" rx="7" fill="#0D2040" opacity="0.55"/>
+    <rect x="340" y="124" width="60" height="22" rx="11" fill="#F58220"/>
+    <text x="370" y="140" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">[1]</text>
+    <rect x="32" y="160" width="380" height="14" rx="7" fill="#0D2040" opacity="0.55"/>
+    <rect x="32" y="186" width="220" height="14" rx="7" fill="#0D2040" opacity="0.55"/>
+
+    <text x="32" y="240" font-size="15" font-weight="700" fill="#64748b">Sources</text>
+    <g>
+      <rect x="32" y="256" width="406" height="44" rx="12" fill="#fff7ed" stroke="#F58220" stroke-width="2"/>
+      <circle cx="58" cy="278" r="10" fill="#F58220"/>
+      <text x="80" y="284" font-size="16" font-weight="800" fill="#0D2040">yourbrand.com</text>
+      <text x="420" y="284" font-size="14" font-weight="800" fill="#F58220" text-anchor="end">cited</text>
+    </g>
+    <rect x="32" y="310" width="406" height="40" rx="12" fill="#f8fafc"/>
+    <circle cx="58" cy="330" r="9" fill="#cbd5e1"/>
+    <rect x="80" y="324" width="160" height="12" rx="6" fill="#cbd5e1"/>
+  </g>
+</svg>

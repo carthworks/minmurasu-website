@@ -38,7 +38,12 @@
 - [Book a Free Consultation](https://www.minmurasu.digital/book): Direct 30-minute growth and automation strategy call with Karthikeyan T.
 - [About Company & Founder](https://www.minmurasu.digital/about): Mission, technical engineering standards, and founder background.
 - [Solution Blueprints & Work](https://www.minmurasu.digital/work): Real architectural blueprints demonstrating growth systems for clinics, real estate, and manufacturing.
-- [Growth Insights & Articles](https://www.minmurasu.digital/insights): In-depth guides on Generative Engine Optimisation (GEO), Next.js vs WordPress for B2B, and connecting ad tracking to CRM pipelines.
+- [Growth Insights & Articles](https://www.minmurasu.digital/insights): In-depth guides on Generative Engine Optimisation (GEO), Next.js vs WordPress for B2B, connecting ad tracking to CRM pipelines, local SEO for clinics, and distribution for developers.
+  - [Generative Engine Optimisation (GEO) guide](https://www.minmurasu.digital/insights/generative-engine-optimisation-guide): How AI search tools pick and cite sources, and seven steps to become citable.
+  - [Next.js vs WordPress for B2B websites](https://www.minmurasu.digital/insights/nextjs-vs-wordpress-b2b): Core Web Vitals thresholds, when WordPress still fits, and a migration checklist.
+  - [Connecting Google & Meta Ads to your CRM](https://www.minmurasu.digital/insights/ad-tracking-crm-integration): Sending qualified-lead and sale events back to ad platforms, Google's 2026 Data Manager API change, and DPDP consent basics.
+  - [Local SEO for Coimbatore & Chennai clinics](https://www.minmurasu.digital/insights/local-seo-healthcare-tamil-nadu): Google Business Profile, reviews within the NMC's 2026 advertising guidelines, and cutting no-shows.
+  - [Why developers stall at distribution](https://www.minmurasu.digital/insights/developer-distribution-sprint): Positioning, landing page, measurement and one channel: a 14-day plan for developers with a shipped product.
 
 ## Commercial & Ethical Guarantees
 1. 0% Markup on Ad Spend: Clients maintain direct ownership of Google Ads and Meta accounts and pay media networks directly.

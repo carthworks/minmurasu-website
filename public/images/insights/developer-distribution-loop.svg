@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Four-step loop: position, page, measure, channel">
+  <rect width="1200" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0082CA"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, Segoe UI, Arial, sans-serif">
+    <circle cx="600" cy="280" r="190" fill="none" stroke="#BAE6FD" stroke-width="3" stroke-dasharray="6 10"/>
+    <path d="M470 145 A 190 190 0 0 1 730 145" fill="none" stroke="#0082CA" stroke-width="4" marker-end="url(#a)"/>
+    <path d="M745 160 A 190 190 0 0 1 745 400" fill="none" stroke="#0082CA" stroke-width="4" marker-end="url(#a)"/>
+    <path d="M730 415 A 190 190 0 0 1 470 415" fill="none" stroke="#0082CA" stroke-width="4" marker-end="url(#a)"/>
+    <path d="M455 400 A 190 190 0 0 1 455 160" fill="none" stroke="#0082CA" stroke-width="4" marker-end="url(#a)"/>
+
+    <g text-anchor="middle">
+      <text x="600" y="268" font-size="22" font-weight="800" fill="#0D2040">Repeat every</text>
+      <text x="600" y="300" font-size="22" font-weight="800" fill="#F58220">2–4 weeks</text>
+    </g>
+
+    <!-- nodes -->
+    <g>
+      <rect x="500" y="40" width="200" height="80" rx="18" fill="#0D2040"/>
+      <text x="600" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">1 · Position</text>
+      <text x="600" y="102" text-anchor="middle" font-size="15" fill="#BAE6FD">who pays, for what</text>
+    </g>
+    <g>
+      <rect x="820" y="240" width="220" height="80" rx="18" fill="#0082CA"/>
+      <text x="930" y="276" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">2 · Page</text>
+      <text x="930" y="302" text-anchor="middle" font-size="15" fill="#F0F8FF">outcome, proof, one CTA</text>
+    </g>
+    <g>
+      <rect x="500" y="440" width="200" height="80" rx="18" fill="#0D2040"/>
+      <text x="600" y="476" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">3 · Measure</text>
+      <text x="600" y="502" text-anchor="middle" font-size="15" fill="#BAE6FD">visit → signup → paid</text>
+    </g>
+    <g>
+      <rect x="160" y="240" width="220" height="80" rx="18" fill="#F58220"/>
+      <text x="270" y="276" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">4 · Channel</text>
+      <text x="270" y="302" text-anchor="middle" font-size="15" fill="#fff7ed">one, for 30 days</text>
+    </g>
+  </g>
+</svg>

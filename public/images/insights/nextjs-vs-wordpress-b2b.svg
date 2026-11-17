@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="A heavy layered website compared with a lean fast one">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="0.5" stop-color="#e2e8f0"/>
+      <stop offset="0.5" stop-color="#0D2040"/>
+      <stop offset="1" stop-color="#0D2040"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g font-family="system-ui, Segoe UI, Arial, sans-serif">
+    <!-- Heavy stack -->
+    <text x="300" y="80" text-anchor="middle" font-size="22" font-weight="800" fill="#475569" letter-spacing="2">THEME + PLUGINS</text>
+    <g transform="translate(150 110)">
+      <rect x="0" y="0" width="300" height="56" rx="10" fill="#94a3b8"/>
+      <rect x="10" y="62" width="280" height="56" rx="10" fill="#a3b1c4"/>
+      <rect x="-10" y="124" width="320" height="56" rx="10" fill="#94a3b8"/>
+      <rect x="6" y="186" width="288" height="56" rx="10" fill="#a3b1c4"/>
+      <rect x="-4" y="248" width="308" height="56" rx="10" fill="#94a3b8"/>
+      <rect x="12" y="310" width="276" height="56" rx="10" fill="#a3b1c4"/>
+      <g font-size="17" font-weight="700" fill="#1e293b" text-anchor="middle">
+        <text x="150" y="34">page builder</text>
+        <text x="150" y="96">slider plugin</text>
+        <text x="150" y="158">popup + chat widgets</text>
+        <text x="150" y="220">5 tracking scripts</text>
+        <text x="150" y="282">theme CSS (unused)</text>
+        <text x="150" y="344">your content</text>
+      </g>
+    </g>
+    <g transform="translate(300 530)" text-anchor="middle">
+      <rect x="-90" y="-30" width="180" height="50" rx="25" fill="#ef4444"/>
+      <text y="3" font-size="20" font-weight="800" fill="#fff">INP 480 ms</text>
+    </g>
+
+    <!-- Lean -->
+    <text x="900" y="80" text-anchor="middle" font-size="22" font-weight="800" fill="#BAE6FD" letter-spacing="2">NEXT.JS</text>
+    <g transform="translate(750 250)">
+      <rect width="300" height="110" rx="16" fill="#0082CA"/>
+      <text x="150" y="50" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">your content</text>
+      <text x="150" y="80" text-anchor="middle" font-size="16" fill="#F0F8FF">pre-rendered at the edge</text>
+    </g>
+    <g stroke="#F58220" stroke-width="5" stroke-linecap="round">
+      <line x1="700" y1="280" x2="610" y2="280"/>
+      <line x1="720" y1="305" x2="650" y2="305"/>
+      <line x1="700" y1="330" x2="620" y2="330"/>
+    </g>
+    <g transform="translate(900 530)" text-anchor="middle">
+      <rect x="-90" y="-30" width="180" height="50" rx="25" fill="#22c55e"/>
+      <text y="3" font-size="20" font-weight="800" fill="#fff">INP 90 ms</text>
+    </g>
+    <text x="900" y="595" text-anchor="middle" font-size="13" fill="#94a3b8">Illustrative values</text>
+    <text x="300" y="595" text-anchor="middle" font-size="13" fill="#64748b">Illustrative values</text>
+  </g>
+</svg>
