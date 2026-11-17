@@ -1,21 +1,22 @@
-import { formatPrice, getPlan } from "@/content/pricing";
+import { getPlan, type Currency } from "@/content/pricing";
 
 /**
- * Distribution Sprint offer, kept in one place so the test page can be re-priced
- * without touching the layout. These are draft values: confirm before outreach.
+ * Distribution Sprint offer. The price comes from src/content/pricing.ts so /pricing
+ * and this page always agree; render it with <Price amounts={...} /> so it follows
+ * the visitor's INR/USD choice.
  */
 export const sprintOffer: {
   name: string;
   durationDays: number;
-  price: string;
+  price: Record<Currency, number>;
   priceNote: string;
   /** Shown struck through next to the price when set. */
-  regularPrice: string | null;
+  regularPrice: Record<Currency, number> | null;
   foundingSlots: number;
 } = {
   name: "Distribution Sprint",
   durationDays: 14,
-  price: formatPrice(getPlan("distribution-sprint").price.INR, "INR"),
+  price: getPlan("distribution-sprint").price,
   priceNote: "Founding price for the first 3 clients, in exchange for a public case study.",
   regularPrice: null,
   foundingSlots: 3,
