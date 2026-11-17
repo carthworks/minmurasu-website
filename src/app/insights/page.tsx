@@ -6,12 +6,34 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Growth Insights & Strategic Articles | MIN MURASU",
+  title: "Growth Insights & Strategic Articles",
   description:
     "Practical perspectives on Generative Engine Optimisation (GEO), technical SEO, conversion rate engineering, and B2B automation.",
 };
 
-const articles = [
+interface Article {
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  href?: string;
+  cta?: string;
+}
+
+const articles: Article[] = [
+  {
+    title: "Building Is the Easy Part Now: Why Developers Stall at Distribution",
+    slug: "developer-distribution-sprint",
+    excerpt:
+      "AI made shipping cheap, so every niche now has ten products and the one people find wins. The four things that move a shipped product to paying customers, and our 14-day sprint for developers.",
+    date: "November 2026",
+    readTime: "4 min read",
+    category: "For Developers",
+    href: "/for-developers",
+    cta: "See the Sprint",
+  },
   {
     title: "How to Prepare Your Brand for Generative Engine Optimisation (GEO)",
     slug: "generative-engine-optimisation-guide",
@@ -90,10 +112,10 @@ export default function InsightsPage() {
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-xs text-slate-400">{art.date}</span>
                 <Link
-                  href="/contact"
+                  href={art.href ?? "/contact"}
                   className="text-xs font-bold text-[#0082CA] hover:text-[#0D2040] inline-flex items-center gap-1 transition-colors"
                 >
-                  <span>Discuss Strategy</span>
+                  <span>{art.cta ?? "Discuss Strategy"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

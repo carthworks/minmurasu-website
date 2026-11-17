@@ -2,7 +2,13 @@ import { z } from "zod";
 import { contactFormSchema } from "@/lib/validation";
 
 /** Every surface that can create a lead. Add new tools here (audit tool, AI strategy, etc.). */
-export const LEAD_SOURCES = ["contact", "free-audit", "book", "roi-calculator"] as const;
+export const LEAD_SOURCES = [
+  "contact",
+  "free-audit",
+  "book",
+  "roi-calculator",
+  "for-developers",
+] as const;
 export type LeadSource = (typeof LEAD_SOURCES)[number];
 
 const shortText = z.string().trim().max(300);
