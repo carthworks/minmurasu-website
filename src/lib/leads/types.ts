@@ -8,6 +8,8 @@ export const LEAD_SOURCES = [
   "book",
   "roi-calculator",
   "for-developers",
+  "validation-program",
+  "buyer-panel",
 ] as const;
 export type LeadSource = (typeof LEAD_SOURCES)[number];
 
