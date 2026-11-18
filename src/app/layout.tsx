@@ -80,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="s-MYWYUD_3OgvbkUBCWaM1hFhoCrJF9YC7SMoTs2oiY" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
       </head>
       <body
