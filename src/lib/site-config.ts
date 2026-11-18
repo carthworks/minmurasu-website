@@ -162,7 +162,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/company/minmurasu",
     instagram: "https://www.instagram.com/minmurasu",
     youtube: "https://www.youtube.com/@minmurasu",
-    facebook: "https://www.facebook.com/minmurasu",
+    facebook: "",
   },
 
   seo: {

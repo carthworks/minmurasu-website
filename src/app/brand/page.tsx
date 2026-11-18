@@ -585,6 +585,7 @@ export default function BrandPage() {
                   Official Channels
                 </span>
                 <div className="space-y-2 text-slate-600">
+                  {siteConfig.socials.linkedin && (
                   <a
                     href={siteConfig.socials.linkedin}
                     target="_blank"
@@ -594,6 +595,8 @@ export default function BrandPage() {
                     <span>LinkedIn Official</span>
                     <Globe className="w-3.5 h-3.5 text-slate-400" />
                   </a>
+                  )}
+                  {siteConfig.socials.instagram && (
                   <a
                     href={siteConfig.socials.instagram}
                     target="_blank"
@@ -603,6 +606,8 @@ export default function BrandPage() {
                     <span>Instagram Official</span>
                     <Globe className="w-3.5 h-3.5 text-slate-400" />
                   </a>
+                  )}
+                  {siteConfig.socials.youtube && (
                   <a
                     href={siteConfig.socials.youtube}
                     target="_blank"
@@ -612,6 +617,7 @@ export default function BrandPage() {
                     <span>YouTube Channel</span>
                     <Globe className="w-3.5 h-3.5 text-slate-400" />
                   </a>
+                  )}
                 </div>
               </div>
             </div>
