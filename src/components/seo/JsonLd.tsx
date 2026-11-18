@@ -28,6 +28,29 @@ export function LocalBusinessJsonLd() {
   );
 }
 
+export function WebSiteJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    alternateName: siteConfig.tamilName,
+    url: siteConfig.url,
+    description: siteConfig.shortDescription,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function ServiceJsonLd({
   name,
   description,

@@ -4,7 +4,11 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import { OrganizationJsonLd, LocalBusinessJsonLd } from "@/components/seo/JsonLd";
+import {
+  OrganizationJsonLd,
+  LocalBusinessJsonLd,
+  WebSiteJsonLd,
+} from "@/components/seo/JsonLd";
 import DrumPageLoader from "@/components/ui/DrumPageLoader";
 import { siteConfig } from "@/lib/site-config";
 import type { Metadata, Viewport } from "next";
@@ -96,6 +100,7 @@ export default function RootLayout({
         </a>
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />
+        <WebSiteJsonLd />
         <Header />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
