@@ -514,6 +514,18 @@ export default function Header() {
               Work
             </Link>
 
+            {/* 5b. Direct Link: CRM product */}
+            <Link
+              href="/crm"
+              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                pathname === "/crm"
+                  ? "text-[#0082CA] bg-slate-50 font-bold"
+                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
+              }`}
+            >
+              CRM
+            </Link>
+
             {/* 6. Company with Submenu */}
             <div
               className="relative"
@@ -740,6 +752,14 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Work
+            </Link>
+
+            <Link
+              href="/crm"
+              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Agency CRM
             </Link>
 
             {/* Mobile: About Accordion */}
