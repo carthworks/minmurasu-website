@@ -10,6 +10,7 @@ export const LEAD_SOURCES = [
   "for-developers",
   "validation-program",
   "buyer-panel",
+  "crm",
 ] as const;
 export type LeadSource = (typeof LEAD_SOURCES)[number];
 
