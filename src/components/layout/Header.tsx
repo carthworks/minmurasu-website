@@ -34,6 +34,8 @@ import {
   Compass,
   FileText,
   Users,
+  Route,
+  Mail,
 } from "lucide-react";
 import { feedback } from "@/lib/vibe-feedback";
 
@@ -150,11 +152,11 @@ const companyMenuItems: SubMenuItem[] = [
     iconColor: "text-[#0082CA] bg-sky-50",
   },
   {
-    href: "/brand",
-    title: "Brand Assets & Identity",
-    shortDesc: "Official logos, color codes, guidelines & media kit",
-    icon: Sparkles,
-    iconColor: "text-[#F58220] bg-orange-50",
+    href: "/approach",
+    title: "Our Approach",
+    shortDesc: "How we plan, build, measure & improve growth",
+    icon: Route,
+    iconColor: "text-blue-600 bg-blue-50",
   },
   {
     href: "/insights",
@@ -163,7 +165,38 @@ const companyMenuItems: SubMenuItem[] = [
     icon: FileText,
     iconColor: "text-emerald-600 bg-emerald-50",
   },
+  {
+    href: "/brand",
+    title: "Brand Assets & Identity",
+    shortDesc: "Official logos, color codes, guidelines & media kit",
+    icon: Sparkles,
+    iconColor: "text-[#F58220] bg-orange-50",
+  },
+  {
+    href: "/contact",
+    title: "Contact Us",
+    shortDesc: "Call, WhatsApp, email or visit our Coimbatore office",
+    icon: Mail,
+    iconColor: "text-rose-600 bg-rose-50",
+  },
 ];
+
+/** Top-level links without a dropdown, in display order. */
+const directLinks = [
+  { href: "/work", label: "Work", mobileLabel: "Work" },
+  { href: "/crm", label: "CRM", mobileLabel: "Agency CRM", badge: "New" },
+  { href: "/pricing", label: "Pricing", mobileLabel: "Pricing" },
+];
+
+const companyPaths = companyMenuItems.map((i) => i.href);
+
+function navLinkClass(active: boolean) {
+  return `inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+    active
+      ? "text-[#0082CA] bg-slate-50 font-bold"
+      : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
+  }`;
+}
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -478,53 +511,21 @@ export default function Header() {
               )}
             </div>
 
-            {/* 3. Direct Link: Our Approach */}
-            <Link
-              href="/approach"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                pathname === "/approach"
-                  ? "text-[#0082CA] bg-slate-50 font-bold"
-                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
-              }`}
-            >
-              Our Approach
-            </Link>
-
-            {/* 4. Direct Link: Pricing */}
-            <Link
-              href="/pricing"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                pathname === "/pricing"
-                  ? "text-[#0082CA] bg-slate-50 font-bold"
-                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
-              }`}
-            >
-              Pricing
-            </Link>
-
-            {/* 5. Direct Link: Work */}
-            <Link
-              href="/work"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                pathname === "/work"
-                  ? "text-[#0082CA] bg-slate-50 font-bold"
-                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
-              }`}
-            >
-              Work
-            </Link>
-
-            {/* 5b. Direct Link: CRM product */}
-            <Link
-              href="/crm"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                pathname === "/crm"
-                  ? "text-[#0082CA] bg-slate-50 font-bold"
-                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
-              }`}
-            >
-              CRM
-            </Link>
+            {/* 3. Direct links: Work, CRM, Pricing */}
+            {directLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={navLinkClass(pathname === link.href)}
+              >
+                {link.label}
+                {link.badge && (
+                  <span className="text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full bg-orange-100 text-[#F58220]">
+                    {link.badge}
+                  </span>
+                )}
+              </Link>
+            ))}
 
             {/* 6. Company with Submenu */}
             <div
@@ -535,14 +536,14 @@ export default function Header() {
               <Link
                 href="/about"
                 className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  pathname === "/about" || pathname === "/insights" || activeDropdown === "company"
+                  companyPaths.some((p) => pathname.startsWith(p)) || activeDropdown === "company"
                     ? "text-[#0082CA] bg-slate-50 font-bold"
                     : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
                 }`}
                 aria-expanded={activeDropdown === "company"}
                 aria-haspopup="true"
               >
-                <span>About</span>
+                <span>Company</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
                     activeDropdown === "company" ? "rotate-180 text-[#0082CA]" : ""
@@ -553,7 +554,7 @@ export default function Header() {
               {/* Dropdown Panel for Company */}
               {activeDropdown === "company" && (
                 <div
-                  className="absolute top-full -left-10 w-[300px] pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute top-full right-0 w-[320px] pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                   role="menu"
                 >
                   <div className="rounded-2xl border border-slate-200 bg-white/98 backdrop-blur-md p-3 shadow-2xl shadow-slate-900/10 space-y-1">
@@ -593,30 +594,10 @@ export default function Header() {
               )}
             </div>
 
-            {/* 7. Direct Link: Contact */}
-            <Link
-              href="/contact"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                pathname === "/contact"
-                  ? "text-[#0082CA] bg-slate-50 font-bold"
-                  : "text-[#334155] hover:text-[#0082CA] hover:bg-slate-50/80"
-              }`}
-            >
-              Contact
-            </Link>
           </nav>
 
           {/* Header Action Buttons */}
           <div className="hidden sm:flex items-center gap-2.5">
-            <Link
-              href="/roi-calculator"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-[#0D2040] hover:text-[#0082CA] hover:bg-slate-50 border border-slate-200 transition-colors"
-            >
-              <Calculator className="w-3.5 h-3.5 text-[#F58220]" />
-              <span className="hidden xl:inline">ROI Calculator</span>
-              <span className="xl:hidden">ROI</span>
-            </Link>
-
             <Button
               href={siteConfig.cta.audit.href}
               variant="orange"
@@ -730,37 +711,21 @@ export default function Header() {
             </div>
 
             {/* Mobile: Direct Links */}
-            <Link
-              href="/approach"
-              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Our Approach
-            </Link>
-
-            <Link
-              href="/pricing"
-              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Pricing
-            </Link>
-
-            <Link
-              href="/work"
-              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Work
-            </Link>
-
-            <Link
-              href="/crm"
-              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Agency CRM
-            </Link>
+            {directLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex items-center gap-2 text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.mobileLabel}
+                {link.badge && (
+                  <span className="text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full bg-orange-100 text-[#F58220]">
+                    {link.badge}
+                  </span>
+                )}
+              </Link>
+            ))}
 
             {/* Mobile: About Accordion */}
             <div className="border-b border-slate-100 pb-1">
@@ -769,7 +734,7 @@ export default function Header() {
                 onClick={() => toggleMobileAccordion("about")}
                 className="w-full flex items-center justify-between text-base font-bold py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 transition-colors"
               >
-                <span>About</span>
+                <span>Company</span>
                 <ChevronDown
                   className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
                     mobileExpanded.about ? "rotate-180 text-[#0082CA]" : ""
@@ -779,38 +744,19 @@ export default function Header() {
 
               {mobileExpanded.about && (
                 <div className="pl-4 pr-2 py-1.5 space-y-1 bg-slate-50/70 rounded-xl mb-2">
-                  <Link
-                    href="/about"
-                    className="block text-xs py-1.5 px-2.5 rounded-md text-slate-700 hover:text-[#0082CA] hover:bg-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    About MIN MURASU
-                  </Link>
-                  <Link
-                    href="/brand"
-                    className="block text-xs py-1.5 px-2.5 rounded-md text-slate-700 hover:text-[#0082CA] hover:bg-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Brand Identity &amp; Assets
-                  </Link>
-                  <Link
-                    href="/insights"
-                    className="block text-xs py-1.5 px-2.5 rounded-md text-slate-700 hover:text-[#0082CA] hover:bg-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Insights &amp; Guides
-                  </Link>
+                  {companyMenuItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block text-xs py-1.5 px-2.5 rounded-md text-slate-700 hover:text-[#0082CA] hover:bg-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
-
-            <Link
-              href="/contact"
-              className="text-base font-medium py-2.5 px-3 rounded-lg text-[#0D2040] hover:bg-slate-50 hover:text-[#0082CA] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
 
             {/* Mobile ROI Calculator Button */}
             <div className="pt-2">
