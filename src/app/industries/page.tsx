@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "Industry Growth Solutions",
   description:
     "Tailored digital marketing, web engineering, and AI automation for Healthcare, Real Estate, Manufacturing, Education, and Retail sectors.",
+  alternates: { canonical: "/industries" },
 };
 
 const iconMap = {

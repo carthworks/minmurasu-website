@@ -28,9 +28,8 @@ export const metadata: Metadata = {
     template: siteConfig.seo.titleTemplate,
   },
   description: siteConfig.shortDescription,
-  alternates: {
-    canonical: "/",
-  },
+  // No canonical here: child routes inherit it, which would point every page
+  // without its own canonical at the homepage. Each page sets its own instead.
   keywords: siteConfig.seo.keywords,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,

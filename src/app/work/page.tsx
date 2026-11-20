@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   title: "Work, Web Products & Solution Blueprints",
   description:
     "Explore MIN MURASU's proprietary web and digital marketing products, production client platforms, and verified growth system blueprints.",
+  alternates: { canonical: "/work" },
 };
 
 /* ------------------------------------------------------------------ */

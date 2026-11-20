@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Growth System | Predictable Construction & B2B Growth Engine",
   description:
     "Interactive client demonstration of the 6-Step Construction Growth Engine. Systematic client acquisition architecture for commercial builders, EPC, and infrastructure firms.",
+  alternates: { canonical: "/growth-system" },
   robots: {
     index: false,
     follow: false,

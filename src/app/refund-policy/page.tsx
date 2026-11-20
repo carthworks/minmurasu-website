@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Cancellation & Refund Policy",
   description:
     "Transparent service cancellation, retainer termination, and refund policy for MIN MURASU engagements.",
+  alternates: { canonical: "/refund-policy" },
 };
 
 export default function RefundPolicyPage() {

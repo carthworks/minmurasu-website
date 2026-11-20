@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Terms of service and commercial guidelines for MIN MURASU.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

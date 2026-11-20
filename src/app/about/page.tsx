@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "About Us | Our Story & Philosophy",
   description:
     "Learn about MIN MURASU, an engineering-driven digital growth and AI automation agency headquartered in Coimbatore, Tamil Nadu.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [

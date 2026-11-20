@@ -9,6 +9,11 @@ import FounderProof from "@/components/sections/FounderProof";
 import EngagementModels from "@/components/sections/EngagementModels";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /**
  * Homepage — kept to one clear story:

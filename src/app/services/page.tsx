@@ -20,34 +20,28 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "B2B Growth, Lead Generation Services & Conversion Rate Optimization (CRO)",
+  title: "Digital Marketing Services in Coimbatore | SEO, Ads & AI",
   description:
-    "Explore MIN MURASU's B2B growth systems: Inbound lead generation services, conversion rate optimization (CRO), technical SEO, Generative Engine Optimisation (GEO), Google and Meta ads, and AI automation.",
+    "Digital marketing services from a Coimbatore team: SEO, Google & Meta Ads, social media, websites, Generative Engine Optimisation (GEO) and WhatsApp & AI automation for SMEs across Tamil Nadu and India.",
   keywords: [
+    "digital marketing services Coimbatore",
+    "SEO services Coimbatore",
+    "Google Ads management Coimbatore",
+    "social media marketing Coimbatore",
+    "website development Coimbatore",
+    "GEO services",
+    "WhatsApp business automation",
+    "AI business automation",
     "lead generation services",
     "conversion rate optimization",
-    "conversion rate optimization services",
-    "B2B lead generation services",
-    "CRO services",
-    "lead generation agency",
-    "conversion rate optimization agency",
-    "digital marketing services Coimbatore",
-    "technical SEO services",
-    "Generative Engine Optimisation",
-    "GEO services",
-    "Google Ads lead generation",
-    "Meta Ads lead generation",
-    "high-converting landing pages",
-    "AI business automation",
-    "sales pipeline acceleration",
   ],
   alternates: {
     canonical: "https://www.minmurasu.digital/services",
   },
   openGraph: {
-    title: "Lead Generation Services & Conversion Rate Optimization | MIN MURASU",
+    title: "Digital Marketing Services in Coimbatore | MIN MURASU",
     description:
-      "Engineered digital growth systems combining B2B lead generation services, conversion rate optimization (CRO), high-intent SEO, and AI workflow automation.",
+      "SEO, Google & Meta Ads, social media, websites, AI search (GEO) and WhatsApp automation, run by one Coimbatore team.",
     url: "https://www.minmurasu.digital/services",
     type: "website",
   },

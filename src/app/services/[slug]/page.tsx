@@ -33,34 +33,46 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const service = servicesData[slug];
   if (!service) return { title: "Service Not Found" };
 
+  // Search titles target one local, high-intent query per page. The on-page H1 and
+  // breadcrumb keep using service.title.
+  const seoTitleMap: Record<string, string> = {
+    "digital-strategy": "Digital Marketing Strategy Consulting in Coimbatore",
+    "seo-local-seo": "SEO Services in Coimbatore | Local & Technical SEO",
+    "generative-engine-optimisation": "GEO Services India | AI Search Optimisation",
+    "social-media-content": "Social Media Marketing Agency in Coimbatore",
+    "google-meta-ads": "Google Ads & Meta Ads Agency in Coimbatore",
+    "website-landing-pages": "Website Development Company in Coimbatore",
+    "ai-business-automation": "AI & WhatsApp Business Automation in Coimbatore",
+  };
+  const seoTitle = seoTitleMap[slug] ?? service.title;
+
   const serviceKeywordsMap: Record<string, string[]> = {
     "google-meta-ads": [
-      "lead generation services",
-      "B2B lead generation services",
-      "lead generation agency",
-      "conversion rate optimization",
+      "Google Ads agency Coimbatore",
+      "Meta Ads agency Coimbatore",
+      "PPC company Coimbatore",
       "Google Ads management",
-      "Meta Ads agency",
+      "lead generation services",
     ],
     "website-landing-pages": [
+      "website development company Coimbatore",
+      "web design Coimbatore",
+      "landing page design",
       "conversion rate optimization",
-      "conversion rate optimization services",
-      "CRO services",
-      "lead generation services",
-      "high-converting landing pages",
       "Next.js web development",
     ],
     "digital-strategy": [
-      "lead generation services",
-      "conversion rate optimization",
+      "digital marketing consultant Coimbatore",
+      "digital marketing strategy",
       "digital growth consulting",
-      "B2B marketing strategy roadmap",
+      "B2B marketing strategy",
     ],
     "seo-local-seo": [
-      "lead generation services",
       "SEO services Coimbatore",
+      "SEO company in Coimbatore",
+      "local SEO Coimbatore",
+      "Google Business Profile optimisation",
       "technical SEO services",
-      "organic lead generation",
     ],
     "generative-engine-optimisation": [
       "Generative Engine Optimisation",
@@ -69,35 +81,31 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       "ChatGPT search optimization",
     ],
     "social-media-content": [
-      "social media marketing agency",
+      "social media marketing agency Coimbatore",
+      "social media management Coimbatore",
       "B2B content marketing",
-      "video production studio",
-      "commercial brand publishing",
+      "video content production",
     ],
     "ai-business-automation": [
-      "AI business automation",
+      "AI automation agency Coimbatore",
       "WhatsApp business automation",
+      "WhatsApp Business API",
       "lead qualification automation",
       "CRM workflow automation",
     ],
   };
 
-  const keywords = [
-    ...(serviceKeywordsMap[slug] || []),
-    "lead generation services",
-    "conversion rate optimization",
-    "MIN MURASU",
-  ];
+  const keywords = [...(serviceKeywordsMap[slug] || []), "MIN MURASU"];
 
   return {
-    title: service.title,
+    title: seoTitle,
     description: service.heroDescription,
     keywords,
     alternates: {
       canonical: `${siteConfig.url}/services/${slug}`,
     },
     openGraph: {
-      title: `${service.title} | MIN MURASU`,
+      title: `${seoTitle} | MIN MURASU`,
       description: service.heroDescription,
       url: `${siteConfig.url}/services/${slug}`,
     },
