@@ -56,7 +56,16 @@ export default function FinalCTA() {
           Rather talk first?{" "}
           <Link href={siteConfig.cta.primary.href} className="font-bold text-white underline underline-offset-4 hover:text-[#F58220]">
             Book a 30-minute call
-          </Link>
+          </Link>{" "}
+          <span className="text-slate-500 mx-1">&middot;</span> Or{" "}
+          <a
+            href={siteConfig.cta.seoAuditTool.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[#38BDF8] underline underline-offset-4 hover:text-[#F58220]"
+          >
+            run an instant SEO audit report
+          </a>
         </p>
 
         <div className="pt-8 border-t border-slate-800 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-300">

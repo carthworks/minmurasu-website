@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import CapabilityStrip from "@/components/sections/CapabilityStrip";
 import ProblemSection from "@/components/sections/ProblemSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
+import SeoAuditSpotlight from "@/components/sections/SeoAuditSpotlight";
 import BrandVideoSection from "@/components/sections/BrandVideoSection";
 import IndustriesOverview from "@/components/sections/IndustriesOverview";
 import Process from "@/components/sections/Process";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <Hero />
       <CapabilityStrip />
       <ProblemSection />
+      <SeoAuditSpotlight />
       <ServicesOverview />
       <BrandVideoSection />
       <IndustriesOverview />

@@ -87,6 +87,10 @@ export const siteConfig = {
     primary: { label: "Book a Free Consultation", href: "/book" },
     secondary: { label: "Explore Our Services", href: "/#services" },
     audit: { label: "Get a Free Digital Presence Audit", href: "/free-audit" },
+    seoAuditTool: {
+      label: "Run Free SEO Audit Report",
+      href: "https://open-seo-minmurasu.vercel.app",
+    },
     calculator: { label: "Growth ROI Calculator", href: "/roi-calculator" },
     whatsapp: { label: "Chat on WhatsApp" }, // href: getWhatsAppUrl()
   },
