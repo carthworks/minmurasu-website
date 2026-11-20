@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Placeholder for a dated Search Console screenshot">
+  <rect width="1200" height="600" fill="#F8FAFC"/>
+  <rect x="24" y="24" width="1152" height="552" rx="20" fill="none" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="14 10"/>
+  <polyline points="120,470 260,450 400,440 540,400 680,340 820,280 960,210 1080,160" fill="none" stroke="#0082CA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+  <text x="600" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#0D2040">Replace with a dated screenshot</text>
+  <text x="600" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#475569">Search Console · GBP insights · rank tracker. Keep the date range visible.</text>
+</svg>

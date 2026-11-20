@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import { servicesData } from "@/content/services";
 import { industriesData } from "@/content/industries";
 import { articles } from "@/content/insights";
+import { publishedCaseStudies } from "@/content/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -56,6 +57,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...industryPages, ...insightPages];
+  // /case-studies is noindex until the first case study is live, so it joins the sitemap then.
+  const caseStudyPages =
+    publishedCaseStudies.length > 0
+      ? [
+          {
+            url: `${baseUrl}/case-studies`,
+            lastModified: new Date().toISOString().split("T")[0],
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+          },
+          ...publishedCaseStudies.map((c) => ({
+            url: `${baseUrl}/case-studies/${c.slug}`,
+            lastModified: c.updatedAt,
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
+          })),
+        ]
+      : [];
+
+  return [...staticPages, ...servicePages, ...industryPages, ...insightPages, ...caseStudyPages];
 }
 
