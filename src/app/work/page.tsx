@@ -257,6 +257,38 @@ const clientPlatforms = [
     ],
     tech: ["React", "Next.js", "Tailwind CSS", "Payment Gateway API"],
   },
+  {
+    title: "VJ Prana Studio",
+    liveUrl: "https://vj-prana-studio.vercel.app/",
+    category: "Yoga, Wellness & Fitness Studio",
+    image: "/images/work/vj-prana-studio.jpg",
+    icon: Sparkles,
+    headline: "Holistic Yoga, Nutrition & Studio Booking Platform",
+    description:
+      "A calm, mobile-first studio website built for yoga, breathwork, and fitness coaching — making class schedules, wellness programs, and trial enquiries effortless for local members.",
+    highlights: [
+      "Clear program showcase for yoga batches, therapy, and wellness coaching",
+      "Mobile-first trial booking and direct WhatsApp enquiry flow",
+      "Local SEO structure tailored for regional wellness & fitness searches",
+    ],
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+  },
+  {
+    title: "MS Electrical Solution",
+    liveUrl: "https://ms-electrical-solution.vercel.app/",
+    category: "Electrical Engineering & Contracting",
+    image: "/images/work/ms-electrical-solution.jpg",
+    icon: Wrench,
+    headline: "Commercial, Industrial & Residential Electrical Services Portal",
+    description:
+      "A high-trust service platform for electrical contracting, panel installations, and preventive maintenance — designed to convert commercial and residential visitors into fast quote enquiries.",
+    highlights: [
+      "Structured service catalog for industrial, commercial, and residential works",
+      "Quick quote & site inspection intake with instant WhatsApp routing",
+      "Fast-loading responsive architecture engineered for local search visibility",
+    ],
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -361,7 +393,118 @@ export default function WorkPage() {
         <WorkStickyNav />
 
         {/* ------------------------------------------------------------ */}
-        {/* SECTION 1: In-House Web & Marketing Products                 */}
+        {/* SECTION 1: Production Web Platforms & E-Commerce Builds       */}
+        {/* ------------------------------------------------------------ */}
+        <section id="web-platforms" className="scroll-mt-44 md:scroll-mt-48 mb-20">
+          <div className="mb-8 pb-4 border-b border-slate-200">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-1">
+              <Globe className="w-4 h-4" />
+              <span>Web Engineering Showcase</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0D2040]">
+              Production Web Platforms &amp; Stores
+            </h2>
+            <p className="text-xs sm:text-sm text-[#475569] mt-1">
+              Live commercial web applications, portals, and e-commerce stores engineered for business growth. Click &quot;View Live&quot; to inspect any platform.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {clientPlatforms.map((platform) => {
+              const Icon = platform.icon;
+              return (
+                <div
+                  key={platform.title}
+                  className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-lg transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Visual UI Preview Image - Clickable to Live Site */}
+                    <a
+                      href={platform.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative block w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 bg-slate-900 shadow-inner group/img cursor-pointer"
+                      title={`Visit ${platform.title} live`}
+                    >
+                      <Image
+                        src={platform.image}
+                        alt={`${platform.title} Web Preview`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized={platform.image.endsWith(".svg")}
+                        className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+                      <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 bg-black/60 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur-md border border-white/20 group-hover/img:bg-[#0082CA] transition-colors">
+                        <span>Live Site</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </div>
+                    </a>
+
+                    <div className="w-10 h-10 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5" />
+                    </div>
+
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full inline-block mb-2">
+                      {platform.category}
+                    </span>
+
+                    <h3 className="text-lg font-bold text-[#0D2040] mb-1">
+                      {platform.title}
+                    </h3>
+
+                    <p className="text-xs font-semibold text-[#0082CA] mb-3">
+                      {platform.headline}
+                    </p>
+
+                    <p className="text-xs text-[#475569] leading-relaxed mb-4">
+                      {platform.description}
+                    </p>
+
+                    <div className="space-y-1.5 mb-5">
+                      <span className="text-[10px] font-bold text-[#0D2040] uppercase tracking-wider block">
+                        Architecture Highlights:
+                      </span>
+                      {platform.highlights.map((h) => (
+                        <div key={h} className="flex items-start gap-1.5 text-xs text-slate-600">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card Footer with prominent 'View Live' button */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <div className="flex flex-wrap gap-1.5">
+                      {platform.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200/50"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={platform.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0082CA] hover:bg-[#0070b0] text-white text-xs font-bold transition-all shadow-xs shrink-0"
+                    >
+                      <span>View Live</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------ */}
+        {/* SECTION 2: In-House Web & Marketing Products                 */}
         {/* ------------------------------------------------------------ */}
         <section id="carthworks-products" className="scroll-mt-44 md:scroll-mt-48 mb-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
@@ -513,116 +656,6 @@ export default function WorkPage() {
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ------------------------------------------------------------ */}
-        {/* SECTION 2: Production Web Platforms & E-Commerce Builds       */}
-        {/* ------------------------------------------------------------ */}
-        <section id="web-platforms" className="scroll-mt-44 md:scroll-mt-48 mb-20">
-          <div className="mb-8 pb-4 border-b border-slate-200">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0082CA] mb-1">
-              <Globe className="w-4 h-4" />
-              <span>Web Engineering Showcase</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0D2040]">
-              Production Web Platforms &amp; Stores
-            </h2>
-            <p className="text-xs sm:text-sm text-[#475569] mt-1">
-              Live commercial web applications, portals, and e-commerce stores engineered for business growth. Click &quot;View Live&quot; to inspect any platform.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clientPlatforms.map((platform) => {
-              const Icon = platform.icon;
-              return (
-                <div
-                  key={platform.title}
-                  className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs hover:border-[#0082CA]/50 hover:shadow-lg transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    {/* Visual UI Preview Image - Clickable to Live Site */}
-                    <a
-                      href={platform.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative block w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 bg-slate-900 shadow-inner group/img cursor-pointer"
-                      title={`Visit ${platform.title} live`}
-                    >
-                      <Image
-                        src={platform.image}
-                        alt={`${platform.title} Web Preview`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-                      <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 bg-black/60 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur-md border border-white/20 group-hover/img:bg-[#0082CA] transition-colors">
-                        <span>Live Site</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </div>
-                    </a>
-
-                    <div className="w-10 h-10 rounded-xl bg-[#F0F8FF] border border-[#BAE6FD] text-[#0082CA] flex items-center justify-center mb-3">
-                      <Icon className="w-5 h-5" />
-                    </div>
-
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#0082CA] bg-[#F0F8FF] border border-[#BAE6FD] px-2.5 py-0.5 rounded-full inline-block mb-2">
-                      {platform.category}
-                    </span>
-
-                    <h3 className="text-lg font-bold text-[#0D2040] mb-1">
-                      {platform.title}
-                    </h3>
-
-                    <p className="text-xs font-semibold text-[#0082CA] mb-3">
-                      {platform.headline}
-                    </p>
-
-                    <p className="text-xs text-[#475569] leading-relaxed mb-4">
-                      {platform.description}
-                    </p>
-
-                    <div className="space-y-1.5 mb-5">
-                      <span className="text-[10px] font-bold text-[#0D2040] uppercase tracking-wider block">
-                        Architecture Highlights:
-                      </span>
-                      {platform.highlights.map((h) => (
-                        <div key={h} className="flex items-start gap-1.5 text-xs text-slate-600">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0082CA] shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card Footer with prominent 'View Live' button */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-                    <div className="flex flex-wrap gap-1.5">
-                      {platform.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200/50"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <a
-                      href={platform.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0082CA] hover:bg-[#0070b0] text-white text-xs font-bold transition-all shadow-xs shrink-0"
-                    >
-                      <span>View Live</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
                   </div>
                 </div>
               );

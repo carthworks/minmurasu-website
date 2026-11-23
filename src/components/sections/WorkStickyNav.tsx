@@ -13,16 +13,16 @@ interface WorkNavSection {
 
 const sections: WorkNavSection[] = [
   {
+    id: "web-platforms",
+    label: "Web Platforms & Stores",
+    count: "9 Builds",
+    icon: Globe,
+  },
+  {
     id: "carthworks-products",
     label: "Proprietary Web Tools",
     count: "5 Products",
     icon: Wrench,
-  },
-  {
-    id: "web-platforms",
-    label: "Web Platforms & Stores",
-    count: "7 Builds",
-    icon: Globe,
   },
   {
     id: "growth-blueprints",
@@ -33,7 +33,7 @@ const sections: WorkNavSection[] = [
 ];
 
 export default function WorkStickyNav() {
-  const [activeId, setActiveId] = useState<string>("carthworks-products");
+  const [activeId, setActiveId] = useState<string>("web-platforms");
   const [headerHeight, setHeaderHeight] = useState<number>(68);
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
