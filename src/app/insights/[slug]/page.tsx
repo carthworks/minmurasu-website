@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     alternates: { canonical: url },
     openGraph: {
       type: "article",
+      locale: siteConfig.seo.locale,
       url,
       title: article.title,
       description: article.description,
@@ -55,6 +56,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     twitter: {
       card: "summary_large_image",
+      site: siteConfig.seo.twitterHandle,
+      creator: siteConfig.seo.twitterHandle,
       title: article.title,
       description: article.description,
     },

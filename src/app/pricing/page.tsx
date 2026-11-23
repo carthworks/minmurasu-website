@@ -21,7 +21,18 @@ export const metadata: Metadata = {
     title: "Pricing & Plans | MIN MURASU",
     description: `Five published plans in INR and USD. Monthly plans from ${startingMonthly}/month. No lock-in, no ad spend markup.`,
     url: `${siteConfig.url}/pricing`,
+    siteName: siteConfig.name,
+    locale: siteConfig.seo.locale,
     type: "website",
+    images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: "Pricing & Plans | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "Pricing & Plans | MIN MURASU",
+    description: `Five published plans in INR and USD. Monthly plans from ${startingMonthly}/month. No lock-in, no ad spend markup.`,
+    images: [siteConfig.brand.ogImage],
   },
 };
 

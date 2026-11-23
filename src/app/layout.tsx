@@ -24,10 +24,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.seo.defaultTitle,
+    default: "MIN MURASU | Digital Growth Agency",
     template: siteConfig.seo.titleTemplate,
   },
-  description: siteConfig.shortDescription,
+  description:
+    "Turn Digital Attention Into Business Growth. Digital marketing, web development and AI automation.",
   // No canonical here: child routes inherit it, which would point every page
   // without its own canonical at the homepage. Each page sets its own instead.
   keywords: siteConfig.seo.keywords,
@@ -44,26 +45,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: siteConfig.seo.locale,
-    url: siteConfig.url,
-    title: siteConfig.seo.defaultTitle,
-    description: siteConfig.shortDescription,
+    url: `${siteConfig.url}/`,
+    title: "MIN MURASU | Digital Growth Agency",
+    description:
+      "Turn Digital Attention Into Business Growth. Digital marketing, web development and AI automation.",
     siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.brand.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.seo.defaultTitle,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     site: siteConfig.seo.twitterHandle,
     creator: siteConfig.seo.twitterHandle,
-    title: siteConfig.seo.defaultTitle,
-    description: siteConfig.shortDescription,
-    images: [siteConfig.brand.ogImage],
+    title: "MIN MURASU | Digital Growth Agency",
+    description:
+      "Turn Digital Attention Into Business Growth. Digital marketing, web development and AI automation.",
   },
   robots: {
     index: true,

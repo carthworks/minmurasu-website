@@ -8,6 +8,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.url}/book`,
   },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.seo.locale,
+    siteName: siteConfig.name,
+    url: `${siteConfig.url}/book`,
+    title: "Book a Free 30-Minute Growth Consultation | MIN MURASU",
+    description:
+      "Schedule a complimentary 30-minute Digital Growth, SEO, Web Engineering, and AI Automation consultation with MIN MURASU.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "Book a Free 30-Minute Growth Consultation | MIN MURASU",
+    description:
+      "Schedule a complimentary 30-minute Digital Growth, SEO, Web Engineering, and AI Automation consultation with MIN MURASU.",
+  },
 };
 
 export default function BookLayout({

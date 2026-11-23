@@ -40,6 +40,23 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
     alternates: {
       canonical: `${siteConfig.url}/industries/${slug}`,
     },
+    openGraph: {
+      type: "website",
+      locale: siteConfig.seo.locale,
+      siteName: siteConfig.name,
+      url: `${siteConfig.url}/industries/${slug}`,
+      title: `${industry.title} Digital Growth | MIN MURASU`,
+      description: industry.summary,
+      images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: `${industry.title} Digital Growth | MIN MURASU` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.seo.twitterHandle,
+      creator: siteConfig.seo.twitterHandle,
+      title: `${industry.title} Digital Growth | MIN MURASU`,
+      description: industry.summary,
+      images: [siteConfig.brand.ogImage],
+    },
   };
 }
 

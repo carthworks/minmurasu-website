@@ -43,7 +43,19 @@ export const metadata: Metadata = {
     description:
       "SEO, Google & Meta Ads, social media, websites, AI search (GEO) and WhatsApp automation, run by one Coimbatore team.",
     url: "https://www.minmurasu.digital/services",
+    siteName: "MIN MURASU",
+    locale: "en_IN",
     type: "website",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Digital Marketing Services | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@minmurasu",
+    creator: "@minmurasu",
+    title: "Digital Marketing Services in Coimbatore | MIN MURASU",
+    description:
+      "SEO, Google & Meta Ads, social media, websites, AI search (GEO) and WhatsApp automation, run by one Coimbatore team.",
+    images: ["/images/og-image.jpg"],
   },
 };
 

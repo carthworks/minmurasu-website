@@ -105,9 +105,21 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       canonical: `${siteConfig.url}/services/${slug}`,
     },
     openGraph: {
+      type: "website",
+      locale: siteConfig.seo.locale,
+      siteName: siteConfig.name,
       title: `${seoTitle} | MIN MURASU`,
       description: service.heroDescription,
       url: `${siteConfig.url}/services/${slug}`,
+      images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: `${seoTitle} | MIN MURASU` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.seo.twitterHandle,
+      creator: siteConfig.seo.twitterHandle,
+      title: `${seoTitle} | MIN MURASU`,
+      description: service.heroDescription,
+      images: [siteConfig.brand.ogImage],
     },
   };
 }

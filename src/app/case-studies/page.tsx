@@ -27,7 +27,18 @@ export const metadata: Metadata = {
     title: "Case Studies | MIN MURASU",
     description: "Dated, verifiable SEO and digital marketing results, published with client consent.",
     url: absoluteUrl("/case-studies"),
+    siteName: siteConfig.name,
+    locale: siteConfig.seo.locale,
     type: "website",
+    images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: "Case Studies | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "Case Studies | MIN MURASU",
+    description: "Dated, verifiable SEO and digital marketing results, published with client consent.",
+    images: [siteConfig.brand.ogImage],
   },
 };
 

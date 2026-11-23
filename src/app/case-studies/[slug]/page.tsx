@@ -42,12 +42,22 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     robots: isLive(c) ? { index: true, follow: true } : { index: false, follow: false },
     openGraph: {
       type: "article",
+      locale: siteConfig.seo.locale,
       url,
       title: c.title,
       description: c.description,
       publishedTime: c.publishedAt,
       modifiedTime: c.updatedAt,
       siteName: siteConfig.name,
+      images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: c.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.seo.twitterHandle,
+      creator: siteConfig.seo.twitterHandle,
+      title: c.title,
+      description: c.description,
+      images: [siteConfig.brand.ogImage],
     },
   };
 }

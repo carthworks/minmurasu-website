@@ -23,6 +23,25 @@ export const metadata: Metadata = {
   description:
     "Tailored digital marketing, web engineering, and AI automation for Healthcare, Real Estate, Manufacturing, Education, and Retail sectors.",
   alternates: { canonical: "/industries" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "MIN MURASU",
+    url: "https://www.minmurasu.digital/industries",
+    title: "Industry Growth Solutions | MIN MURASU",
+    description:
+      "Tailored digital marketing, web engineering, and AI automation for Healthcare, Real Estate, Manufacturing, Education, and Retail sectors.",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Industry Growth Solutions | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@minmurasu",
+    creator: "@minmurasu",
+    title: "Industry Growth Solutions | MIN MURASU",
+    description:
+      "Tailored digital marketing, web engineering, and AI automation for Healthcare, Real Estate, Manufacturing, Education, and Retail sectors.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 const iconMap = {

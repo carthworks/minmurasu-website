@@ -14,7 +14,16 @@ export const metadata: Metadata = {
       "See the measurable impact of sub-second page speed, high-intent search, and instant WhatsApp lead response on your monthly enquiries and revenue.",
     url: `${siteConfig.url}/roi-calculator`,
     siteName: siteConfig.name,
+    locale: siteConfig.seo.locale,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "Interactive ROI & Growth Calculator | MIN MURASU",
+    description:
+      "See the measurable impact of sub-second page speed, high-intent search, and instant WhatsApp lead response on your monthly enquiries and revenue.",
   },
 };
 

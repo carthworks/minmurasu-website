@@ -29,10 +29,27 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Work, Web Products & Solution Blueprints",
+  title: { absolute: "Our Work | MIN MURASU" },
   description:
-    "Explore MIN MURASU's proprietary web and digital marketing products, production client platforms, and verified growth system blueprints.",
-  alternates: { canonical: "/work" },
+    "Explore websites, digital experiences and AI-powered business solutions created by MIN MURASU.",
+  alternates: { canonical: "https://www.minmurasu.digital/work" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "MIN MURASU",
+    url: "https://www.minmurasu.digital/work",
+    title: "Our Work | MIN MURASU",
+    description:
+      "Explore websites, digital experiences and AI-powered business solutions created by MIN MURASU.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@minmurasu",
+    creator: "@minmurasu",
+    title: "Our Work | MIN MURASU",
+    description:
+      "Explore websites, digital experiences and AI-powered business solutions created by MIN MURASU.",
+  },
 };
 
 /* ------------------------------------------------------------------ */

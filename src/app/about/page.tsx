@@ -22,6 +22,25 @@ export const metadata: Metadata = {
   description:
     "Learn about MIN MURASU, an engineering-driven digital growth and AI automation agency headquartered in Coimbatore, Tamil Nadu.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.seo.locale,
+    siteName: siteConfig.name,
+    url: `${siteConfig.url}/about`,
+    title: "About Us | MIN MURASU",
+    description:
+      "Learn about MIN MURASU, an engineering-driven digital growth and AI automation agency headquartered in Coimbatore, Tamil Nadu.",
+    images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: "About Us | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "About Us | MIN MURASU",
+    description:
+      "Learn about MIN MURASU, an engineering-driven digital growth and AI automation agency headquartered in Coimbatore, Tamil Nadu.",
+    images: [siteConfig.brand.ogImage],
+  },
 };
 
 const values = [

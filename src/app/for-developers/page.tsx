@@ -21,7 +21,19 @@ export const metadata: Metadata = {
     description:
       "A 14-day, fixed-price distribution sprint for developers with a shipped product and no growth.",
     url: `${siteConfig.url}/for-developers`,
+    siteName: siteConfig.name,
+    locale: siteConfig.seo.locale,
     type: "website",
+    images: [{ url: siteConfig.brand.ogImage, width: 1200, height: 630, alt: "Distribution Sprint for Developers | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "You shipped it. Now let's get it paid for.",
+    description:
+      "A 14-day, fixed-price distribution sprint for developers with a shipped product and no growth.",
+    images: [siteConfig.brand.ogImage],
   },
 };
 

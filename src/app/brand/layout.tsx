@@ -9,10 +9,21 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.url}/brand`,
   },
   openGraph: {
+    type: "website",
+    locale: siteConfig.seo.locale,
+    siteName: siteConfig.name,
     title: "Brand Identity, Logos & Media Kit | MIN MURASU",
     description:
       "Official brand assets, logos, color codes, typography, and press boilerplates for MIN MURASU.",
     url: `${siteConfig.url}/brand`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.seo.twitterHandle,
+    creator: siteConfig.seo.twitterHandle,
+    title: "Brand Identity, Logos & Media Kit | MIN MURASU",
+    description:
+      "Official brand assets, logos, color codes, typography, and press boilerplates for MIN MURASU.",
   },
 };
 

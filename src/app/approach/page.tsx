@@ -17,6 +17,25 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/approach",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "MIN MURASU",
+    url: "https://www.minmurasu.digital/approach",
+    title: "Our Approach | MIN MURASU",
+    description:
+      "Explore MIN MURASU's disciplined 5-stage digital growth methodology combining SEO, GEO, high-speed web engineering, and AI enquiry automation.",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Our Approach | MIN MURASU" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@minmurasu",
+    creator: "@minmurasu",
+    title: "Our Approach | MIN MURASU",
+    description:
+      "Explore MIN MURASU's disciplined 5-stage digital growth methodology combining SEO, GEO, high-speed web engineering, and AI enquiry automation.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 export default function ApproachPage() {
