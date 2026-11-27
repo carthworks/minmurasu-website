@@ -1,4 +1,5 @@
 import AttributionCapture from "@/components/layout/AttributionCapture";
+import VisitTracker from "@/components/analytics/VisitTracker";
 import CookieConsent from "@/components/layout/CookieConsent";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -101,6 +102,7 @@ export default function RootLayout({
         <WhatsAppFloat />
         <Suspense fallback={null}>
           <AttributionCapture />
+          <VisitTracker />
         </Suspense>
         {/* GA4 and GTM load only inside CookieConsent, after opt-in. */}
         <CookieConsent gaId={gaId} gtmId={gtmId} />
